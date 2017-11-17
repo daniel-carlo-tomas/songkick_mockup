@@ -32,8 +32,50 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonBackReference
     private List<Reviews> reviews;
+    @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
+    private List<Bands> bands;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    @JsonBackReference
+    private List<FriendRequests> senders;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    @JsonBackReference
+    private List<FriendRequests> receivers;
 
     public User () {}
+
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<Bands> getBands() {
+        return bands;
+    }
+
+    public void setBands(List<Bands> bands) {
+        this.bands = bands;
+    }
+
+    public List<FriendRequests> getSendes() {
+        return senders;
+    }
+
+    public void setSenders(List<FriendRequests> senders) {
+        this.senders = senders;
+    }
+
+    public List<FriendRequests> getReceivers() {
+        return receivers;
+    }
+
+    public void setReceivers(List<FriendRequests> receivers) {
+        this.receivers = receivers;
+    }
 
     public long getId() {
         return id;
