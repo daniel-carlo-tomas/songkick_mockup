@@ -1,18 +1,14 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.User;
-import jdk.nashorn.internal.runtime.logging.Logger;
+import com.songkick.songkick_mockup.repositories.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 
 @Controller
 public class UsersController {
@@ -20,10 +16,10 @@ public class UsersController {
     private UsersRepository userRepository;
 
 
-    @Autowired
-    public UsersController(UsersRepository userRepository) {
-        this.userRepository = userRepository;
 
+    @Autowired
+    public UsersController(UsersRepository userRepository, ReviewsRepository reviewsRepository) {
+        this.userRepository = userRepository;
     }
 
 
@@ -55,4 +51,5 @@ public class UsersController {
             }
         } else return "/failure";
     }
+
 }
