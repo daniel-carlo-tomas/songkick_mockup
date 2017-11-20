@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "reviews")
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue
@@ -22,7 +22,7 @@ public class Reviews {
     @JsonManagedReference
     private User user;
 
-    public Reviews () {}
+    public Review() {}
 
     public long getId() {
         return id;

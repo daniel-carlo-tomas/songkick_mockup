@@ -14,66 +14,80 @@ public class User {
     @Id
     @GeneratedValue
     private long id;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column
     private String firstName;
+
     @Column
     private String lastName;
+
     @Column(nullable = false, unique = true)
     @Email
     private String email;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = false)
     private String city;
+
     @Column(nullable = false)
     private String state;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonBackReference
-    private List<Reviews> reviews;
-    @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
-    private List<Bands> bands;
+    private List<Review> reviews;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="bands_users",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "songkick_id")}
+    )
+    private List<Band> bands;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     @JsonBackReference
-    private List<FriendRequests> senders;
+    private List<FriendRequest> senders;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     @JsonBackReference
-    private List<FriendRequests> receivers;
+    private List<FriendRequest> receivers;
 
     public User () {}
 
-    public List<Reviews> getReviews() {
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Reviews> reviews) {
+    public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
 
-    public List<Bands> getBands() {
+    public List<Band> getBands() {
         return bands;
     }
 
-    public void setBands(List<Bands> bands) {
+    public void setBands(List<Band> bands) {
         this.bands = bands;
     }
 
-    public List<FriendRequests> getSendes() {
+    public List<FriendRequest> getSendes() {
         return senders;
     }
 
-    public void setSenders(List<FriendRequests> senders) {
+    public void setSenders(List<FriendRequest> senders) {
         this.senders = senders;
     }
 
-    public List<FriendRequests> getReceivers() {
+    public List<FriendRequest> getReceivers() {
         return receivers;
     }
 
-    public void setReceivers(List<FriendRequests> receivers) {
+    public void setReceivers(List<FriendRequest> receivers) {
         this.receivers = receivers;
     }
 
