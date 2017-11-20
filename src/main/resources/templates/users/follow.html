@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: main-header"></head>
+<body>
+<h1>Follow User</h1>
+<form th:action="@{/follow/{id}  (id=${user.id})}" method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
+    <a th:href="@{/follow/{id}"><span>follow user</span></a>
+</form>
+
+</body>
+</html>
