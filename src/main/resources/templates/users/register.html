@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header"></head>
+<body>
+<div class="row">
+    <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
+        <div class="info col-xs-12">
+            <h1>Register an Account With Us!</h1>
+        </div>
+        <form th:action="@{/register}" method="POST" th:object="${user}"
+              class="form col-xs-12 col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" th:field="*{username}"/>
+            </div>
+            <div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" th:field="*{email}"/>
+            </div>
+            <div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" type="password" th:field="*{password}"/>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input class="form-control" id="city" th:field="*{city}"/>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input class="form-control" id="state" th:field="*{state}"/>
+            </div>
+            <input class="submit btn" value="Sign me up!" type="submit"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

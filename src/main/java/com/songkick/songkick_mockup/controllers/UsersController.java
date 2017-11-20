@@ -1,4 +1,5 @@
 package com.songkick.songkick_mockup.controllers;
+
 import com.songkick.songkick_mockup.models.User;
 import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,32 +21,31 @@ public class UsersController {
 
 
     @Autowired
-    public UsersController( UsersRepository userRepository){
+    public UsersController(UsersRepository userRepository) {
         this.userRepository = userRepository;
 
     }
 
 
     @GetMapping("/register")
-    public String ShowRegisterForm(Model model){
-        User user = new User();
-        user.setUsername("carlo");
-        user.setEmail("carlo@codeup.com");
-        user.setPassword("$$$");
-        user.setCity("San Antonio");
-        user.setState("Texas");
-        userRepository.save(user);
-        return "/users/register";
+    public String ShowRegisterForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
     }
 
-//    @PostMapping("/register")
-//    public String saveUser( User user) {
-//    userRepository.save(user);
-//
-//        return "redirect/login";
-//
-//
-//
-//
+    @PostMapping("/register")
+    public String saveUser(User user) {
+        userRepository.save(user);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/login")
+    public String showLoginForm () {
+        return "users/login";
+    }
+
+//    @PostMapping("/login")
+//    public String submitLoginForm (User user) {
+//        if (user.getUsername()
 //    }
 }
