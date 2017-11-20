@@ -1,7 +1,7 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.User;
-import com.songkick.songkick_mockup.repositories.ReviewsRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class UsersController {
 
 
     @Autowired
-    public UsersController(UsersRepository userRepository, ReviewsRepository reviewsRepository) {
+    public UsersController(UsersRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -41,10 +41,11 @@ public class UsersController {
     }
 
     @PostMapping("/login")
-    public String submitLoginForm(User user) {
+    public String submitLoginForm(User user, Model model) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
             User user2 = userRepository.findByUsername(user.getUsername());
             if (user.getPassword().equals(user2.getPassword())) {
+                model.addAttribute("user", user);
                 return "/success";
             } else {
                 return "/failure";
