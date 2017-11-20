@@ -40,12 +40,19 @@ public class UsersController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm () {
+    public String showLoginForm() {
         return "users/login";
     }
 
-//    @PostMapping("/login")
-//    public String submitLoginForm (User user) {
-//        if (user.getUsername()
-//    }
+    @PostMapping("/login")
+    public String submitLoginForm(User user) {
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            User user2 = userRepository.findByUsername(user.getUsername());
+            if (user.getPassword().equals(user2.getPassword())) {
+                return "/success";
+            } else {
+                return "/failure";
+            }
+        } else return "/failure";
+    }
 }
