@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "friendrequests")
-public class FriendRequests {
+public class FriendRequest {
     @Id
     @GeneratedValue
     private long id;
