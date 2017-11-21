@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class FriendsController {
@@ -27,11 +28,28 @@ public class FriendsController {
 
     }
 
-    @GetMapping("/test")
+    @GetMapping("/request")
     public String test(Model model){
-        User sender = usersRepository.findOne(1l);
+        User sender = usersRepository.findOne(2l);
         model.addAttribute("user", sender);
         return "users/follow";
+
+    }
+    @GetMapping("/response")
+    public String test2(Model model){
+        User receiver = usersRepository.findOne(2L);
+        List<FriendRequests> friendRequests = friendsRepository.findByReceiver(receiver);
+        //User receiver = usersRepository.findOne(1l);
+        model.addAttribute("request", friendRequests.get(0));
+        model.addAttribute("user", receiver);
+        return "users/response";
+
+    }
+    @PostMapping("/response")
+    public String test3(@PathVariable long id, Model model){
+        User sender = usersRepository.findOne(1l);
+        model.addAttribute("user", sender);
+        return "redirect:/";
 
     }
 
@@ -41,7 +59,7 @@ public class FriendsController {
         User newFriend = usersRepository.findOne(id);// query the database
         // using the id in the path
         // create and save req in the db
-        User sender = usersRepository.findOne(2l);
+        User sender = usersRepository.findOne(1l);
         friendRequests.setSender(sender);
         friendRequests.setReciever(newFriend);
 
@@ -49,7 +67,7 @@ public class FriendsController {
         return "redirect:/";
     }
 
-    @PostMapping("/follow/approve/{id}")
+    @PostMapping("/request/approve/{id}")
     public String createFriendship(@PathVariable long id) {
         // find the request in the database using the id, and the repository
         FriendRequests request = friendsRepository.findOne(id);
@@ -64,7 +82,7 @@ public class FriendsController {
 
     }
 
-    @PostMapping("/follow/ignore/{id}")
+    @PostMapping("/request/ignore/{id}")
     public String declineFriendship(@PathVariable long id) {
         // find the request in the database using the id, and the repository
         FriendRequests request = friendsRepository.findOne(id);

@@ -7,6 +7,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "friendrequests")
 public class FriendRequests {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
+    }
+
     @Id
     @GeneratedValue
     private long id;
