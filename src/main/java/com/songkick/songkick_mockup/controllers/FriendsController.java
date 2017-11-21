@@ -1,7 +1,7 @@
 
 package com.songkick.songkick_mockup.controllers;
 
-import com.songkick.songkick_mockup.models.FriendRequests;
+import com.songkick.songkick_mockup.models.FriendRequest;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.FriendsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
@@ -38,7 +38,7 @@ public class FriendsController {
     @GetMapping("/response")
     public String test2(Model model){
         User receiver = usersRepository.findOne(2L);
-        List<FriendRequests> friendRequests = friendsRepository.findByReceiver(receiver);
+        List<FriendRequest> friendRequests = friendsRepository.findByReceiver(receiver);
         //User receiver = usersRepository.findOne(1l);
         model.addAttribute("request", friendRequests.get(0));
         model.addAttribute("user", receiver);
@@ -55,7 +55,7 @@ public class FriendsController {
 
     @PostMapping("/request/follow/{id}")
     public String sendRequestMessage(@PathVariable long id, Model model) {
-        FriendRequests friendRequests = new FriendRequests();
+        FriendRequest friendRequests = new FriendRequest();
         User newFriend = usersRepository.findOne(id);// query the database
         // using the id in the path
         // create and save req in the db
@@ -70,7 +70,7 @@ public class FriendsController {
     @PostMapping("/request/approve/{id}")
     public String createFriendship(@PathVariable long id) {
         // find the request in the database using the id, and the repository
-        FriendRequests request = friendsRepository.findOne(id);
+        FriendRequest request = friendsRepository.findOne(id);
         request.setApproval(true);
         // request set the approval to true
 
@@ -85,7 +85,7 @@ public class FriendsController {
     @PostMapping("/request/ignore/{id}")
     public String declineFriendship(@PathVariable long id) {
         // find the request in the database using the id, and the repository
-        FriendRequests request = friendsRepository.findOne(id);
+        FriendRequest request = friendsRepository.findOne(id);
         request.setApproval(false);
         // request set the approval to true
 
