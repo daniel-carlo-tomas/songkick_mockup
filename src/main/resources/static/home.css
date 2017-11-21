@@ -1,0 +1,10 @@
+.banner {
+    position: relative;
+}
+
+.banner-text {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    left: 0;
+}
