@@ -1,0 +1,16 @@
+body{
+    background-color: slategray;
+    text-decoration: black solid;
+
+}
+h1{
+    text-decoration: green;
+    text-align: center;
+    border-color: black;
+    font-size: xx-large;
+}
+
+#form-group{
+    background-color: whitesmoke;
+    border-color: black 2px;
+}
