@@ -29,7 +29,7 @@ public class FriendsController {
 
     @GetMapping("/test")
     public String test(Model model){
-        User sender = usersRepository.findOne(4l);
+        User sender = usersRepository.findOne(1l);
         model.addAttribute("user", sender);
         return "users/follow";
 
@@ -41,7 +41,7 @@ public class FriendsController {
         User newFriend = usersRepository.findOne(id);// query the database
         // using the id in the path
         // create and save req in the db
-        User sender = usersRepository.findOne(1l);
+        User sender = usersRepository.findOne(2l);
         friendRequests.setSender(sender);
         friendRequests.setReciever(newFriend);
 
