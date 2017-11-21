@@ -9,11 +9,8 @@ public class Show {
     @Id
     @Column
     private long show_id;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            joinColumns = {@JoinColumn(name = "show_id")},
-            inverseJoinColumns = {@JoinColumn(name = "id")}
-    )
+
+    @ManyToMany(mappedBy="shows", cascade = CascadeType.ALL)
     private List<User> users;
 
     public long getShow_id() {

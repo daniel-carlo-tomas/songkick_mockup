@@ -49,6 +49,25 @@ public class User {
     )
     private List<Band> bands;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "show_id")}
+    )
+    private List<Show> shows;
+
+    public List<Show> getShows() {
+        return shows;
+    }
+
+    public void setShows(List<Show> shows) {
+        this.shows = shows;
+    }
+
+    public List<FriendRequest> getSenders() {
+        return senders;
+    }
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     @JsonBackReference
     private List<FriendRequest> senders;
