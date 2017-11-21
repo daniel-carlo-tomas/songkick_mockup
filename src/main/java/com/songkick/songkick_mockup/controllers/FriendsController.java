@@ -27,28 +27,54 @@ public class FriendsController {
 
     }
 
-    @GetMapping("follow")
-    public String sendFollowMessage(Model model) {
-        FriendRequests friendRequests = new FriendRequests();
-        model.addAttribute("friendRequest", friendRequests);
-        return "follow-form";
+    @GetMapping("/test")
+    public String test(Model model){
+        User sender = usersRepository.findOne(4l);
+        model.addAttribute("user", sender);
+        return "users/follow";
+
     }
 
-    @PostMapping("follow/{id}")
-    public String followUser(@PathVariable int id, FriendRequests request, FriendsRepository friendsRepository) {
-        User user = usersRepository.findOne(((long) id));
+    @PostMapping("/request/follow/{id}")
+    public String sendRequestMessage(@PathVariable long id, Model model) {
+        FriendRequests friendRequests = new FriendRequests();
+        User newFriend = usersRepository.findOne(id);// query the database
+        // using the id in the path
+        // create and save req in the db
+        User sender = usersRepository.findOne(1l);
+        friendRequests.setSender(sender);
+        friendRequests.setReciever(newFriend);
+
+        friendsRepository.save(friendRequests);
+        return "redirect:/";
+    }
+
+    @PostMapping("/follow/approve/{id}")
+    public String createFriendship(@PathVariable long id) {
+        // find the request in the database using the id, and the repository
+        FriendRequests request = friendsRepository.findOne(id);
+        request.setApproval(true);
+        // request set the approval to true
+
+        // save the request in the database
+        friendsRepository.save(request);
+
+        return "redirect:/";
 
 
-        if (request.isApproval()) {
-            request.setApproval(true);
-            request.setSender(usersRepository.findByUsername("carlo"));
-            request.setReciever(user);
-            friendsRepository.save(request);
+    }
 
-            return "redirect:/userProfile";
+    @PostMapping("/follow/ignore/{id}")
+    public String declineFriendship(@PathVariable long id) {
+        // find the request in the database using the id, and the repository
+        FriendRequests request = friendsRepository.findOne(id);
+        request.setApproval(false);
+        // request set the approval to true
 
-        }
-        return "userProfile";
+        // save the request in the database
+        friendsRepository.save(request);
+
+        return "redirect:/";
 
 
     }
