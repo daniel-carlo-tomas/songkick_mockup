@@ -1,6 +1,6 @@
 package com.songkick.songkick_mockup.controllers;
 
-import com.songkick.songkick_mockup.models.Reviews;
+import com.songkick.songkick_mockup.models.Review;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.ReviewsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ReviewsController {
+    @Autowired
     private ReviewsRepository reviewsRepository;
+    @Autowired
     private UsersRepository usersRepository;
 
     @Autowired
@@ -23,12 +25,12 @@ public class ReviewsController {
 
     @GetMapping("create/review")
     public String showReviewForm (Model model) {
-        model.addAttribute("review", new Reviews());
+        model.addAttribute("review", new Review());
         return "reviews/create-review";
     }
 
     @PostMapping("create/review")
-    public String submitReviewForm (Reviews review) {
+    public String submitReviewForm (Review review) {
         User user = usersRepository.findByUsername("carlo");
         if (user == null) {
             return "/users/login";
