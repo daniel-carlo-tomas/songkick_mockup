@@ -44,7 +44,7 @@ public class UsersController {
             User user2 = userRepository.findByUsername(user.getUsername());
             if (user.getPassword().equals(user2.getPassword())) {
                 model.addAttribute("user", user);
-                return "/success";
+                return "/users/profile";
             } else {
                 return "/failure";
             }
