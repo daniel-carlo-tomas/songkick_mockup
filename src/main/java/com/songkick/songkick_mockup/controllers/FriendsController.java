@@ -60,7 +60,7 @@ public class FriendsController {
     public String receiveRequest(@PathVariable long id,Model model){
         User receiver = usersRepository.findOne(id);
         List<FriendRequest> friendRequests = friendsRepository.findByReceiver(receiver);
-        model.addAttribute("request", friendRequests.get(0));
+        model.addAttribute("requests", friendRequests);
         model.addAttribute("user", receiver);
         return "users/response";
 
