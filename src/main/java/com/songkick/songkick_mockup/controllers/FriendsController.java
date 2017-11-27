@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -28,44 +30,49 @@ public class FriendsController {
 
     }
 
-    @GetMapping("/request")
-    public String test(Model model){
-        User sender = usersRepository.findOne(2l);
-        model.addAttribute("user", sender);
-        return "users/follow";
 
+    @GetMapping("/request/{id}")
+    public String showUser(@PathVariable int id, Model model) {
+
+        User sender = usersRepository.findOne((long) id);
+        model.addAttribute("user", sender);
+
+        return "users/request";
     }
-    @GetMapping("/response")
-    public String test2(Model model){
-        User receiver = usersRepository.findOne(2L);
+
+    @PostMapping("/request/{id}")
+    public String sendRequestPage(@PathVariable long id, Model model) {
+        FriendRequest friendRequests = new FriendRequest();
+        // using the id in the path
+        // create and save req in the db
+        User sender = usersRepository.findOne(id);
+        User newFriend = usersRepository.findOne(2l);// query the database
+
+        friendRequests.setSender(sender);
+        friendRequests.setReciever(newFriend);
+        friendsRepository.save(friendRequests);
+        model.addAttribute("user", newFriend);
+        model.addAttribute("user", sender);
+        return "redirect:/";
+    }
+
+    @GetMapping("/response/{id}")
+    public String receiveRequest(@PathVariable long id,Model model){
+        User receiver = usersRepository.findOne(id);
         List<FriendRequest> friendRequests = friendsRepository.findByReceiver(receiver);
-        //User receiver = usersRepository.findOne(1l);
         model.addAttribute("request", friendRequests.get(0));
         model.addAttribute("user", receiver);
         return "users/response";
 
     }
-    @PostMapping("/response")
-    public String test3(@PathVariable long id, Model model){
-        User sender = usersRepository.findOne(1l);
+    @PostMapping("/response/{id}")
+    public String postResponse (@PathVariable long id, Model model){
+        User sender = usersRepository.findOne(id);
         model.addAttribute("user", sender);
         return "redirect:/";
 
     }
 
-    @PostMapping("/request/follow/{id}")
-    public String sendRequestMessage(@PathVariable long id, Model model) {
-        FriendRequest friendRequests = new FriendRequest();
-        User newFriend = usersRepository.findOne(id);// query the database
-        // using the id in the path
-        // create and save req in the db
-        User sender = usersRepository.findOne(1l);
-        friendRequests.setSender(sender);
-        friendRequests.setReciever(newFriend);
-
-        friendsRepository.save(friendRequests);
-        return "redirect:/";
-    }
 
     @PostMapping("/request/approve/{id}")
     public String createFriendship(@PathVariable long id) {
