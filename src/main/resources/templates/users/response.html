@@ -4,23 +4,27 @@
 <head th:replace="fragments/header :: main-header"></head>
 <body>
 
+<th:block th:each="request : ${requests}">
 
-<h1><span th:text="${user.username}"></span></h1>
-<h1>Would like to be you friend</h1>
+    <h1><span th:text="${request.sender.username}"></span></h1>
+    <h1>Would like to be you friend</h1>
 
-<form th:action="@{/request/approve/{id}  (id=${request.id})}" th:method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
+    <form th:action="@{/request/approve/{id}  (id=${request.id})}" th:method="post"
+          class="form col-xs-12 col-md-6 col-md-offset-3">
 
-    <!--create a search bar for users in the profile page that returns follow page with the searched user send request form -->
-    <button th:type="submit">accept</button>
+        <!--create a search bar for users in the profile page that returns follow page with the searched user send request form -->
+        <button th:type="submit">accept</button>
 
-</form>
+    </form>
 
-<form th:action="@{/request/ignore/{id}  (id=${request.id})}" th:method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
+    <form th:action="@{/request/ignore/{id}  (id=${request.id})}" th:method="post"
+          class="form col-xs-12 col-md-6 col-md-offset-3">
 
-    <!--create a search bar for users in the profile page that returns follow page with the searched user send request form -->
-    <button th:type="submit">decline</button>
+        <!--create a search bar for users in the profile page that returns follow page with the searched user send request form -->
+        <button th:type="submit">decline</button>
 
-</form>
+    </form>
+</th:block>
 
 </body>
 </html>
