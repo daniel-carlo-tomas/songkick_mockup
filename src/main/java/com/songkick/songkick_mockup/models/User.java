@@ -177,7 +177,7 @@ public class User {
         this.state = state;
     }
 
-    public Long getZipCode() { return zipcode; }
+    public Long getZipcode() { return zipcode; }
 
-    public void setZipCode(Long zipCode) { this.zipcode = zipCode; }
+    public void setZipcode(Long zipcode) { this.zipcode = zipcode; }
 }
