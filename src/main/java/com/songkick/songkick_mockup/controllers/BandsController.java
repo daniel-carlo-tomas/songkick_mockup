@@ -6,7 +6,7 @@ import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +37,42 @@ public class BandsController {
         usersRepository.save(user);
         return "/success";
     }
+
+    @GetMapping("band/search")
+    public String showJSON () {
+        return "/bands/bandSearch";
+    }
+
+//    CHANGE MAPPING TO HAVE THE MAIN PART FIRST i.e. BAND/ADD not ADD/BAND...BAND/SEARCH
+
+    @RequestMapping(value="/band/add", method= RequestMethod.POST)
+    public String saveBand(@RequestParam("jambase_id") Long bandId, @RequestParam("jambase_bandname") String bandname) {
+        System.out.println(bandname);
+        System.out.println(bandId);
+
+        // VALIDATE THAT BAND ISNT ALREADY IN DB
+
+        Band band = bandsRepository.findOne(bandId);
+        if (band == null) {
+
+            // SAVE THE BANDNAME + ID TO ThE BANDS TABLE
+
+        band = new Band();
+        band.setBandname(bandname);
+
+        band.setId(bandId);
+        bandsRepository.save(band);
+        }
+
+            // ADD THE BAND TO THE USERS LIST OF BANDS...HARD CODED AS CARLO FOR NOW
+
+            User user = usersRepository.findByUsername("carlooo");
+            List<Band> bands = user.getBands();
+            bands.add(band);
+            user.setBands(bands);
+            usersRepository.save(user);
+
+        return "redirect:/users/profile";
+    }
+
 }
