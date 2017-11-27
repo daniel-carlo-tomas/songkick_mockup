@@ -34,4 +34,9 @@ public class ShowsController {
         return "/success";
 
     }
+
+    @GetMapping("/viewEvents")
+    public String viewEvent(){
+        return "/viewEvents";
+    }
 }

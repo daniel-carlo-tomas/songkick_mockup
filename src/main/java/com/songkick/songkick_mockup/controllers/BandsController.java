@@ -37,4 +37,8 @@ public class BandsController {
         usersRepository.save(user);
         return "/success";
     }
+    @GetMapping("/bandsProfile")
+    public String seeBandProfilePage (){
+        return "/bandsProfile";
+    }
 }
