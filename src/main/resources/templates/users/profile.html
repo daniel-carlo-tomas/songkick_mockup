@@ -31,9 +31,9 @@
                     <a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
                 </div>
                 <h5>my bands</h5>
-                <div th:each="user : ${users}">
-                    <h6 th:text="${user.bands.id}"/>                <!--</div>-->
-                </div>
+                <!--<div th:each="user : ${users}">-->
+                    <h6 th:text="${userBandList}"/>
+                <!--</div>-->
                 <a th:href="@{/response/{id} (id=${user.id})}">requests</a>
             </div>
         </div>

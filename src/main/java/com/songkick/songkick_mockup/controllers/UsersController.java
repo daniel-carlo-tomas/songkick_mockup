@@ -55,13 +55,13 @@ public class UsersController {
 
 
             List <Band> bands = (List<Band>) bandsRepository.findAll();
-//            List<Band> usersBands = bandsRepository.listUsersBands(user2);
+            List<Band> usersBands = bandsRepository.listUsersBands(user2);
 
             if (user.getPassword().equals(user2.getPassword())) {
                 model.addAttribute("users", users);
                 model.addAttribute("user", user2);
                 model.addAttribute("bands", bands);
-//                model.addAttribute("userBandList", usersBands);
+                model.addAttribute("userBandList", usersBands);
 //                model.addAttribute("band", band);
                 return "/users/profile";
             } else {
