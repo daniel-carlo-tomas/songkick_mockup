@@ -5,11 +5,13 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <form id="form">
     <h1>Search for shows by Area</h1>
-    <input id="zipcode" type="text" />
-    <input id="radius" type="text" />
+    <label for="zipcode">Zipcode</label>
+    <input id="zipcode" />
+    <label for="radius">Radius (miles)</label>
+    <input id="radius" />
     <input id="submit" type="submit" />
 </form>
 <div id="searchResult"></div>
-<script src="/js/searchForShows.js"></script>
+<script src="/js/searchForShowsByZipcode.js"></script>
 </body>
 </html>
