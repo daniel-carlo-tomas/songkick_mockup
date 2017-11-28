@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="fragments/header :: main-header">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href="common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<div class="container-fluid">
+
     <div class="row">
-        <div class="col-xs-12">
-            Band Name
-        </div>
+        <div class="container-fluid2">Band Name</div>
     </div>
     <div class="row">
-        <div class="col-xs-3">Top Tracks</div>
-        <div class="col-xs-9">Band info/bio</div>
+        <div class="container-fluid2">Top Tracks</div>
     </div>
-</div>
+        <div class="container-fluid3">Band info/bio</div>
+
 </body>
 </html>
