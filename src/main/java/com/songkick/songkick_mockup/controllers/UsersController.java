@@ -1,12 +1,16 @@
 package com.songkick.songkick_mockup.controllers;
 
+import com.songkick.songkick_mockup.models.Band;
 import com.songkick.songkick_mockup.models.User;
+import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -17,9 +21,11 @@ public class UsersController {
 
     @Autowired
     private UsersRepository userRepository;
+    private BandsRepository bandsRepository;
 
-    public UsersController(UsersRepository userRepository) {
+    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository) {
         this.userRepository = userRepository;
+        this.bandsRepository = bandsRepository;
     }
 
 
@@ -44,11 +50,19 @@ public class UsersController {
     public String submitLoginForm(User user, Model model) {
 
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            User user2 = userRepository.findByUsername(user.getUsername());
             List<User> users = (List<User>) userRepository.findAll();
+            User user2 = userRepository.findByUsername(user.getUsername());
+
+
+            List <Band> bands = (List<Band>) bandsRepository.findAll();
+            List<Band> usersBands = bandsRepository.listUsersBands(user2);
+
             if (user.getPassword().equals(user2.getPassword())) {
                 model.addAttribute("users", users);
                 model.addAttribute("user", user2);
+                model.addAttribute("bands", bands);
+                model.addAttribute("userBandList", usersBands);
+//                model.addAttribute("band", band);
                 return "/users/profile";
             } else {
                 return "/failure";
@@ -56,9 +70,10 @@ public class UsersController {
         } else return "/failure";
     }
 
-    @GetMapping("/users/profile")
-    public String showProfile () {
-        return "users/profile";
+    @GetMapping("/users/show/{id}")
+    public String showProfile (@PathVariable long id, Model model) {
+        User user = userRepository.findOne(id);
+        model.addAttribute("user", user);
+        return "users/show";
     }
-
 }

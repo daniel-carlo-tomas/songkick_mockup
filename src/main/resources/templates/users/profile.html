@@ -29,11 +29,16 @@
                     <div class="col-xs-12">my shows</div>
                     <div class="col-xs-12">my reviews</div>
                 </div>
+                <h5>users</h5>
                 <div th:each="user : ${users}">
                     <a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
                 </div>
+                <h5>my bands</h5>
+                <div th:each="band : ${userBandList}">
+                    <h6 th:text="${band.bandname}"/>
+                </div>
+                <a th:href="@{/response/{id} (id=${user.id})}">requests</a>
             </div>
-            <a th:href="@{/response/{id} (id=${user.id})}">requests</a>
         </div>
     </div>
 </div>
