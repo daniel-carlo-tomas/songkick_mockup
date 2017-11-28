@@ -24,8 +24,13 @@ public class ShowsController {
         this.usersRepository = usersRepository;
     }
 
+    @GetMapping("/show/show")
+    public String findShow() {
+        return "";
+    }
+
     @GetMapping("/add/show")
-    public String addShow () {
+    public String addShow() {
 
         User user = usersRepository.findByUsername("carlooo");
         List<Show> shows = (List<Show>) showsRepository.findAll();

@@ -7,9 +7,9 @@ import java.util.List;
 @Table(name = "bands")
 public class Band {
     @Id
-    @Column(nullable = false, name = "songkick_id")
+    @Column(nullable = false, name = "jambase_id")
     private long id;
-    @Column(nullable = false, name = "songkick_bandname")
+    @Column(nullable = false, name = "jambase_bandname")
     private String bandname;
 
     @ManyToMany(mappedBy="bands", cascade = CascadeType.ALL)

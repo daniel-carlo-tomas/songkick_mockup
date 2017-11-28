@@ -45,7 +45,7 @@ public class User {
     @JoinTable(
             name="bands_users",
             joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "songkick_id")}
+            inverseJoinColumns = {@JoinColumn(name = "jambase_id")}
     )
     private List<Band> bands;
 

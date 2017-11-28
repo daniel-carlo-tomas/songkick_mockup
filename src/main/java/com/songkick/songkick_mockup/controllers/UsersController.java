@@ -51,4 +51,9 @@ public class UsersController {
         } else return "/failure";
     }
 
+    @GetMapping("/users/profile")
+    public String showProfile () {
+        return "users/profile";
+    }
+
 }
