@@ -33,6 +33,7 @@
                 json.Venue.StateCode +
                 json.Venue.ZipCode +
                 "</h4>";
+            html += "<a href='" + json.Venue.Url + "'>See Venue</a>";
 
             console.log(html);
 
