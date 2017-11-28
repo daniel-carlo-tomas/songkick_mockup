@@ -29,6 +29,11 @@ public class ShowsController {
         return "";
     }
 
+    @GetMapping("show/search")
+    public String showJSON () {
+        return "/search/showSearch";
+    }
+
     @GetMapping("/add/show")
     public String addShow() {
 

@@ -7,8 +7,9 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <div class="container">
     <div class="row">
-        <h1>WELCOME TO YOUR PROFILE USER</h1>
-        <h2>Get users info...location and bio?</h2>
+        <h1>WELCOME ! <span th:text="${user.username}"/></h1>
+        <h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>
+        <h5><span th:text="${user.email}"/></h5>
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -27,7 +28,11 @@
                     <div class="col-xs-12">my shows</div>
                     <div class="col-xs-12">my reviews</div>
                 </div>
+                <div th:each="user : ${users}">
+                    <a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+                </div>
             </div>
+            <a th:href="@{/response/{id} (id=${user.id})}">requests</a>
         </div>
     </div>
 </div>

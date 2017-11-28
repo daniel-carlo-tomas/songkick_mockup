@@ -40,7 +40,7 @@ public class BandsController {
 
     @GetMapping("band/search")
     public String showJSON () {
-        return "/bands/bandSearch";
+        return "/search/bandSearch";
     }
 
 //    CHANGE MAPPING TO HAVE THE MAIN PART FIRST i.e. BAND/ADD not ADD/BAND...BAND/SEARCH

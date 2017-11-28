@@ -37,6 +37,9 @@ public class User {
     @Column(nullable = false)
     private String state;
 
+    @Column(nullable = false)
+    private Long zipcode;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonBackReference
     private List<Review> reviews;
@@ -173,4 +176,8 @@ public class User {
     public void setState(String state) {
         this.state = state;
     }
+
+    public Long getZipcode() { return zipcode; }
+
+    public void setZipcode(Long zipcode) { this.zipcode = zipcode; }
 }

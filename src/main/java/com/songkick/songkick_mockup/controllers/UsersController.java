@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 
 @Controller
 public class UsersController {
@@ -40,10 +42,13 @@ public class UsersController {
 
     @PostMapping("/login")
     public String submitLoginForm(User user, Model model) {
+
         if (userRepository.findByUsername(user.getUsername()) != null) {
             User user2 = userRepository.findByUsername(user.getUsername());
+            List<User> users = (List<User>) userRepository.findAll();
             if (user.getPassword().equals(user2.getPassword())) {
-                model.addAttribute("user", user);
+                model.addAttribute("users", users);
+                model.addAttribute("user", user2);
                 return "/users/profile";
             } else {
                 return "/failure";

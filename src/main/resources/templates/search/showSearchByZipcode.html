@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: main-header"></head>
+<body>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+<form id="form">
+    <h1>Search for shows by Area</h1>
+    <input id="zipcode" type="text" />
+    <input id="radius" type="text" />
+    <input id="submit" type="submit" />
+</form>
+<div id="searchResult"></div>
+<script src="/js/searchForShows.js"></script>
+</body>
+</html>
