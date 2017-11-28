@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: main-header"></head>
+<head th:include="fragments/header :: main-header">
+    <link href="common.css" rel="stylesheet" type="text/css">
+</head>
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <div class="container-fluid">
