@@ -32,7 +32,6 @@
                     html += "</h2>";
                     html += "<h3>Date: " + events.Date + "</h3>";
                     html += "<h3>Venue: " + events.Venue.Name + "</h3>";
-                    html += "<h3>Location: " + events.Venue.Address + "</h3>";
                     html += "<form method='post' action='/show/add'>" +
                         "<input type='submit' value='Add to My Shows' />" +
                         "<input name='show_id' type='hidden' value=" + events.Id + " />" +

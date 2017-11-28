@@ -20,7 +20,7 @@
             let html = "";
             html += "<h1>";
             for (let artist of json.Artists) {
-                html += json.Artists[0].Name + ","
+                html += json.Artists[0].Name + " "
             }
             html += " at "
                 + json.Venue.Name
