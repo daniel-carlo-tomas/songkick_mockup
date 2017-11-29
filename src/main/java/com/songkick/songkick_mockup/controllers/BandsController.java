@@ -79,4 +79,12 @@ public class BandsController {
         return "/bandsProfile";
     }
 
+    // FORM FOR DELETING BANDS FROM MY LIST
+
+//    <form method="post"th:action="${'/bands/' + band.id + '/delete'}"id="form">
+//                            <input class="btn btn-block btn-danger"type="submit"value="Delete"/>
+//                        </form>
+
+
+
 }
