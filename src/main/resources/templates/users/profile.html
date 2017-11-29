@@ -8,9 +8,9 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <div class="container">
     <div class="row">
-        <h1>WELCOME ! <span th:text="${user.username}"/></h1>
-        <h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>
-        <h5><span th:text="${user.email}"/></h5>
+        <!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
+        <!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
+        <!--<h5><span th:text="${user.email}"/></h5>-->
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -30,14 +30,14 @@
                     <div class="col-xs-12">my reviews</div>
                 </div>
                 <h5>users</h5>
-                <div th:each="user : ${users}">
-                    <a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
-                </div>
+                <!--<div th:each="user : ${users}">-->
+                    <!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
+                <!--</div>-->
                 <h5>my bands</h5>
-                <div th:each="band : ${userBandList}">
-                    <h6 th:text="${band.bandname}"/>
-                </div>
-                <a th:href="@{/response/{id} (id=${user.id})}">requests</a>
+                <!--<div th:each="band : ${userBandList}">-->
+                    <!--<h6 th:text="${band.bandname}"/>-->
+                <!--</div>-->
+                <!--<a th:href="@{/response/{id} (id=${user.id})}">requests</a>-->
             </div>
         </div>
     </div>
