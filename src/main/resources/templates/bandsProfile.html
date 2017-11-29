@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="fragments/header :: main-header">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">-->
-<link rel="stylesheet" href="/common.css" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+<head th:replace="fragments/header :: main-header">
+
+
+
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 
 <div id="profilePic">
 
-    <img src="https://source.unsplash.com/300x200/?music,artist"/>
+    <img id="bandProfilePic" src="https://source.unsplash.com/1000x400/?music,artist"/>
 
 </div>
 
