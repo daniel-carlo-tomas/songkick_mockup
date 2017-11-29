@@ -46,7 +46,7 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name="bands_users",
+            name = "bands_users",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "jambase_id")}
     )
@@ -79,7 +79,27 @@ public class User {
     @JsonBackReference
     private List<FriendRequest> receivers;
 
-    public User () {}
+    public User() {
+    }
+
+    public User(User copy) {
+        id = copy.id;
+        username = copy.username;
+        firstName = copy.firstName;
+        lastName = copy.lastName;
+        email = copy.email;
+        password = copy.password;
+        city = copy.city;
+        state = copy.state;
+        zipcode = copy.zipcode;
+        reviews = copy.reviews;
+        bands = copy.bands;
+        shows = copy.shows;
+        senders = copy.senders;
+        receivers = copy.receivers;
+
+
+    }
 
     public List<Review> getReviews() {
         return reviews;
@@ -177,7 +197,11 @@ public class User {
         this.state = state;
     }
 
-    public Long getZipcode() { return zipcode; }
+    public Long getZipcode() {
+        return zipcode;
+    }
 
-    public void setZipcode(Long zipcode) { this.zipcode = zipcode; }
+    public void setZipcode(Long zipcode) {
+        this.zipcode = zipcode;
+    }
 }
