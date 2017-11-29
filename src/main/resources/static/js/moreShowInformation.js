@@ -9,7 +9,7 @@
     $.ajax({
         type: "GET",
         url: "http://api.jambase.com/events",
-        data: {"id": show_id, "api_key": "h3fxhwz2qkyc5u8dtd4dbw9c"},
+        data: {"id": show_id, "api_key": "suakw9fxjerxgssx95s993rd"},
         async: true,
         dataType: "json",
         success: function (json) {
