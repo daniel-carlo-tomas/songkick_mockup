@@ -6,6 +6,7 @@ import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class BandsController {
 //    CHANGE MAPPING TO HAVE THE MAIN PART FIRST i.e. BAND/ADD not ADD/BAND...BAND/SEARCH
 
     @RequestMapping(value="/band/add", method= RequestMethod.POST)
-    public String saveBand(@RequestParam("jambase_id") Long bandId, @RequestParam("jambase_bandname") String bandname) {
+    public String saveBand(@RequestParam("jambase_id") Long bandId, @RequestParam("jambase_bandname") String bandname, Model model) {
         System.out.println(bandname);
         System.out.println(bandId);
 
@@ -59,31 +60,44 @@ public class BandsController {
 
         band = new Band();
         band.setBandname(bandname);
-
         band.setId(bandId);
         bandsRepository.save(band);
         }
 
             // ADD THE BAND TO THE USERS LIST OF BANDS...HARD CODED AS CARLO FOR NOW
 
-            User user = usersRepository.findByUsername("carlooo");
+        // NEED TO VALIDATE THAT USER DOESNT ALREADY HAVE BAND IN LIST
+
+            User user = usersRepository.findByUsername("tomtom");
             List<Band> bands = user.getBands();
             bands.add(band);
             user.setBands(bands);
             usersRepository.save(user);
+            model.addAttribute("user", user);
 
-        return "redirect:/users/profile";
+        return "/users/bands";
     }
     @GetMapping ("/bandsProfile")
     public String showBandsProfile (){
         return "/bandsProfile";
     }
 
-    // FORM FOR DELETING BANDS FROM MY LIST
+    @PostMapping ("/band/{id}/delete")
+    public String deleteFromUser (@PathVariable long id, Model model) {
+        Band band = bandsRepository.findOne(id);
+        System.out.println(band.getBandname());
+        User user = usersRepository.findByUsername("carlooo");
+        List<Band> bands = user.getBands();
+        bands.remove(band);
+        user.setBands(bands);
+        usersRepository.save(user);
+        model.addAttribute("user", user);
 
-//    <form method="post"th:action="${'/bands/' + band.id + '/delete'}"id="form">
-//                            <input class="btn btn-block btn-danger"type="submit"value="Delete"/>
-//                        </form>
+//        bandsRepository.deleteUsersBand(id, user.getId());
+     return "/users/bands";
+    }
+
+
 
 
 
