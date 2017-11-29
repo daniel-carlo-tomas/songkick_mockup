@@ -3,6 +3,7 @@
 <!--<head th:replace="fragments/header :: main-header">-->
 <head>
 <link rel="stylesheet" type="text/css" href="/css/materialize.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
 
 </head>
 <body>
@@ -12,18 +13,22 @@
             <img class="responsive-img"  id="bandProfilePic" src="https://source.unsplash.com/3000x600/?music,artist"/>
 
         </div>
-<div class="container-fluid">
+<div class="container-fluid card-panel teal lighten-2">
 
-    </div>
+
     <div class="row">
-        <div class="col offset-s3 s6 ">
+        <!--<div class="col offset-s4 s6 ">-->
             <!-- main content col -->
-            <div class="banner-text">
-                <h1>LMIML</h1>
-                <button class="btn">hello</button>
+
+                <div class="banner-text col offset-s4 s6"><span class="flow-text">LIVE MUSIC IS MY LIFE</span></div>
+                <!--<h1>LMIML</h1>-->
+
+                <!--<button class="btn">hello</button>-->
+            <div>
                 <a href="/register">Register</a>
                 <a href="/login">Login</a>
-            </div>
+                </div>
+            <!--</div>-->
             <h1>Who We Are</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur cumque, cupiditate doloremque dolorum earum enim illo illum incidunt minima officia officiis perferendis possimus quasi qui quidem quis sequi soluta?</p>
 
@@ -39,8 +44,12 @@
         <!--</div>-->
     </div><!-- end main row -->
 
-</div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
+<!--Import jQuery before materialize.js-->
 </html>
 
 
