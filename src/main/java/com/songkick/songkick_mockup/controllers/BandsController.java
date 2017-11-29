@@ -74,6 +74,10 @@ public class BandsController {
 
         return "redirect:/users/profile";
     }
+    @GetMapping ("/bandsProfile")
+    public String showBandsProfile (){
+        return "/bandsProfile";
+    }
 
     // FORM FOR DELETING BANDS FROM MY LIST
 

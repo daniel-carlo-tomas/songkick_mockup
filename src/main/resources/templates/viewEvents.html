@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header">
+
 </head>
 <body>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
 
+<div>
+    <h1>These are the events happening in your area!!</h1>
+</div>
 </body>
+</html>
 
-// this is to use the google maps api with the ticketmaster api
+ <!--this is to use the google maps api with the ticketmaster api-->
 <!--<!DOCTYPE html>
 <html>
   <head>
@@ -27,7 +31,7 @@
 
 
 
-//this is to use the google maps api
+<!--this is to use the google maps api-->
 <!--<!DOCTYPE html>
 <html>
   <head>
