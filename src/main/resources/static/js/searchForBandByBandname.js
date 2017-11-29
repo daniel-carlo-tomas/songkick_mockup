@@ -18,12 +18,14 @@
             success: function (json) {
                 // Parse the response.
                 // Do other things.
+                console.log(json);
                 let html = "";
+                var bandName= json.Artists[0].Name;
                 html += "<h1>Showing results for '" + userSearch + "': </h1>";
-                html += "<h2>Bandname: " + json.Artists[0].Name + "</h2>";
+                html += "<h2>Bandname: " + bandName + "</h2>";
                 html += "<form method='post' action='/band/add'>" +
                     "<input type='submit' value='Add to My Bands' />" +
-                    "<input name='jambase_bandname' type='hidden' value=" + json.Artists[0].Name + " />" +
+                    "<input name='jambase_bandname' type='hidden' value='" + bandName + "' />" +
                     "<input name='jambase_id' type='hidden' value=" + json.Artists[0].Id + " />" +
                     "</form>";
                 document.getElementById("searchResult").innerHTML = html;
