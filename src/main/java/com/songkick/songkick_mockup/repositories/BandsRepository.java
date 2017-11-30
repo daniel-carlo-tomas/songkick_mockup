@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BandsRepository extends CrudRepository<Band, Long> {
    @Query(nativeQuery = true,
-           value = "select * from bands_users where user_id like ?1")
+           value = "select * from bands_users where user_id like ?")
     List<Band> listUsersBands(User user);
 }

@@ -110,4 +110,10 @@ public class UsersController {
         model.addAttribute("userBandList", usersBands);
         return "users/profile";
     }
+    @GetMapping("/users/searchUser")
+    public String searchUser(Model model) {
+        model.addAttribute("user", userRepository.sea)
+
+        return "users/showIndividualUser";
+    }
 }
