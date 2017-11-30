@@ -1,8 +1,10 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.Band;
+import com.songkick.songkick_mockup.models.FriendRequest;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
+import com.songkick.songkick_mockup.repositories.FriendsRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
@@ -23,16 +25,18 @@ public class UsersController {
     @Autowired
     private UsersRepository userRepository;
     private BandsRepository bandsRepository;
+    private FriendsRepository friendsRepository;
     private PasswordEncoder passwordEncoder;
 
-    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder) {
+    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder, FriendsRepository friendsRepository) {
         this.userRepository = userRepository;
         this.bandsRepository = bandsRepository;
         this.passwordEncoder = passwordEncoder;
+        this.friendsRepository = friendsRepository;
     }
 
     @GetMapping("users/bands")
-    public String showUsersBands () {
+    public String showUsersBands() {
         return "users/bands";
     }
 
@@ -103,15 +107,25 @@ public class UsersController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Band> bands = (List<Band>) bandsRepository.findAll();
         List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
+        List<FriendRequest> showFriends = friendsRepository.friendsList(loggedInUser);
+
+
+
+
 
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("bands", bands);
         model.addAttribute("userBandList", usersBands);
+        model.addAttribute("approved", showFriends);
+
+
+
         return "users/profile";
     }
+
     @GetMapping("/users/searchUser")
     public String searchUser(@RequestParam String term, Model model) {
-        model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%") );
+        model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%"));
         return "users/showUsers";
     }
 }

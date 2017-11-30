@@ -20,6 +20,8 @@ import java.util.List;
             value = "select u.id, f.receiver_id, f.sender_id from users as u join friendrequests as f on u.id = f.sender_id where f.approval = true")
     List<FriendRequest> friendsList(User friend);
 
+//    List<FriendRequest> findByApproval(boolean value);
+
 
 
     }

@@ -67,9 +67,10 @@
             </div>
 
             <h5>Friends</h5>
-            <div th:each="user : ${users}">
-                <a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+            <div th:each="friend : ${approved}">
+                <span th:text="${friend.username}"/>
             </div>
+
         </div>
 
         <!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
@@ -96,12 +97,12 @@
                 </div>
                 <!--<h5>users</h5>-->
                 <!--<div th:each="user : ${users}">-->
-                    <!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
+                <!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
                 <!--</div>-->
 
                 <h5>my bands</h5>
                 <!--<div th:each="band : ${userBandList}">-->
-                    <!--<h6 th:text="${band.bandname}"/>-->
+                <!--<h6 th:text="${band.bandname}"/>-->
                 <!--</div>-->
 
 
