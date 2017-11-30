@@ -47,8 +47,8 @@
             </ul>
         </nav>
         <div>
-            <form th:action="@{/users/searchUser/{id} (id=${loggedInUser.id})}" method="post">
-                <input th:type="text" id="search"/>
+            <form th:action="@{/users/searchUser}" method="GET">
+                <input th:type="text" id="search" name="term"/>
                 <input type="submit" value="search"/>
             </form>
         </div>

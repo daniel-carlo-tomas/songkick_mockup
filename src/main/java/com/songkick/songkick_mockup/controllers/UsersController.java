@@ -112,9 +112,7 @@ public class UsersController {
     }
     @GetMapping("/users/searchUser")
     public String searchUser(@RequestParam String term, Model model) {
-        User user = userRepository.SearchUser();
-        model.addAttribute("user", );
-
+        model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%") );
         return "users/showIndividualUser";
     }
 }
