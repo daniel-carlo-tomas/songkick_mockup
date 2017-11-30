@@ -33,10 +33,10 @@ public class FriendsController {
 
 
     @GetMapping("/request/{id}")
-    public String showUser(@PathVariable int id, Model model) {
+    public String showUser(@PathVariable long id, Model model) {
 
-        User sender = usersRepository.findOne((long) id);
-        model.addAttribute("user", sender);
+        User sender = usersRepository.findOne(id);
+        model.addAttribute("sender", sender);
 
         return "users/request";
     }
@@ -104,6 +104,7 @@ public class FriendsController {
 
 
     }
+
 
 }
 

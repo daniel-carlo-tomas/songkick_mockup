@@ -17,5 +17,8 @@ public interface UsersRepository extends CrudRepository<User, Long> {
     @Query(nativeQuery = true,
             value = "select * from users where username like ?")
     List<User> searchUser(String term);
+
+
+
 }
 

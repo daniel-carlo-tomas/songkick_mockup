@@ -95,7 +95,6 @@ public class UsersController {
     @GetMapping("/users/showIndividualUser/{id}")
     public String showIndividualUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userRepository.findOne(id));
-        model.addAttribute("users", userRepository.findAll());
         return "users/showIndividualUser";
     }
 
@@ -113,6 +112,6 @@ public class UsersController {
     @GetMapping("/users/searchUser")
     public String searchUser(@RequestParam String term, Model model) {
         model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%") );
-        return "users/showIndividualUser";
+        return "users/showUsers";
     }
 }

@@ -8,10 +8,10 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <h1>Add a Friend</h1>
 
-<h1><span th:text="${user.username}"></span></h1>
+<h1><span th:text="${sender.username}"/></h1>
 
 <!--user's user goes here inside form-->
-<form th:action="@{/request/{id}  (id=${user.id})}" method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
+<form th:action="@{/request/{id} (id = ${sender.id})}" method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
 
 <!--create a search bar for users in the profile page that returns follow page with the searched user send request form -->
     <button>send friend request</button>

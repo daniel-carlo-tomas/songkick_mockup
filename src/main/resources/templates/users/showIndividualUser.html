@@ -5,17 +5,13 @@
 <head th:replace="fragments/header :: main-header">
 </head>
 <body>
-<div th:each="user : ${searchedContent}">
-    <ul>
-        <li>
-            <a th:href="@{/response/{id} }"><span th:text="${user.username}"/></a>
 
-            <span th:text="${user.email}"/>
-            <span th:text="${user.city}"/>
-            <span th:text="${user.state}"/>
-        </li>
-    </ul>
+<p> From:</p><span th:text="${user.city}"/> ,<span th:text="${user.zipcode}"/> ,  <span th:text="${user.state}"/>
 
-</div>
+<h3 th:text="${user.username}"></h3>  <a th:href="@{/request/{id}  (id=${user.id})}">request</a>
+
+<p th:text="${user.email}"></p>
+
+
 </body>
 </html>
