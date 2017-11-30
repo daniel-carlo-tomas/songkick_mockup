@@ -30,15 +30,16 @@ public class ShowsController {
     }
 
 
-    @GetMapping("/show/{show_id}/moreInfo")
-    public String showMore (@PathVariable long show_id, Model model) {
-        model.addAttribute("show_id", show_id);
+    @GetMapping("/show/{id}/moreInfo")
+    public String showMore (@PathVariable long id, Model model) {
+        Show show = showsRepository.findOne(id);
+        model.addAttribute("show", show);
         return "/shows/viewIndividualShow";
     }
 
 
     @RequestMapping(value="/show/add", method= RequestMethod.POST)
-    public String saveShow (@RequestParam("show_id") Long showId) {
+    public String saveShow (@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
         System.out.println(showId);
 
         // VALIDATE SHOW ISNT ALREADY IN DB
@@ -49,7 +50,9 @@ public class ShowsController {
             // ADD TO SHOWS TABLE
 
             show = new Show();
-            show.setShow_id(showId);
+            show.setId(showId);
+            show.setArtists(artists);
+            show.setVenue(venue);
             showsRepository.save(show);
         }
 
@@ -60,8 +63,21 @@ public class ShowsController {
         shows.add(show);
         user.setShows(shows);
         usersRepository.save(user);
+        model.addAttribute("user", user);
 
-        return "redirect:/users/profile";
+        return "/users/shows";
+    }
+
+    @PostMapping("show/{id}/delete")
+    public String deleteShow (@PathVariable long id, Model model) {
+        Show show = showsRepository.findOne(id);
+        User user = usersRepository.findByUsername("carlooo");
+        List<Show> shows = user.getShows();
+        shows.remove(show);
+        user.setShows(shows);
+        usersRepository.save(user);
+        model.addAttribute(user);
+        return "/users/shows";
     }
 
 }

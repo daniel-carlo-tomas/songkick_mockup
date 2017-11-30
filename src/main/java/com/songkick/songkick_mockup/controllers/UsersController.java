@@ -6,13 +6,14 @@ import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -22,16 +23,14 @@ public class UsersController {
     @Autowired
     private UsersRepository userRepository;
     private BandsRepository bandsRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository) {
+    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.bandsRepository = bandsRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("users/bands")
-    public String showUsersBands () {
-        return "users/bands";
-    }
 
     @GetMapping("/register")
     public String ShowRegisterForm(Model model) {
@@ -40,44 +39,52 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public String saveUser(User user) {
+    public String saveUser(@Valid User user, Errors validation, Model model) {
+
+
+
+        if (validation.hasErrors()) {
+            model.addAttribute(validation);
+            model.addAttribute(user);
+            return "users/register";
+        }
+
+        String hash = passwordEncoder.encode((user.getPassword()));
+        user.setPassword(hash);
         userRepository.save(user);
+
         return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "users/login";
+
+
+    @GetMapping("/users/showUsers")
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "users/showUsers";
     }
 
-    @PostMapping("/login")
-    public String submitLoginForm(User user, Model model) {
-
-        if (userRepository.findByUsername(user.getUsername()) != null) {
-            List<User> users = (List<User>) userRepository.findAll();
-            User user2 = userRepository.findByUsername(user.getUsername());
-
-
-            List <Band> bands = (List<Band>) bandsRepository.findAll();
-            List<Band> usersBands = bandsRepository.listUsersBands(user2);
-
-            if (user.getPassword().equals(user2.getPassword())) {
-                model.addAttribute("users", users);
-                model.addAttribute("user", user2);
-                model.addAttribute("bands", bands);
-                model.addAttribute("userBandList", usersBands);
-//                model.addAttribute("band", band);
-                return "/users/profile";
-            } else {
-                return "/failure";
-            }
-        } else return "/failure";
+    @GetMapping("users/bands")
+    public String showUsersBands () {
+        return "users/bands";
     }
 
-    @GetMapping("/users/show/{id}")
-    public String showProfile (@PathVariable long id, Model model) {
-        User user = userRepository.findOne(id);
-        model.addAttribute("user", user);
-        return "users/show";
+    @GetMapping("/users/showIndividualUser/{id}")
+    public String showIndividualUser(@PathVariable long id, Model model) {
+        model.addAttribute("user", userRepository.findOne(id));
+        model.addAttribute("users", userRepository.findAll());
+        return "users/showIndividualUser";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Band> bands = (List<Band>) bandsRepository.findAll();
+        List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
+
+        model.addAttribute("loggedInUser", loggedInUser);
+        model.addAttribute("bands", bands);
+        model.addAttribute("userBandList", usersBands);
+        return "users/profile";
     }
 }

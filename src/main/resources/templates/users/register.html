@@ -21,6 +21,19 @@
                     <input  id="first_name" type="text" class="validate" th:field="*{firstName}"/>
                     <label for="first_name">First Name:</label>
                 </div>
+<h1>Register</h1>
+<div class="row">
+    <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
+        <div class="info col-xs-12">
+            <h1>Register an Account With Us!</h1>
+        </div>
+        <form th:action="@{/register}" method="POST" th:object="${user}"
+              class="form col-xs-12 col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <!--<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />-->
+
+                <label for="first_name">Username: </label>
+                <input class="form-control" id="first_name" th:field="*{username}"/>
             </div>
             <div class="col s6">
                 <!-- last name -->

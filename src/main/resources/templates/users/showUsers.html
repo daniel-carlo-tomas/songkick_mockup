@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header">
+</head>
+
+<body>
+<h5>view users</h5>
+<div th:each="user : ${users}">
+<a th:href="@{/users/showIndividualUser/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+
+</div>
+</body>
+</html>

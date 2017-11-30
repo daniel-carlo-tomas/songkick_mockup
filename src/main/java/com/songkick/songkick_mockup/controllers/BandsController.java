@@ -85,7 +85,6 @@ public class BandsController {
     @PostMapping ("/band/{id}/delete")
     public String deleteFromUser (@PathVariable long id, Model model) {
         Band band = bandsRepository.findOne(id);
-        System.out.println(band.getBandname());
         User user = usersRepository.findByUsername("carlooo");
         List<Band> bands = user.getBands();
         bands.remove(band);
