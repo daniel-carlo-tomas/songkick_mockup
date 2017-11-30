@@ -6,6 +6,7 @@ import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.FriendsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,14 +46,14 @@ public class FriendsController {
         FriendRequest friendRequests = new FriendRequest();
         // using the id in the path
         // create and save req in the db
-        User sender = usersRepository.findOne(id);
-        User newFriend = usersRepository.findOne(2l);// query the database
+        User sender = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User newFriend = usersRepository.findOne(id);// query the database
 
         friendRequests.setSender(sender);
         friendRequests.setReciever(newFriend);
         friendsRepository.save(friendRequests);
-        model.addAttribute("user", newFriend);
-        model.addAttribute("user", sender);
+        model.addAttribute("user", newFriend.getId());
+        model.addAttribute("user", sender.getId());
         return "redirect:/";
     }
 
