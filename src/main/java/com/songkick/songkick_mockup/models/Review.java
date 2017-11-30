@@ -17,7 +17,7 @@ public class Review {
     private String body;
     @Column(nullable = false)
     private int rating;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
