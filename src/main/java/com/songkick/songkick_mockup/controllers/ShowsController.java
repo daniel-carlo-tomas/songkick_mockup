@@ -31,7 +31,7 @@ public class ShowsController {
 
 
     @GetMapping("/show/{id}/moreInfo")
-    public String showMore (@PathVariable long id, Model model) {
+    public String showMore(@PathVariable long id, Model model) {
         Show show = showsRepository.findOne(id);
         model.addAttribute("show", show);
         return "/shows/viewIndividualShow";
@@ -39,7 +39,7 @@ public class ShowsController {
 
 
     @RequestMapping(value="/show/add", method= RequestMethod.POST)
-    public String saveShow (@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
+    public String saveShow(@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
         System.out.println(showId);
 
         // VALIDATE SHOW ISNT ALREADY IN DB
@@ -69,7 +69,7 @@ public class ShowsController {
     }
 
     @PostMapping("show/{id}/delete")
-    public String deleteShow (@PathVariable long id, Model model) {
+    public String deleteShow(@PathVariable long id, Model model) {
         Show show = showsRepository.findOne(id);
         User user = usersRepository.findByUsername("carlooo");
         List<Show> shows = user.getShows();

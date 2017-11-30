@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/header :: main-header">
 </head>
 <body>
@@ -14,6 +15,7 @@
                     <!--<label for="password">Password</label>-->
                 <!--</div>-->
             <!--</div>-->
+
         <div class="row">
             <div class="col s6">
                 <!-- first name -->
@@ -21,80 +23,87 @@
                     <input  id="first_name" type="text" class="validate" th:field="*{firstName}"/>
                     <label for="first_name">First Name:</label>
                 </div>
-<h1>Register</h1>
-<div class="row">
-    <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
-        <div class="info col-xs-12">
-            <h1>Register an Account With Us!</h1>
-        </div>
-        <form th:action="@{/register}" method="POST" th:object="${user}"
-              class="form col-xs-12 col-md-6 col-md-offset-3">
+            </div>
+            <h1>Register</h1>
+            <div class="row">
+                <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
+                    <div class="info col-xs-12">
+                        <h1>Register an Account With Us!</h1>
+                    </div>
+                </div>
+            </div>
+            <!--<form th:action="@{/register}" method="POST" th:object="${user}" class="form col-xs-12 col-md-6 col-md-offset-3">-->
             <div class="form-group">
                 <!--<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />-->
 
                 <label for="first_name">Username: </label>
                 <input class="form-control" id="first_name" th:field="*{username}"/>
             </div>
+
             <div class="col s6">
                 <!-- last name -->
                 <div class="input-field">
-                    <input  id="last_name" type="text" class="validate" th:field="*{lastName}"/>
+                    <input id="last_name" type="text" class="validate" th:field="*{lastName}"/>
                     <label for="last_name">Last Name:</label>
                 </div>
             </div>
-        </div>
-            <!--<div class="row margin">-->
-                <!--<div class="input-field col s12">-->
-                    <!--<i class="mdi-communication-email prefix"><img src="img/email.png" width="25"/></i>-->
-                    <!--<input id="email" type="text" th:field="*{email}"/>-->
-                    <!--<label for="email" class="center-align">Email</label>-->
-                <!--</div>-->
-            <!--</div>-->
-        <div class="row">
-            <!-- email -->
-            <div class="col s12"><div class="input-field">
-                <input  id="email" type="text" class="validate" th:field="*{email}"/>
-                <label for="email">Email:</label>
-            </div></div>
-        </div>
-        <div class="row">
-            <!-- password -->
-            <div class="col s12"><div class="input-field">
-                <input  id="password" type="text" class="validate" th:field="*{password}"/>
-                <label for="password">Password:</label>
-            </div></div>
-        </div>
-        <div class="row">
-            <div class="col s6">
-                <!-- city -->
-                <div class="input-field">
-                    <input  id="city" type="text" class="validate" th:field="*{city}"/>
-                    <label for="city">City</label>
+
+
+            <div class="row">
+                <!-- email -->
+                <div class="col s12">
+                    <div class="input-field">
+                        <input id="email" type="text" class="validate" th:field="*{email}"/>
+                        <label for="email">Email:</label>
+                    </div>
                 </div>
-            </div></div>
+            </div>
+            <div class="row">
+                <!-- password -->
+                <div class="col s12">
+                    <div class="input-field">
+                        <input id="password" type="text" class="validate" th:field="*{password}"/>
+                        <label for="password">Password:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <!-- city -->
+                    <div class="input-field">
+                        <input id="city" type="text" class="validate" th:field="*{city}"/>
+                        <label for="city">City</label>
+                    </div>
+                </div>
+            </div>
             <div class="col s6">
                 <!-- state -->
                 <div class="input-field">
-                    <input  id="state" type="text" class="validate" th:field="*{state}"/>
+                    <input id="state" type="text" class="validate" th:field="*{state}"/>
                     <label for="state">State:</label>
                 </div>
             </div>
-        <!--</div>-->
+            <!--</div>-->
 
             <div class="col s6">
                 <!-- zipcode-->
-                <div class="col s12"><div class="input-field">
-                    <input  id="zipcode" type="text" class="validate" th:field="*{zipcode}"/>
-                    <label for="zipcode">Zipcode</label>
-                </div></div>
+                <div class="col s12">
+                    <div class="input-field">
+                        <input id="zipcode" type="text" class="validate" th:field="*{zipcode}"/>
+                        <label for="zipcode">Zipcode</label>
+                    </div>
+                </div>
             </div>
-        <!-- main col -->
-    <!--</div> &lt;!&ndash; main row &ndash;&gt;-->
+            <!-- main col -->
+            <!--</div> &lt;!&ndash; main row &ndash;&gt;-->
             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                 <!--<i class="material-icons right">send</i>-->
             </button>
+            <!--</form>-->
+        </div>
+        </form>
 
-</form>
+
 </div> <!-- container -->
 
 

@@ -3,15 +3,16 @@ package com.songkick.songkick_mockup.controllers;
 import com.songkick.songkick_mockup.models.Band;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -42,7 +43,6 @@ public class UsersController {
     public String saveUser(@Valid User user, Errors validation, Model model) {
 
 
-
         if (validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(user);
@@ -57,7 +57,6 @@ public class UsersController {
     }
 
 
-
     @GetMapping("/users/showUsers")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
@@ -65,7 +64,7 @@ public class UsersController {
     }
 
     @GetMapping("users/bands")
-    public String showUsersBands () {
+    public String showUsersBands() {
         return "users/bands";
     }
 

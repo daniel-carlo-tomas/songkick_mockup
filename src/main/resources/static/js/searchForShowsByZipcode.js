@@ -24,7 +24,9 @@
                 html += "<h1>Shows within " + searchRadius + " miles of " + searchZip + ":</h1>";
                 for (let events of json.Events) {
                     html += "<div>";
-                    let artists = events.Artists.map(artist => artist.Name).join(', ');
+                    let artists = events.Artists.map(artist = > artist.Name
+                ).
+                    join(', ');
                     html += "<h2>Artists: " + artists + "</h2>";
                     html += "<h3>Date: " + events.Date + "</h3>";
                     html += "<h3>Venue: " + events.Venue.Name + "</h3>";
@@ -34,7 +36,7 @@
 
                     html += "<input name='artists' type='hidden' value='" + artists + "' />"
 
-                       html+= "<input name='venue' type='hidden' value='" + events.Venue.Name + "' />" +
+                    html += "<input name='venue' type='hidden' value='" + events.Venue.Name + "' />" +
                         "</form>";
                     html += "<a href='/show/" + events.Id + "/moreInfo'>See More</a>";
                     html += "</div>";

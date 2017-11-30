@@ -33,7 +33,7 @@ public class ReviewsController {
     }
 
     @PostMapping("review/create")
-    public String submitReviewForm (Review review, Model model) {
+    public String submitReviewForm(Review review, Model model) {
         User user = usersRepository.findByUsername("carlooo");
         if (user == null) {
             return "/users/login";
@@ -50,14 +50,14 @@ public class ReviewsController {
     }
 
     @GetMapping("review/show")
-    public String showUserReviews (Model model) {
+    public String showUserReviews(Model model) {
         User user = usersRepository.findByUsername("carlooo");
         model.addAttribute("user", user);
         return "/reviews/showReviews";
     }
 
     @PostMapping("review/{id}/delete")
-    public String deleteReview (@PathVariable long id) {
+    public String deleteReview(@PathVariable long id) {
         reviewsRepository.delete(id);
 
         return "redirect:/review/show";
