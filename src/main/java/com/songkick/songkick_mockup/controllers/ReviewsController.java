@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class ReviewsController {
@@ -23,20 +26,40 @@ public class ReviewsController {
         this.usersRepository = usersRepository;
     }
 
-    @GetMapping("create/review")
+    @GetMapping("review/create")
     public String showReviewForm (Model model) {
         model.addAttribute("review", new Review());
-        return "reviews/create-review";
+        return "reviews/createReview";
     }
 
-    @PostMapping("create/review")
-    public String submitReviewForm (Review review) {
-        User user = usersRepository.findByUsername("carlo");
+    @PostMapping("review/create")
+    public String submitReviewForm (Review review, Model model) {
+        User user = usersRepository.findByUsername("carlooo");
         if (user == null) {
             return "/users/login";
         }
+
         review.setUser(user);
-        reviewsRepository.save(review);
-        return "/success";
+
+        List<Review> reviews = user.getReviews();
+        reviews.add(review);
+        user.setReviews(reviews);
+        usersRepository.save(user);
+        model.addAttribute("user", user);
+        return "/reviews/showReviews";
+    }
+
+    @GetMapping("review/show")
+    public String showUserReviews (Model model) {
+        User user = usersRepository.findByUsername("carlooo");
+        model.addAttribute("user", user);
+        return "/reviews/showReviews";
+    }
+
+    @PostMapping("review/{id}/delete")
+    public String deleteReview (@PathVariable long id) {
+        reviewsRepository.delete(id);
+
+        return "redirect:/review/show";
     }
 }

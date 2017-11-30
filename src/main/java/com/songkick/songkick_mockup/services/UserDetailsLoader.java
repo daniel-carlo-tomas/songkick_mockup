@@ -17,22 +17,20 @@ import java.util.Collections;
 
 @Service
 public class UserDetailsLoader implements UserDetailsService {
-    private final Users users;
-    private UsersRepository usersRepository;
+    private final UsersRepository usersRepository;
 
-    @Autowired
-    public UserDetailsLoader(Users users, UsersRepository usersRepository){
-        this.users = users;
+
+    public UserDetailsLoader(UsersRepository usersRepository){
         this.usersRepository = usersRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      User user = users.findByUsername(username);
+      User user = usersRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("No user found for " + username);
         }
 
-        return new UserWithRoles(user, Collections.emptyList());
+        return new UserWithRoles(user);
     }
 }

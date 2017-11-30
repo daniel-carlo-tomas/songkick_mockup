@@ -14,53 +14,44 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+//@EnableWebSecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     private UserDetailsLoader usersLoader;
 
-    @Autowired
-    public SecurityConfiguration(UserDetailsLoader usersLoader){
+    public SecurityConfiguration(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http
-                //login (what happens after you login)
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/profile")
-                .permitAll()
-                .and()
-                //logout (what happens when you logout)
-
-                .logout()
-                .logoutSuccessUrl("/login?logout")
-                .and()
-
-                //non-logged-in users CAN go here:
-                .authorizeRequests()
-                .antMatchers("/", "/register", "/bandsProfile", "/band/search","/show/search","/users/showUsers","/users/showIndividualUser/{id}","/show/{show_id}/moreInfo")
-                .permitAll()
-                .and()
-
-
-                //restricted areas (non-logged in users CAN'T go here)
-                .authorizeRequests()
-                .antMatchers("/request/ignore/{id}","/request/approve/{id}","/request/{id}","/response/{id}","/addband", "/create/review","/show/add")
-                .authenticated();
-    }
-    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(usersLoader).passwordEncoder(passwordEncoder());
+    }
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/profile")
+                    .permitAll()
+                .and()
+                    .logout()
+                    .logoutSuccessUrl("/login?logout")
+                .and()
+                    .authorizeRequests()
+                    .antMatchers("/home")
+                    .permitAll()
+                .and()
+                    .authorizeRequests()
+                    .antMatchers("/request/ignore/{id}", "/request/approve/{id}", "/request/{id}", "/response/{id}", "/addband", "/review/create", "/show/add")
+                .authenticated();
     }
 
 
