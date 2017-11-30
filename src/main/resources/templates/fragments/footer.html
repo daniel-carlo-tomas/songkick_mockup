@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head></head>
+<head>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
 <body>
 
 <footer th:fragment="footer">
-    This footer will have our contact us info as well as about me information
+    To Contact Us:
     <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
-</footer>
 <div class="container-fluid">
     <ul>
         <li>
-                <button class="btn-link btn" style="margin-top: 8px">About Us</button>
-
+            <div  class="col s12 m6 l3">
+                <button id="about" class="btn-link btn" style="margin-top: 8px">About Us</button>
+            </div>
         </li>
         <li>
-            <button class="btn-link btn" style="margin-top:8px">Contact Information</button>
+            <div  class="col s12 m6 l3">
+            <button id="contact" class="btn-link btn" style="margin-top:8px">Contact Information</button>
+            </div>
         </li>
     </ul>
 </div>
+</footer>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/js/materialize.min.js"></script>
 </body>
