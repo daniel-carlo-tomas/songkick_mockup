@@ -51,7 +51,7 @@ public class User {
     @Column(nullable = false)
     private Long zipcode;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonBackReference
     private List<Review> reviews;
 
