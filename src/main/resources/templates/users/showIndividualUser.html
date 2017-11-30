@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/header :: main-header">
+</head>
+<body>
+<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+
+</body>
+</html>

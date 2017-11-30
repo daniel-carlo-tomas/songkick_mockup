@@ -7,10 +7,17 @@
 <body>
 
 <h1 id="logintitle">Login To Your Profile</h1>
+<div th:if="${param.error}">
+    Invalid Username and Password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
 <form th:action="@{/login}" method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
     <div id="typeUsername" class="form-group">
         <label for="username">Username</label>
         <input class="form-control" id="username" name="username" type="text"/>
+
     </div>
     <div id="typePassword" class="form-group">
         <label for="password">Password</label>
