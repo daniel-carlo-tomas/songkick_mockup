@@ -33,30 +33,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
-                //login (what happens when you login)
+                //login (what happens after you login)
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("user/profile")
+                .defaultSuccessUrl("/profile")
                 .permitAll()
                 .and()
-
-                //non-logged-in users CAN go here:
-                .authorizeRequests()
-                .antMatchers("/","/login", "/register", "/request/ignore/{id}", "/request/approve/{id}","/request/{id}","/addband", "/bandsProfile", "/band/search","/users/show/{id}")
-                .permitAll()
-                .and()
-
                 //logout (what happens when you logout)
+
                 .logout()
                 .logoutSuccessUrl("/login?logout")
                 .and()
 
+                //non-logged-in users CAN go here:
+                .authorizeRequests()
+                .antMatchers("/", "/register", "/bandsProfile", "/band/search","/show/search","/users/showUsers","/users/showIndividualUser/{id}","/show/{show_id}/moreInfo")
+                .permitAll()
+                .and()
+
+
                 //restricted areas (non-logged in users CAN'T go here)
                 .authorizeRequests()
-                .antMatchers("/posts/create","/posts/{id}/delete", "/posts/{id}/update","/request/{id}")
+                .antMatchers("/request/ignore/{id}","/request/approve/{id}","/request/{id}","/response/{id}","/addband", "/create/review","/show/add")
                 .authenticated();
     }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(usersLoader).passwordEncoder(passwordEncoder());
