@@ -1,53 +1,159 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: main-header">
-
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<h1>Register</h1>
-<div class="row">
-    <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
-        <div class="info col-xs-12">
-            <h1>Register an Account With Us!</h1>
+
+
+<div class="container">
+        <form th:action="@{/register}" method="POST" th:object="${user}">
+            <!--<div class="row">-->
+                <!--<div class="input-field col s12">-->
+                    <!--<input id="password" type="password" class="validate">-->
+                    <!--<label for="password">Password</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <div class="row">
+            <div class="col s6">
+                <!-- first name -->
+                <div class="input-field">
+                    <input  id="first_name" type="text" class="validate" th:field="*{firstName}"/>
+                    <label for="first_name">First Name:</label>
+                </div>
+            </div>
+            <div class="col s6">
+                <!-- last name -->
+                <div class="input-field">
+                    <input  id="last_name" type="text" class="validate" th:field="*{lastName}"/>
+                    <label for="last_name">Last Name:</label>
+                </div>
+            </div>
         </div>
-        <form th:action="@{/register}" method="POST" th:object="${user}"
-              class="form col-xs-12 col-md-6 col-md-offset-3">
-            <div class="form-group">
-                <label for="first_name">Username: </label>
-                <input class="form-control" id="first_name" th:field="*{username}"/>
+            <!--<div class="row margin">-->
+                <!--<div class="input-field col s12">-->
+                    <!--<i class="mdi-communication-email prefix"><img src="img/email.png" width="25"/></i>-->
+                    <!--<input id="email" type="text" th:field="*{email}"/>-->
+                    <!--<label for="email" class="center-align">Email</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <div class="row">
+            <!-- email -->
+            <div class="col s12"><div class="input-field">
+                <input  id="email" type="text" class="validate" th:field="*{email}"/>
+                <label for="email">Email:</label>
+            </div></div>
+        </div>
+        <div class="row">
+            <!-- password -->
+            <div class="col s12"><div class="input-field">
+                <input  id="password" type="text" class="validate" th:field="*{password}"/>
+                <label for="password">Password:</label>
+            </div></div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <!-- city -->
+                <div class="input-field">
+                    <input  id="city" type="text" class="validate" th:field="*{city}"/>
+                    <label for="city">City</label>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="last_name">First Name: </label>
-                <input class="form-control" id="last_name" th:field="*{firstName}" placeholder="optional"/>
+            <div class="col s6">
+                <!-- zipcode-->
+                <div class="col s12"><div class="input-field">
+                    <input  id="zipcode" type="text" class="validate" th:field="*{zipcode}"/>
+                    <label for="zipcode">Zipcode</label>
+                </div></div>
             </div>
-            <div class="form-group">
-                <label for="username">Last Name: </label>
-                <input class="form-control" id="username" th:field="*{lastName}" placeholder="optional"/>
-            </div>
-            <div class="form-group">
-                <label for="email">Email: </label>
-                <input class="form-control" id="email" th:field="*{email}"/>
-            </div>
-            <div class="form-group">
-                <label for="password">Password: </label>
-                <input class="form-control" id="password" type="password" th:field="*{password}"/>
-            </div>
-            <div class="form-group">
-                <label for="city">City: </label>
-                <input class="form-control" id="city" th:field="*{city}"/>
-            </div>
-            <div class="form-group">
-                <label for="state">State: </label>
-                <input class="form-control" id="state" th:field="*{state}"/>
-            </div>
-            <div class="form-group">
-                <label for="zipcode">ZipCode: </label>
-                <input class="form-control" id="zipcode" th:field="*{zipcode}"/>
-            </div>
-            <input class="submit btn" value="Sign me up!" type="submit"/>
-        </form>
-    </div>
-</div>
+        </div><!-- main col -->
+    <!--</div> &lt;!&ndash; main row &ndash;&gt;-->
+</form>
+</div> <!-- container -->
+
+
+<!--<div class="row">-->
+    <!--<div class="background-color col-xs-12 col-md-10 col-md-offset-1">-->
+
+        <!--<form th:action="@{/register}" method="POST" th:object="${user}"-->
+              <!--class="form col-xs-12 col-md-6 col-md-offset-3">-->
+            <!--&lt;!&ndash;This is the title&ndash;&gt;-->
+            <!--<div class="info col-xs-12">-->
+                <!--<h1>Register an Account With Us!</h1>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; This starts the login form&ndash;&gt;-->
+
+            <!--<div class="row">-->
+                <!--<form class="col s12" th:action="@{/register}" method="POST" th:object="${user}"/>-->
+
+                <!--&lt;!&ndash; Field for username&ndash;&gt;-->
+
+                <!--<div class="row">-->
+                    <!--<div class="input-field col s6">-->
+                        <!--<input  id="username" class="validate" th:field="*{username}"/>-->
+                        <!--<label for="username">Username:</label>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                    <!--&lt;!&ndash; Field for firstName &ndash;&gt;-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="input-field col s6">-->
+                            <!--<input  id="first_name" class="validate" th:field="*{firstName}"/>-->
+                            <!--<label for="first_name">First Name:</label>-->
+                        <!--</div>-->
+
+                        <!--&lt;!&ndash; Field for lastName&ndash;&gt;-->
+
+                        <!--<div class="row">-->
+                        <!--<div class="input-field col s6">-->
+                          <!--<input  id="last_name" class="validate" th:field="*{lastName}"/>-->
+                          <!--<label for="last_name">Last Name:</label>-->
+                        <!--</div>-->
+
+                         <!--&lt;!&ndash;Field for email &ndash;&gt;-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="input-field col s6">-->
+                                <!--<input  id="email" class="validate" th:field="*{email}"/>-->
+                                <!--<label for="email">Email:</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                            <!--&lt;!&ndash; Field for password&ndash;&gt;-->
+                            <!--<div class="row">-->
+                                <!--<div class="input-field col s6">-->
+                                    <!--<input  id="password" class="validate" th:field="*{password}"/>-->
+                                    <!--<label for="password">Password:</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                                <!--&lt;!&ndash; Field for city&ndash;&gt;-->
+
+                                <!--<div class="row">-->
+                                    <!--<div class="input-field col s6">-->
+                                        <!--<input  id="city" class="validate" th:field="*{city}"/>-->
+                                        <!--<label for="city">City</label>-->
+                                    <!--</div>-->
+
+                                    <!--&lt;!&ndash; Field for zipcode&ndash;&gt;-->
+
+                                    <!--<div class="row">-->
+                                        <!--<div class="input-field col s6">-->
+                                            <!--<input  id="zipcode" class="validate" th:field="*{zipcode}"/>-->
+                                            <!--<label for="zipcode">Zipcode</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                    <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>
