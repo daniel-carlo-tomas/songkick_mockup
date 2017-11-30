@@ -53,7 +53,7 @@ public class FriendsController {
         friendRequests.setReciever(newFriend);
         friendsRepository.save(friendRequests);
         model.addAttribute("user", newFriend.getId());
-        model.addAttribute("user", sender.getId());
+        model.addAttribute("sender", sender.getId());
         return "redirect:/";
     }
 

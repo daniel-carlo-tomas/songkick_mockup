@@ -9,12 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UsersRepository extends CrudRepository<User,Long> {
+public interface UsersRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
+
     User findByEmail(String email);
 
     @Query(nativeQuery = true,
             value = "select * from users where id like ?")
-   User SearchUser(String user);
+    User SearchUser(String user);
 }
 

@@ -5,7 +5,7 @@
 <head th:replace="fragments/header :: main-header">
 </head>
 <body>
-<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+<a th:href="@{/response/{id} }"><span th:text="${user.username}"/></a>
 
 <span th:text="${user.email}"/>
 <span th:text="${user.city}"/>
