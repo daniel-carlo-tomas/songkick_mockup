@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: main-header">
+
+</head>
+<body>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+<h1>Welcome <span th:text="${user.username}"></span></h1>
+<h2>Here are your bands:</h2>
+<ul th:each="band : ${user.bands}">
+    <li th:text="${band.bandname}"></li>
+    <form method="post" th:action="@{'/band/' + ${band.id} + '/delete'}" id="form">
+        <input class="btn btn-block btn-danger" type="submit" value="Delete" />
+    </form>
+</ul>
+</body>
+</html>

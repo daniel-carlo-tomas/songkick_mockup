@@ -31,6 +31,10 @@ public class UsersController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @GetMapping("users/bands")
+    public String showUsersBands () {
+        return "users/bands";
+    }
 
     @GetMapping("/register")
     public String ShowRegisterForm(Model model) {
