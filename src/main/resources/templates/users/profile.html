@@ -44,14 +44,14 @@
                     </div>
 
                 </li>
-                <li>
-                    <div>
-                        <input th:href="@{/users/searchUser (id=${loggedInUser.id})}">search</a>
-                    </div>
-
-                </li>
             </ul>
         </nav>
+        <div>
+            <form th:action="@{/users/searchUser/{id} (id=${loggedInUser.id})}" method="post">
+                <input th:type="text" id="search"/>
+                <input type="submit" value="search"/>
+            </form>
+        </div>
         <div sec:authorize="isAuthenticated()">
             <div>
                 <h1>Welcome,

@@ -15,7 +15,7 @@ public interface UsersRepository extends CrudRepository<User, Long> {
     User findByEmail(String email);
 
     @Query(nativeQuery = true,
-            value = "select * from users where id like ?")
-    User SearchUser(String user);
+            value = "select * from users where username like ?")
+    User SearchUser(Long user);
 }
 

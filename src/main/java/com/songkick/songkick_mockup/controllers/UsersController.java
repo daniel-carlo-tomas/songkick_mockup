@@ -110,10 +110,10 @@ public class UsersController {
         model.addAttribute("userBandList", usersBands);
         return "users/profile";
     }
-    @PostMapping("/users/searchUser")
-    public String searchUser(Model model, String user2) {
-        User user = userRepository.SearchUser(user2);
-        model.addAttribute("user", user);
+    @GetMapping("/users/searchUser")
+    public String searchUser(@RequestParam String term, Model model) {
+        User user = userRepository.SearchUser();
+        model.addAttribute("user", );
 
         return "users/showIndividualUser";
     }
