@@ -1,6 +1,7 @@
 package com.songkick.songkick_mockup.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 
@@ -11,10 +12,15 @@ public class Review {
     @Id
     @GeneratedValue
     private long id;
+
+    @NotBlank(message = "Please enter a Title")
     @Column(nullable = false)
     private String title;
+
+    @NotBlank(message = "Please enter a Body")
     @Column(nullable = false)
     private String body;
+
     @Column(nullable = false)
     private int rating;
 
