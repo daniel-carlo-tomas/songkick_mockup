@@ -8,13 +8,7 @@
 
 
 <div class="container">
-    <!--<form th:action="@{/register}" method="POST" th:object="${user}">-->
-            <!--<div class="row">-->
-                <!--<div class="input-field col s12">-->
-                    <!--<input id="password" type="password" class="validate">-->
-                    <!--<label for="password">Password</label>-->
-                <!--</div>-->
-            <!--</div>-->
+
 
     <form th:action="@{/register}" method="POST" th:object="${user}" class="form col s12 m6 offset-m3">
         <div class="row">
@@ -107,9 +101,10 @@
         </div>
         <!-- main col -->
         <!--</div> &lt;!&ndash; main row &ndash;&gt;-->
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            <!--<i class="material-icons right">send</i>-->
-        </button>
+        <!--<button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
+        <!--&lt;!&ndash;<i class="material-icons right">send</i>&ndash;&gt;-->
+        <!--</button>-->
+        <input type="submit" class="submit btn" value="Sign Me Up!"/>
         <!--</form>-->
 
     </form>

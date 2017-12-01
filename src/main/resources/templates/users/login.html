@@ -3,21 +3,24 @@
 <head th:replace="fragments/header :: main-header">
 
 </head>
-<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>
+<link href="/css/style.css" rel="Stylesheet" type="text/css"/>
 <body>
-<div class="col s6">
-<h1 id="logintitle">Login To Your Profile</h1>
+<div class="row"></div>
+<div class="col s12 m4 l8">
+    <h1 id="loginTitle">Login To Your Profile</h1>
 </div>
 
 <form th:action="@{/login}" method="post" class="form col s12 m6 offset-s3">
     <div th:if="${param.error}">
         Invalid Username and Password.
     </div>
-
+    <div class="row">
         <div id="typeUsername" class="form-group">
         <label for="username">Username</label>
         <input class="form-control" id="username" name="username" type="text"/>
     </div>
+    </div>
+
     <div id="typePassword" class="form-group">
         <div th:if="${param.logout}">
             You have been logged out.
