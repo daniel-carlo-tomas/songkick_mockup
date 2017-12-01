@@ -64,8 +64,9 @@ public class FriendsController {
         model.addAttribute("requests", friendRequests);
         model.addAttribute("user", receiver);
         return "users/response";
-
     }
+
+
     @PostMapping("/response/{id}")
     public String postResponse (@PathVariable long id, Model model){
         User sender = usersRepository.findOne(id);
