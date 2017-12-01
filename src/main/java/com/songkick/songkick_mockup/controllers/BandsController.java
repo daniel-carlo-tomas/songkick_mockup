@@ -47,7 +47,7 @@ public class BandsController {
 
             band = new Band();
             band.setBandname(bandname);
-            band.setId(bandId);
+            band.setJambaseId(bandId);
             bandsRepository.save(band);
         }
 
@@ -61,9 +61,9 @@ public class BandsController {
         bands.add(band);
         user.setBands(bands);
         usersRepository.save(user);
-        model.addAttribute("user", user);
+//        model.addAttribute("user", user);
 
-        return "/users/bands";
+        return "redirect:/profile";
     }
 
     @GetMapping("/bandsProfile")
@@ -81,10 +81,12 @@ public class BandsController {
         bands.remove(band);
         user.setBands(bands);
         usersRepository.save(user);
-        model.addAttribute("user", user);
+//        String msg = band + " removed from your list!";
+////        model.addAttribute("user", user);
+//        model.addAttribute("msg", msg);
 
 //        bandsRepository.deleteUsersBand(id, user.getId());
-        return "/users/bands";
+        return "redirect:/profile";
     }
 
 
