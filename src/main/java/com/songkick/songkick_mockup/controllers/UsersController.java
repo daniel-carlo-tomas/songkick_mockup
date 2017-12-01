@@ -81,15 +81,8 @@ public class UsersController {
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user = userRepository.findOne(user.getId());
-        List<Band> bands = bandsRepository.listUsersBands(user);
-        System.out.println(bands);
-        List<Show> shows = user.getShows();
-
-
 
         model.addAttribute("user", user);
-        model.addAttribute("bands", bands);
-        model.addAttribute("shows", shows);
 
         return "users/profile";
     }

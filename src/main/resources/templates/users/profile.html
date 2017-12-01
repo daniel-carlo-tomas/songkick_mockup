@@ -19,17 +19,14 @@
                 <p>Email: <span th:text="${user.email}"></span></p>
                 <p>Location: <span th:text="${user.city}"></span></p>
             </div>
-            <div>
+            <div th:each="band : ${user.bands}">
                 <h2>My Bands: </h2>
-                <span th:each="band : ${bands}"></span>
-                <p th:text="${band.jambase_bandname}"></p>
+                <p th:text="${band.bandname}"></p>
             </div>
-            <!--<div>-->
-                <!--<h2>My Shows: </h2>-->
-                <!--<p th:each="show : ${shows}"></p>-->
-                <!--<p th:text="${show.artists}"></p>-->
-                <!--<p th:text="${show.venue}"></p>-->
-            <!--</div>-->
+            <div th:each="show : ${user.shows}">
+                <h2>My Shows: </h2>
+                <p th:text="${show.artists + ' at ' + show.venue}"></p>
+            </div>
     </div>
 </div>
 
