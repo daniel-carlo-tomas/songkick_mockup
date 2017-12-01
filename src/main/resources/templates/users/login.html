@@ -3,39 +3,27 @@
 <head th:replace="fragments/header :: main-header">
 
 </head>
-<link href="/css/style.css" rel="Stylesheet" type="text/css"/>
+<!--<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>-->
 <body>
-<div class="row"></div>
-<div class="col s12 m4 l8">
-    <h1 id="loginTitle">Login To Your Profile</h1>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+<h1 id="logintitle">Login To Your Profile</h1>
+<div th:if="${param.error}">
+    Invalid Username and Password.
 </div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
 
-<form th:action="@{/login}" method="post" class="form col s12 m6 offset-s3">
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div class="row">
-        <div id="typeUsername" class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" id="username" name="username" type="text"/>
-    </div>
-    </div>
+    <label for="username">Username</label>
+    <input class="form-control" id="username" name="username" type="text"/>
 
-    <div id="typePassword" class="form-group">
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <label for="password">Password</label>
-        <input class="form-control" id="password" name="password" type="password"/>
-    </div>
-    <div class="col s6">
-        <!--<a class="waves-effect waves-light btn" >Log In</a>-->
-        <input class="submit-btn" type="submit" value="Log In"/>
-    </div>
+    <label for="password">Password</label>
+    <input class="form-control" id="password" name="password" type="password"/>
+
+    <input class="submit-btn" type="submit" value="Log In"/>
+
 </form>
-
 <div th:replace="fragments/footer :: footer"></div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

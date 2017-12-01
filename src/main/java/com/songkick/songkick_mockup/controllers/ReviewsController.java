@@ -27,7 +27,7 @@ public class ReviewsController {
     private final ReviewSvc reviewSvc;
 
     @Autowired
-    public ReviewsController(ReviewsRepository reviewsRepository, UsersRepository usersRepository, ReviewSvc reviewSvc) {
+    public ReviewsController (ReviewsRepository reviewsRepository, UsersRepository usersRepository, ReviewSvc reviewSvc) {
         this.reviewsRepository = reviewsRepository;
         this.usersRepository = usersRepository;
         this.reviewSvc = reviewSvc;
@@ -40,28 +40,31 @@ public class ReviewsController {
     }
 
     @PostMapping("review/create")
-    public String submitReviewForm(@Valid Review review, Errors validation, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        review.setUser(user);
-        if (validation.hasErrors()) {
+    public String submitReviewForm (@Valid Review review, Errors validation, Model model) {
+
+        if(validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(review);
             return "review/create";
         }
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        review.setUser(user);
+
         reviewsRepository.save(review);
         return "redirect:/review/show";
     }
 
     @GetMapping("review/show")
-    public String showUserReviews(Model model) {
+    public String showUserReviews (Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Review> reviews = user.getReviews();
-        model.addAttribute("user", user);
+        List<Review> reviews = reviewsRepository.findAllByUser(user);
+        model.addAttribute("reviews", reviews);
         return "/reviews/showReviews";
     }
 
     @PostMapping("review/{id}/delete")
-    public String deleteReview(@PathVariable long id) {
+    public String deleteReview (@PathVariable long id) {
         Review review = reviewsRepository.findOne(id);
         User user = review.getUser();
         if (!reviewSvc.userMatch(user)) {
