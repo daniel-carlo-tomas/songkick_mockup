@@ -43,6 +43,7 @@ public class UsersController {
     public String saveUser(@Valid User user, Errors validation, Model model) {
 
 
+
         if (validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(user);
@@ -57,6 +58,7 @@ public class UsersController {
     }
 
 
+
     @GetMapping("/users/showUsers")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
@@ -64,7 +66,7 @@ public class UsersController {
     }
 
     @GetMapping("users/bands")
-    public String showUsersBands() {
+    public String showUsersBands () {
         return "users/bands";
     }
 
@@ -79,14 +81,8 @@ public class UsersController {
     public String profile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user = userRepository.findOne(user.getId());
-        List<Band> bands = bandsRepository.listUsersBands(user);
-        System.out.println(bands);
-        List<Show> shows = user.getShows();
-
 
         model.addAttribute("user", user);
-        model.addAttribute("bands", bands);
-        model.addAttribute("shows", shows);
 
         return "users/profile";
     }
