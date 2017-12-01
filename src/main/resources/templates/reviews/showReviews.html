@@ -4,6 +4,7 @@
 
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
+
 <h1>Welcome <span th:text="${(reviews.get(0).user).username}"></span></h1>
 <h2>Here are your reviews:</h2>
 <ul th:each="review : ${reviews}">
