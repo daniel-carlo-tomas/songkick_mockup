@@ -50,7 +50,7 @@
                 document.getElementById("searchResult").innerHTML = html;
             },
             error: function (xhr, status, err) {
-                // This time, we do not end up here!
+                console.log(err)
             }
         });
     })
