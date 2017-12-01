@@ -16,13 +16,13 @@ public class UserDetailsLoader implements UserDetailsService {
     private final UsersRepository usersRepository;
 
 
-    public UserDetailsLoader(UsersRepository usersRepository){
+    public UserDetailsLoader(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      User user = usersRepository.findByUsername(username);
+        User user = usersRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("No user found for " + username);
         }

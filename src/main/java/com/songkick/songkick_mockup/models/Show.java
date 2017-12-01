@@ -35,13 +35,19 @@ public class Show {
         this.users = users;
     }
 
-    public String getArtists() { return artists; }
+    public String getArtists() {
+        return artists;
+    }
 
     public void setArtists(String artists) {
         this.artists = artists;
     }
 
-    public String getVenue() { return venue; }
+    public String getVenue() {
+        return venue;
+    }
 
-    public void setVenue(String venue) { this.venue = venue; }
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
 }

@@ -4,10 +4,8 @@ package com.songkick.songkick_mockup.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -18,7 +16,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-//    @NotBlank(message = "username can't be blank")
+    //    @NotBlank(message = "username can't be blank")
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -28,26 +26,26 @@ public class User {
     @Column
     private String lastName;
 
-//    @NotBlank(message = "email can't be blank")
+    //    @NotBlank(message = "email can't be blank")
     @Column(nullable = false, unique = true)
     @Email
     private String email;
 
-//    @NotBlank(message = "password can't be blank")
+    //    @NotBlank(message = "password can't be blank")
 //    @Size(min = 8, message ="password must be at least 8 characters long")
     @Column(nullable = false)
     @JsonIgnore
     private String password;
 
-//    @NotBlank(message = "city can't be blank")
+    //    @NotBlank(message = "city can't be blank")
     @Column(nullable = false)
     private String city;
 
-//    @NotBlank(message = "state can't be blank")
+    //    @NotBlank(message = "state can't be blank")
     @Column(nullable = false)
     private String state;
 
-//    @NotBlank(message = "zipcode can't be blank")
+    //    @NotBlank(message = "zipcode can't be blank")
     @Column(nullable = false)
     private Long zipcode;
 

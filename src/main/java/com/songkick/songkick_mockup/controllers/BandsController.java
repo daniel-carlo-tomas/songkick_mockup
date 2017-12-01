@@ -31,7 +31,7 @@ public class BandsController {
         return "/search/bandSearch";
     }
 
-
+//    CHANGE MAPPING TO HAVE THE MAIN PART FIRST i.e. BAND/ADD not ADD/BAND...BAND/SEARCH
 
     @RequestMapping(value = "/band/add", method = RequestMethod.POST)
     public String saveBand(@RequestParam("jambase_id") Long bandId, @RequestParam("jambase_bandname") String bandname, Model model) {

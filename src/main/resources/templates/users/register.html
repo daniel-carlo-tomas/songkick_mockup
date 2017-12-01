@@ -1,63 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/header :: main-header">
-
 </head>
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<h1>Register</h1>
-<div class="row">
-    <div class="background-color col-xs-12 col-md-10 col-md-offset-1">
-        <div class="info col-xs-12">
-            <h1>Register an Account With Us!</h1>
+
+
+<div class="container">
+
+
+    <form th:action="@{/register}" method="POST" th:object="${user}" class="form col s12 m6 offset-m3">
+        <div class="row">
+            <div class="background-color col s12 m10 offset-m1">
+                <div class="row">
+                    <div class="info col s12">
+                        <h1>Register an Account With Us!</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <form th:action="@{/register}" method="POST" th:object="${user}"
-              class="form col-xs-12 col-md-6 col-md-offset-3">
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" />-->
 
-                <label for="first_name">Username: </label>
-                <input class="form-control" id="first_name" th:field="*{username}"/>
+        <div class="row">
+            <div class="col s6">
+                <div class="input-field">
+                    <input type="text" th:field="*{username}"/>
+                    <label for="username">Username: </label>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="last_name">First Name: </label>
-                <input class="form-control" id="last_name" th:field="*{firstName}" placeholder="optional"/>
+        </div>
 
+        <div class="row">
+            <div class="col s6">
+                <!-- first name -->
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{firstName}"/>
+                    <label for="first_name">First Name:</label>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="username">Last Name: </label>
-                <input class="form-control" id="username" th:field="*{lastName}" placeholder="optional"/>
-            </div>
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />-->
+        </div>
 
-                <label for="email">Email: </label>
-                <input class="form-control" id="email" th:field="*{email}"/>
+
+        <div class="row">
+            <div class="col s6">
+                <!-- last name -->
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{lastName}"/>
+                    <label for="last_name">Last Name:</label>
+                </div>
             </div>
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />-->
-                <label for="password">Password: </label>
-                <input class="form-control" id="password" type="password" th:field="*{password}"/>
+        </div>
+
+        <div class="row">
+            <!-- email -->
+            <div class="col s6">
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{email}"/>
+                    <label for="email">Email:</label>
+                </div>
             </div>
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('city')}" th:errors="*{city}" />-->
-                <label for="city">City: </label>
-                <input class="form-control" id="city" th:field="*{city}"/>
+        </div>
+        <div class="row">
+            <!-- password -->
+            <div class="col s6">
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{password}"/>
+                    <label for="password">Password:</label>
+                </div>
             </div>
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('state')}" th:errors="*{state}" />-->
-                <label for="state">State: </label>
-                <input class="form-control" id="state" th:field="*{state}"/>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <!-- city -->
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{city}"/>
+                    <label for="city">City</label>
+                </div>
             </div>
-            <div class="form-group">
-                <!--<p th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" />-->
-                <label for="zipcode">ZipCode: </label>
-                <input class="form-control" id="zipcode" th:field="*{zipcode}"/>
+        </div>
+
+        <div class="row">
+            <div class="col s6">
+                <!-- state -->
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{state}"/>
+                    <label for="state">State:</label>
+                </div>
             </div>
-            <input class="submit btn" value="Sign me up!" type="submit"/>
-        </form>
-    </div>
+        </div>
+
+
+        <!-- zipcode-->
+        <div class="row">
+            <div class="col s6">
+                <div class="input-field">
+                    <input type="text" class="validate" th:field="*{zipcode}"/>
+                    <label for="zipcode">Zipcode</label>
+                </div>
+            </div>
+        </div>
+        <!-- main col -->
+        <!--</div> &lt;!&ndash; main row &ndash;&gt;-->
+        <!--<button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
+        <!--&lt;!&ndash;<i class="material-icons right">send</i>&ndash;&gt;-->
+        <!--</button>-->
+        <input type="submit" class="submit btn" value="Sign Me Up!"/>
+        <!--</form>-->
+
+    </form>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

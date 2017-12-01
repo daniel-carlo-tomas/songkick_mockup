@@ -6,7 +6,7 @@
 <body>
 <h5>view users</h5>
 <div th:each="user : ${users}">
-<a th:href="@{/users/showIndividualUser/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+    <a th:href="@{/users/showIndividualUser/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
 
 </div>
 </body>

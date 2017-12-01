@@ -32,7 +32,7 @@ public class ShowsController {
 
 
     @GetMapping("/show/{id}/moreInfo")
-    public String showMore (@PathVariable long id, Model model) {
+    public String showMore(@PathVariable long id, Model model) {
         //Show show = showsRepository.findOne(id);
         model.addAttribute("showId", id);
         return "/shows/viewIndividualShow";
@@ -40,7 +40,7 @@ public class ShowsController {
 
 
     @RequestMapping(value="/show/add", method= RequestMethod.POST)
-    public String saveShow (@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
+    public String saveShow(@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
         System.out.println(showId);
         System.out.println(artists);
         System.out.println(venue);
@@ -73,7 +73,7 @@ public class ShowsController {
     }
 
     @PostMapping("show/{id}/delete")
-    public String deleteShow (@PathVariable long id, Model model) {
+    public String deleteShow(@PathVariable long id, Model model) {
         Show show = showsRepository.findOne(id);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user = usersRepository.findOne(user.getId());
