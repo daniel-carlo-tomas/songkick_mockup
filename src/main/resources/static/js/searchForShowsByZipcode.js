@@ -26,17 +26,23 @@
                     html += "<div>";
                     let artists = events.Artists.map(artist => artist.Name).join(', ');
                     html += "<h2>Artists: " + artists + "</h2>";
+
                     html += "<h3>Date: " + events.Date + "</h3>";
+
                     html += "<h3>Venue: " + events.Venue.Name + "</h3>";
+
                     html += "<form method='post' action='/show/add'>" +
+
                         "<input type='submit' value='Add to My Shows' />" +
-                        "<input name='id' type='hidden' value=" + events.Id + " />";
+                        "<input name='id' type='hidden' value=" + events.Id + " />" +
+                        "<input name='artists' type='hidden' value='" + artists + "' />" +
+                        "<input name='venue' type='hidden' value='" + events.Venue.Name + "' />" +
+                        "<input name='_csrf' type='hidden' value=" + $('#csrf').val() + " />" +
 
-                    html += "<input name='artists' type='hidden' value='" + artists + "' />"
-
-                       html+= "<input name='venue' type='hidden' value='" + events.Venue.Name + "' />" +
                         "</form>";
+
                     html += "<a href='/show/" + events.Id + "/moreInfo'>See More</a>";
+
                     html += "</div>";
                 }
 
