@@ -19,9 +19,16 @@
 
             let html = "";
             html += "<h1>";
-            for (let artist of json.Artists) {
-                html += json.Artists[0].Name + " "
-            }
+            // for (let artist of json.Artists) {
+            //     html += artist.Name + ", "
+            // }
+
+           let artistsList = json.Artists.map(function (artist) {
+                return artist.Name;
+            }).join(", ");
+
+           html += artistsList;
+
             html += " at "
                 + json.Venue.Name
                 + "</h1>";
@@ -44,8 +51,8 @@
          form += "<form method='post' action='/show/add'>";
          form += "<input type='submit' value='Add to My Shows' />" +
              "<input name='id' type='hidden' value='" + json.Id + "' />" +
-             "<input name='artists' type='hidden' value='" + json.Artists.join(', ') + "' />" +
-             "<input name='venue' type='hidden' value=" + json.Venue.Name + " />" +
+             "<input name='artists' type='hidden' value='" + artistsList + "' />" +
+             "<input name='venue' type='hidden' value='" + json.Venue.Name + "' />" +
              "<input name='_csrf' type='hidden' value=" + $('#csrf').val() + " />" +
              "</form>";
 
