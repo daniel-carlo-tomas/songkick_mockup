@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <head>
 
     <meta charset="UTF-8"/>
@@ -23,9 +24,11 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li sec:authorize="!isAuthenticated()"><a href="/register">Register</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
-                <li sec:authorize="isAuthenticated()"><form th:action="@{/logout}" th:method="post">
-                    <button class="btn-link btn">Logout</button>
-                </form></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
@@ -48,9 +51,6 @@
         <!--</ul>-->
     <!--</div>-->
 <!--</nav>-->
-
-
-
 
 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////-->

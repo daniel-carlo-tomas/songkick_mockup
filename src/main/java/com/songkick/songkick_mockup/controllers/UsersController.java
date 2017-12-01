@@ -43,7 +43,6 @@ public class UsersController {
     public String saveUser(@Valid User user, Errors validation, Model model) {
 
 
-
         if (validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(user);
@@ -58,7 +57,6 @@ public class UsersController {
     }
 
 
-
     @GetMapping("/users/showUsers")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
@@ -66,7 +64,7 @@ public class UsersController {
     }
 
     @GetMapping("users/bands")
-    public String showUsersBands () {
+    public String showUsersBands() {
         return "users/bands";
     }
 
@@ -84,7 +82,6 @@ public class UsersController {
         List<Band> bands = bandsRepository.listUsersBands(user);
         System.out.println(bands);
         List<Show> shows = user.getShows();
-
 
 
         model.addAttribute("user", user);

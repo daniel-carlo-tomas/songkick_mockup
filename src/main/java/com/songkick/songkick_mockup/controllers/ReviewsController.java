@@ -27,7 +27,7 @@ public class ReviewsController {
     private final ReviewSvc reviewSvc;
 
     @Autowired
-    public ReviewsController (ReviewsRepository reviewsRepository, UsersRepository usersRepository, ReviewSvc reviewSvc) {
+    public ReviewsController(ReviewsRepository reviewsRepository, UsersRepository usersRepository, ReviewSvc reviewSvc) {
         this.reviewsRepository = reviewsRepository;
         this.usersRepository = usersRepository;
         this.reviewSvc = reviewSvc;
@@ -40,9 +40,9 @@ public class ReviewsController {
     }
 
     @PostMapping("review/create")
-    public String submitReviewForm (@Valid Review review, Errors validation, Model model) {
+    public String submitReviewForm(@Valid Review review, Errors validation, Model model) {
 
-        if(validation.hasErrors()) {
+        if (validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(review);
             return "review/create";
@@ -56,7 +56,7 @@ public class ReviewsController {
     }
 
     @GetMapping("review/show")
-    public String showUserReviews (Model model) {
+    public String showUserReviews(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Review> reviews = reviewsRepository.findAllByUser(user);
         model.addAttribute("reviews", reviews);
@@ -64,7 +64,7 @@ public class ReviewsController {
     }
 
     @PostMapping("review/{id}/delete")
-    public String deleteReview (@PathVariable long id) {
+    public String deleteReview(@PathVariable long id) {
         Review review = reviewsRepository.findOne(id);
         User user = review.getUser();
         if (!reviewSvc.userMatch(user)) {
