@@ -39,6 +39,19 @@
 
             document.getElementById("moreInfo").innerHTML = html;
 
+
+         let form ="";
+         form += "<form method='post' action='/show/add'>";
+         form += "<input type='submit' value='Add to My Shows' />" +
+             "<input name='id' type='hidden' value='" + json.Id + "' />" +
+             "<input name='artists' type='hidden' value='" + json.Artists.join(', ') + "' />" +
+             "<input name='venue' type='hidden' value=" + json.Venue.Name + " />" +
+             "<input name='_csrf' type='hidden' value=" + $('#csrf').val() + " />" +
+             "</form>";
+
+            document.getElementById("form").innerHTML = form;
+
+
             let mapOptions = {
                 zoom: 15,
             };
