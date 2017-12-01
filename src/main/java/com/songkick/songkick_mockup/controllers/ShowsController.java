@@ -67,9 +67,9 @@ public class ShowsController {
         shows.add(show);
         user.setShows(shows);
         usersRepository.save(user);
-        model.addAttribute("user", user);
+//        model.addAttribute("user", user);
 
-        return "/users/shows";
+        return "redirect:/profile";
     }
 
     @PostMapping("show/{id}/delete")
@@ -81,8 +81,8 @@ public class ShowsController {
         shows.remove(show);
         user.setShows(shows);
         usersRepository.save(user);
-        model.addAttribute(user);
-        return "/users/shows";
+//        model.addAttribute(user);
+        return "redirect:/profile";
     }
 
 }
