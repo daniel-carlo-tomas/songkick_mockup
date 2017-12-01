@@ -10,7 +10,7 @@
 <ul th:each="show : ${user.shows}">
     <li th:text="${show.artists + ' at ' + show.venue}"></li>
     <form method="post" th:action="@{'/show/' + ${show.id} + '/delete'}" id="form">
-        <input class="btn btn-block btn-danger" type="submit" value="Delete" />
+        <input class="btn btn-block btn-danger" type="submit" value="Delete"/>
     </form>
 </ul>
 </body>

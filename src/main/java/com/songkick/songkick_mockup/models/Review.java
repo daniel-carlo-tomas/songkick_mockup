@@ -17,6 +17,7 @@ public class Review {
     private String body;
     @Column(nullable = false)
     private int rating;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonManagedReference

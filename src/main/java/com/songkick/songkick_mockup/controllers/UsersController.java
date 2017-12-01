@@ -1,7 +1,7 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.Band;
-import com.songkick.songkick_mockup.models.FriendRequest;
+import com.songkick.songkick_mockup.models.Show;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.songkick.songkick_mockup.repositories.FriendsRepository;
@@ -35,10 +35,6 @@ public class UsersController {
         this.friendsRepository = friendsRepository;
     }
 
-    @GetMapping("users/bands")
-    public String showUsersBands() {
-        return "users/bands";
-    }
 
     @GetMapping("/register")
     public String ShowRegisterForm(Model model) {
@@ -47,53 +43,34 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@Valid User user, Errors validation, Model model, String username) {
+    public String saveUser(@Valid User user, Errors validation, Model model) {
 
-        User exisitingUser = userRepository.findByUsername(user.getUsername());
-        User exisitingEmail = userRepository.findByEmail(user.getEmail());
 
 
         if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("user", user);
-
+            model.addAttribute(validation);
+            model.addAttribute(user);
             return "users/register";
         }
 
-
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        String hash = passwordEncoder.encode((user.getPassword()));
+        user.setPassword(hash);
         userRepository.save(user);
 
         return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "users/login";
-    }
 
-    //    @PostMapping("/login")
-//    public String submitLoginForm(User user, Model model) {
-//
-//        if (userRepository.findByUsername(user.getUsername()) != null) {
-//            List<User> users = (List<User>) userRepository.findAll();
-//            User user2 = userRepository.findByUsername(user.getUsername());
-//
-//            if (user.getPassword().equals(user2.getPassword())) {
-//                model.addAttribute("users", users);
-//                model.addAttribute("user", user2);
-//
-////                model.addAttribute("band", band);
-//                return "/users/profile";
-//            } else {
-//                return "/failure";
-//            }
-//        } else return "/failure";
-//    }
+
     @GetMapping("/users/showUsers")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "users/showUsers";
+    }
+
+    @GetMapping("users/bands")
+    public String showUsersBands () {
+        return "users/bands";
     }
 
     @GetMapping("/users/showIndividualUser/{id}")
@@ -104,20 +81,11 @@ public class UsersController {
 
     @GetMapping("/profile")
     public String profile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userRepository.findOne(user.getId());
 
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
 
-        //find all friendRequests based on the loggedInUser.
-        FriendRequest friendRequest = friendsRepository.findOne(loggedInUser.getId());
-
-        List<Band> bands = (List<Band>) bandsRepository.findAll();
-        List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
-
-        model.addAttribute("myFriendsList", friendsRepository.showFriendsList(loggedInUser));
-        model.addAttribute("myPendingFriendsList", friendsRepository.showPendingRequests(loggedInUser));
-        model.addAttribute("loggedInUser", loggedInUser);
-        model.addAttribute("bands", bands);
-        model.addAttribute("userBandList", usersBands);
         return "users/profile";
     }
 

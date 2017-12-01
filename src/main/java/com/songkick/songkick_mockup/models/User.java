@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -18,7 +17,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @NotBlank(message = "username can't be blank")
+    @NotBlank(message = "Please enter a Username")
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -28,30 +27,21 @@ public class User {
     @Column
     private String lastName;
 
-//    @NotBlank(message = "email can't be blank")
+    @NotBlank(message = "Please enter an Email")
     @Column(nullable = false, unique = true)
     @Email
     private String email;
 
-//    @NotBlank(message = "password can't be blank")
-//    @Size(min = 8, message ="password must be at least 8 characters long")
+    @NotBlank(message = "Please enter a Password")
     @Column(nullable = false)
     @JsonIgnore
     private String password;
 
-//    @NotBlank(message = "city can't be blank")
-    @Column(nullable = false)
-    private String city;
 
-//    @NotBlank(message = "state can't be blank")
-    @Column(nullable = false)
-    private String state;
-
-//    @NotBlank(message = "zipcode can't be blank")
     @Column(nullable = false)
     private Long zipcode;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonBackReference
     private List<Review> reviews;
 
@@ -100,8 +90,6 @@ public class User {
         lastName = copy.lastName;
         email = copy.email;
         password = copy.password;
-        city = copy.city;
-        state = copy.state;
         zipcode = copy.zipcode;
         reviews = copy.reviews;
         bands = copy.bands;
@@ -190,22 +178,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public Long getZipcode() {

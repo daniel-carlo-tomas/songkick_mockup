@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <head>
 
     <meta charset="UTF-8"/>
@@ -9,13 +10,28 @@
 </head>
 <body>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////-->
-<div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-    </ul>
+<div th:fragment="mainNav" th:remove="tag">
+    <nav class="deep-purple darken-3">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo center">
+                LMMIML
+            </a>
+            <ul sec:authorize="isAuthenticated()" id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/band/search">Find A Band</a></li>
+                <li><a href="/show/search">Find Shows Near Me</a></li>
+                <li><a href="/profile">My Profile</a></li>
+            </ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li sec:authorize="!isAuthenticated()"><a href="/register">Register</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 
 
@@ -35,9 +51,6 @@
         <!--</ul>-->
     <!--</div>-->
 <!--</nav>-->
-
-
-
 
 
 <!--/////////////////////////////////////////////////////////////////////////////////////////////-->

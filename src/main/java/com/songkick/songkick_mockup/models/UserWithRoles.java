@@ -1,4 +1,5 @@
 package com.songkick.songkick_mockup.models;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,10 +11,10 @@ import java.util.List;
 public class UserWithRoles extends User implements UserDetails {
     private List<String> userRoles;
 
-    public UserWithRoles(User user, List<String> userRoles) {
-        super(user);
-        this.userRoles = userRoles;
-    }
+//    public UserWithRoles(User user, List<String> userRoles) {
+//        super(user);
+//        this.userRoles = userRoles;
+//    }
 
     public UserWithRoles(User user) {
         super(user);
@@ -21,7 +22,7 @@ public class UserWithRoles extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String roles = org.springframework.util.StringUtils.collectionToCommaDelimitedString(userRoles); // Since we're not using the authorization part of the component
+        String roles = ""; // Since we're not using the authorization part of the component
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 

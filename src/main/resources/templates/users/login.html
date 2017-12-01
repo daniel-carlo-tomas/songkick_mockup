@@ -3,27 +3,40 @@
 <head th:replace="fragments/header :: main-header">
 
 </head>
-<link href="loginStyle.css" rel="Stylesheet" type="text/css" />
+<!--<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>-->
 <body>
-
-<h1 id="logintitle">Login To Your Profile</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post" class="form col-xs-12 col-md-6 col-md-offset-3">
-    <div id="typeUsername" class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" id="username" name="username" type="text"/>
-
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Login To Your Profile</h1>
+        </div>
     </div>
-    <div id="typePassword" class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" id="password" name="password" type="password"/>
+    <div class="row">
+        <div class="col s12">
+
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+
+                <label for="username">Username</label>
+                <input class="form-control" id="username" name="username" type="text"/>
+
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" type="password"/>
+
+                <input class="submit-btn" type="submit" value="Log In"/>
+
+            </form>
+        </div>
     </div>
-    <input class="submit-btn" type="submit" value="Log In"/>
-</form>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
