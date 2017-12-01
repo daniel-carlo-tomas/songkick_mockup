@@ -25,6 +25,8 @@ nbdist/
 
 src/main/resources/application.properties
 
+**/.DS_Store
+
 API KEYS
 suakw9fxjerxgssx95s993rd  - tomas
 h3fxhwz2qkyc5u8dtd4dbw9c  - daniel
