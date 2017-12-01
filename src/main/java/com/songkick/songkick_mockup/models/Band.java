@@ -7,8 +7,11 @@ import java.util.List;
 @Table(name = "bands")
 public class Band {
     @Id
-    @Column(nullable = false, name = "jambase_id")
+    @GeneratedValue
     private long id;
+
+    @Column(nullable = false, name = "jambase_id")
+    private long jambaseId;
     @Column(nullable = false, name = "jambase_bandname")
     private String bandname;
 
@@ -39,6 +42,12 @@ public class Band {
         this.users = users;
     }
 
+    public long getJambaseId() {
+        return jambaseId;
+    }
 
+    public void setJambaseId(long jambaseId) {
+        this.jambaseId = jambaseId;
+    }
 }
 
