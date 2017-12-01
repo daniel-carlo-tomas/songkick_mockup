@@ -14,13 +14,6 @@
         </div>
         <div class="col s12 m4">
             <div>
-                <h4>My Info: </h4>
-                <!--<p>Name: <span th:text="${loggedInUser.first_name}"></span></p>-->
-                <p>Email: <span th:text="${user.email}"></span></p>
-                <p>Location: <span th:text="${user.city + ', ' + user.state}"></span></p>
-                <span id="zipcode" th:value="${user.zipcode}"></span>
-            </div>
-            <div>
                 <h4>My Bands: </h4>
                 <div th:each="band : ${user.bands}">
                     <p th:text="${band.bandname}"></p>

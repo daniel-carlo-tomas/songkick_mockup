@@ -38,7 +38,6 @@ public class User {
     private String password;
 
 
-    @NotBlank(message = "Please enter your Zipcode!")
     @Column(nullable = false)
     private Long zipcode;
 
