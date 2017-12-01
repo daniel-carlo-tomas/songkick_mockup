@@ -27,6 +27,7 @@
                     "<input type='submit' value='Add to My Bands' />" +
                     "<input name='jambase_bandname' type='hidden' value='" + bandName + "' />" +
                     "<input name='jambase_id' type='hidden' value=" + json.Artists[0].Id + " />" +
+                    "<input name='_csrf' type='hidden' value=" + $('#csrf').val() + " />" +
                     "</form>";
                 document.getElementById("searchResult").innerHTML = html;
             },

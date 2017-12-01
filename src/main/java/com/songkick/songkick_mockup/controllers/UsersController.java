@@ -1,6 +1,7 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.Band;
+import com.songkick.songkick_mockup.models.Show;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
@@ -77,13 +78,17 @@ public class UsersController {
 
     @GetMapping("/profile")
     public String profile(Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Band> bands = (List<Band>) bandsRepository.findAll();
-        List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = userRepository.findOne(user.getId());
+        List<Band> bands = bandsRepository.listUsersBands(user);
+        System.out.println(bands);
+        List<Show> shows = user.getShows();
 
-        model.addAttribute("loggedInUser", loggedInUser);
+
+        model.addAttribute("user", user);
         model.addAttribute("bands", bands);
-        model.addAttribute("userBandList", usersBands);
+        model.addAttribute("shows", shows);
+
         return "users/profile";
     }
 }

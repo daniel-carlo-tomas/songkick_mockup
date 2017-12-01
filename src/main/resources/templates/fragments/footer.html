@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <link rel="stylesheet" href="/style.css"/>
-</head>
+<head></head>
 <body>
 
-<footer th:fragment="footer">
-    To Contact Us:
-    <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
-<div class="container-fluid">
-    <ul>
-        <li>
-            <div  class="col s12 m6 l3">
-                <button id="about" class="btn-link btn" style="margin-top: 8px">About Us</button>
+<div th:fragment="footer" th:remove="tag">
+    <div class="row">
+        <hr/>
+        <div class="col-lg-12">
+            <div class="col-md-8">
+                <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
             </div>
-        </li>
-        <li>
-            <div  class="col s12 m6 l3">
-            <button id="contact" class="btn-link btn" style="margin-top:8px">Contact Information</button>
+            <div class="col-md-4">
+                <p class="muted pull-right">© 2013 Company Name. All rights reserved</p>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </div>
-</footer>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="/js/materialize.min.js"></script>
+
 </body>
 </html>
