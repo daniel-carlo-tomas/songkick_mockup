@@ -41,13 +41,16 @@ public class ReviewsController {
 
     @PostMapping("review/create")
     public String submitReviewForm (@Valid Review review, Errors validation, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        review.setUser(user);
+
         if(validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(review);
             return "review/create";
         }
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        review.setUser(user);
+
         reviewsRepository.save(review);
         return "redirect:/review/show";
     }
@@ -55,8 +58,8 @@ public class ReviewsController {
     @GetMapping("review/show")
     public String showUserReviews (Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Review> reviews = user.getReviews();
-        model.addAttribute("user", user);
+        List<Review> reviews = reviewsRepository.findAllByUser(user);
+        model.addAttribute("reviews", reviews);
         return "/reviews/showReviews";
     }
 
