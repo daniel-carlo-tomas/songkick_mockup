@@ -5,6 +5,7 @@ import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.ShowsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,8 @@ public class ShowsController {
 
     @GetMapping("/show/{id}/moreInfo")
     public String showMore (@PathVariable long id, Model model) {
-        Show show = showsRepository.findOne(id);
-        model.addAttribute("show", show);
+        //Show show = showsRepository.findOne(id);
+        model.addAttribute("showId", id);
         return "/shows/viewIndividualShow";
     }
 
@@ -41,6 +42,8 @@ public class ShowsController {
     @RequestMapping(value="/show/add", method= RequestMethod.POST)
     public String saveShow (@RequestParam("id") Long showId, @RequestParam("artists") String artists, @RequestParam("venue") String venue, Model model) {
         System.out.println(showId);
+        System.out.println(artists);
+        System.out.println(venue);
 
         // VALIDATE SHOW ISNT ALREADY IN DB
 
@@ -58,7 +61,8 @@ public class ShowsController {
 
         // SAVE TO USER SHOWS
 
-        User user = usersRepository.findByUsername("carlooo");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = usersRepository.findOne(user.getId());
         List<Show> shows = user.getShows();
         shows.add(show);
         user.setShows(shows);
@@ -71,7 +75,8 @@ public class ShowsController {
     @PostMapping("show/{id}/delete")
     public String deleteShow (@PathVariable long id, Model model) {
         Show show = showsRepository.findOne(id);
-        User user = usersRepository.findByUsername("carlooo");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = usersRepository.findOne(user.getId());
         List<Show> shows = user.getShows();
         shows.remove(show);
         user.setShows(shows);
