@@ -62,21 +62,11 @@ public class UsersController {
 
 
 
-    @GetMapping("/users/showUsers")
-    public String showAllUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        return "users/showUsers";
-    }
+
 
     @GetMapping("users/bands")
     public String showUsersBands () {
         return "users/bands";
-    }
-
-    @GetMapping("/users/showIndividualUser/{id}")
-    public String showIndividualUser(@PathVariable long id, Model model) {
-        model.addAttribute("user", userRepository.findOne(id));
-        return "users/showIndividualUser";
     }
 
     @GetMapping("/profile")
@@ -89,9 +79,26 @@ public class UsersController {
         return "users/profile";
     }
 
-    @GetMapping("/users/searchUser")
+    @GetMapping("/searchUser")
     public String searchUser(@RequestParam String term, Model model) {
         model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%"));
         return "users/showUsers";
     }
+    @GetMapping("/search")
+    public String search() {
+        return "search/searchUser";
+    }
+    @GetMapping("/users/showUsers")
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "users/showUsers";
+    }
+
+    @GetMapping("/users/showIndividualUser/{id}")
+    public String showIndividualUser(@PathVariable long id, Model model) {
+        model.addAttribute("user", userRepository.findOne(id));
+        return "users/showIndividualUser";
+    }
+
 }
+
