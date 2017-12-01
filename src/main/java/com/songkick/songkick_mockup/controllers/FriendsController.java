@@ -33,10 +33,10 @@ public class FriendsController {
 
 
     @GetMapping("/request/{id}")
-    public String showUser(@PathVariable int id, Model model) {
+    public String showUser(@PathVariable long id, Model model) {
 
-        User sender = usersRepository.findOne((long) id);
-        model.addAttribute("user", sender);
+        User sender = usersRepository.findOne(id);
+        model.addAttribute("sender", sender);
 
         return "users/request";
     }
@@ -53,7 +53,7 @@ public class FriendsController {
         friendRequests.setReciever(newFriend);
         friendsRepository.save(friendRequests);
         model.addAttribute("user", newFriend.getId());
-        model.addAttribute("user", sender.getId());
+        model.addAttribute("sender", sender.getId());
         return "redirect:/";
     }
 
@@ -104,6 +104,9 @@ public class FriendsController {
 
 
     }
+
+
+
 
 }
 
