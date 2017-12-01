@@ -6,17 +6,14 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <div class="container">
     <div class="showInfo col-xs-12">
-        <span id="show_id" th:value="${show.id}"></span>
-        <div class="col-xs-8" id="moreInfo"></div>
-        <div class="col-xs-4" id="map-canvas" style="height: 200px"></div>
+        <span id="show_id" th:value="${showId}"></span>
+        <div id="moreInfo"></div>
+        <div id="map-canvas" style="height: 200px"></div>
+        <div id="form"></div>
     </div>
-    <form method="post" action="/show/add">
-        <input type='submit' value='Add to My Shows' />
-        <input name='id' type='hidden' th:value="${show.id}" />
-        <input name='artists' type='hidden' th:value="${show.artists}" />
-        <input name='venue' type='hidden' th:value="${show.venue}" />
-    </form>
 </div>
+<input id="csrf" type="hidden" th:value="${_csrf.token}" />
+<div th:replace="fragments/footer :: footer"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7tl1sBnzAmPXpAgFF1yf-2-aUG8Lndr4"></script>
 <script src="/js/moreShowInformation.js"></script>
 </body>
