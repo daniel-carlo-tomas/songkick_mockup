@@ -107,18 +107,15 @@ public class UsersController {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Band> bands = (List<Band>) bandsRepository.findAll();
         List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
-        List<FriendRequest> approvedFriends = friendsRepository.approvedFriends(loggedInUser);
+//        List<FriendRequest> approvedFriends = friendsRepository.approvedFriends(loggedInUser);
         List<FriendRequest> showFriendsList = friendsRepository.showFriendsList(loggedInUser);
-
-
-
 
 
         model.addAttribute("friends", showFriendsList);
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("bands", bands);
         model.addAttribute("userBandList", usersBands);
-        model.addAttribute("approved", approvedFriends);
+//        model.addAttribute("approved", approvedFriends);
 
 
 
