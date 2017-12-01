@@ -104,21 +104,20 @@ public class UsersController {
 
     @GetMapping("/profile")
     public String profile(Model model) {
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        //find all friendRequests based on the loggedInUser.
+        FriendRequest friendRequest = friendsRepository.findOne(loggedInUser.getId());
+
         List<Band> bands = (List<Band>) bandsRepository.findAll();
         List<Band> usersBands = bandsRepository.listUsersBands(loggedInUser);
-//        List<FriendRequest> approvedFriends = friendsRepository.approvedFriends(loggedInUser);
-        List<FriendRequest> showFriendsList = friendsRepository.showFriendsList(loggedInUser);
 
-
-        model.addAttribute("friends", showFriendsList);
+        model.addAttribute("myFriendsList", friendsRepository.showFriendsList(loggedInUser));
+        model.addAttribute("myPendingFriendsList", friendsRepository.showPendingRequests(loggedInUser));
         model.addAttribute("loggedInUser", loggedInUser);
         model.addAttribute("bands", bands);
         model.addAttribute("userBandList", usersBands);
-//        model.addAttribute("approved", approvedFriends);
-
-
-
         return "users/profile";
     }
 

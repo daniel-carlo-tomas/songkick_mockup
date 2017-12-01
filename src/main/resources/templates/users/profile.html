@@ -67,7 +67,12 @@
             </div>
 
             <h5>Friends</h5>
-            <div th:each="friend : ${friends}">
+            <div th:each="friend : ${myFriendsList}">
+                <span th:text="${friend.username}"/>
+            </div>
+
+            <h5>Pending Friends</h5>
+            <div th:each="friend : ${myPendingFriendsList}">
                 <span th:text="${friend.username}"/>
             </div>
 
