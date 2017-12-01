@@ -7,39 +7,49 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <div class="container">
     <div class="row">
-
+        <div class="col s12">
+            <h1>Welcome,
+                <span th:text="${user.username}"></span>!
+            </h1>
+        </div>
+        <div class="col s12 m4">
             <div>
-                <h1>Welcome,
-                    <span th:text="${user.username}"></span>!
-                </h1>
-            </div>
-            <div>
-                <h2>My Info: </h2>
+                <h4>My Info: </h4>
                 <!--<p>Name: <span th:text="${loggedInUser.first_name}"></span></p>-->
                 <p>Email: <span th:text="${user.email}"></span></p>
-                <p>Location: <span th:text="${user.city}"></span></p>
+                <p>Location: <span th:text="${user.city + ', ' + user.state}"></span></p>
+                <span id="zipcode" th:value="${user.zipcode}"></span>
             </div>
-                <h2>My Bands: </h2>
-            <div th:each="band : ${user.bands}">
-                <p th:text="${band.bandname}"></p>
+            <div>
+                <h4>My Bands: </h4>
+                <div th:each="band : ${user.bands}">
+                    <p th:text="${band.bandname}"></p>
+                </div>
             </div>
-                <h2>My Shows: </h2>
-            <div th:each="show : ${user.shows}">
-                <p th:text="${show.artists + ' at ' + show.venue}"></p>
+            <div>
+                <h4>My Shows: </h4>
+                <div th:each="show : ${user.shows}">
+                    <p th:text="${show.artists + ' at ' + show.venue}"></p>
+                </div>
             </div>
+        </div>
+        <div class="col s12 m8">
+            <div id="showsnearme"></div>
+        </div>
     </div>
 </div>
 
-            <!--<h5>Friends</h5>-->
-            <!--<div th:each="user : ${users}">-->
-                <!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
-            <!--</div>-->
+<!--<h5>Friends</h5>-->
+<!--<div th:each="user : ${users}">-->
+<!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
+<!--</div>-->
 
 
-        <!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
-        <!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
-        <!--<h5><span th:text="${user.email}"/></h5>-->
+<!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
+<!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
+<!--<h5><span th:text="${user.email}"/></h5>-->
 
 <div th:replace="fragments/footer :: footer"></div>
+<script src="js/showsNearMe.js"></script>
 </body>
 </html>
