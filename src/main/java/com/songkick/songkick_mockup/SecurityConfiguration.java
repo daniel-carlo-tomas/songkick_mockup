@@ -37,19 +37,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .authorizeRequests()
+                .antMatchers("/", "/register", "/login").permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/band/add", "/band/search", "/show/search", "/show/add", "/profile", "/show/{id}/moreInfo").authenticated()
+//                ADD ALL THE PATHS HERE
+
+                .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/profile")
-                    .permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/profile")
                 .and()
-                    .logout()
-                    .logoutSuccessUrl("/login?logout")
-                .and()
-                    .authorizeRequests()
-                .antMatchers("/", "/register", "/login").anonymous()
-                .anyRequest().authenticated();
+                .logout()
+                .logoutSuccessUrl("/login?logout");
 
     }
-
-
 }
