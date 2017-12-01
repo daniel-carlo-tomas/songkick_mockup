@@ -88,8 +88,14 @@
             <div th:each="friend : ${myPendingFriendsList}">
                 <span th:text="${friend.username}"/>
             </div>
-
-        </div>
+            <div>
+                <h4>My Reviews: </h4>
+                <div th:each="review : ${user.reviews}">
+                    <p th:text="${review.title}"></p>
+                    <p th:text="${review.body}"></p>
+                    <p th:text="${review.rating}"></p>
+                </div>
+            </div>
         </div>
         <div class="col s12 m8">
             <div id="showsnearme"></div>
@@ -97,46 +103,6 @@
     </div>
 </div>
 
-<!--<h5>Friends</h5>-->
-<!--<div th:each="user : ${users}">-->
-<!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
-<!--</div>-->
-        <!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
-        <!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
-        <!--<h5><span th:text="${user.email}"/></h5>-->
-
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="col-xs-10 col-xs-offset-1">
-                <div class="col-xs-3">
-                    <div class="col-xs-12">
-                        shows near me
-                    </div>
-                    <div class="col-xs-12">
-                        my bands shows
-                    </div>
-                </div>
-                <div class="col-xs-6">newsfeed</div>
-                <div class="col-xs-3">
-                    <div class="col-xs-12">my bands</div>
-                    <div class="col-xs-12">my shows</div>
-                    <div class="col-xs-12">my reviews</div>
-                </div>
-                <!--<h5>users</h5>-->
-                <!--<div th:each="user : ${users}">-->
-                <!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
-                <!--</div>-->
-
-                <h5>my bands</h5>
-                <!--<div th:each="band : ${userBandList}">-->
-                <!--<h6 th:text="${band.bandname}"/>-->
-                <!--</div>-->
-
-
-<!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
-<!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
-<!--<h5><span th:text="${user.email}"/></h5>-->
 
 <div th:replace="fragments/footer :: footer"></div>
 <script src="js/showsNearMe.js"></script>
