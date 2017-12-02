@@ -6,10 +6,22 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 <form id="form">
-    <h1>Search By Bandname</h1>
-    <label for="bandname">Bandname</label>
-    <input id="bandname" type="text"/>
-    <input id="submit" type="submit"/>
+    <div class="container">
+        <div class="row">
+            <div class="cos s12">
+                <h1>Search By Bandname</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="cos s12">
+                <label for="bandname">Bandname</label>
+                <input id="bandname" type="text"/>
+                <input id="submit" type="submit"/>
+            </div>
+        </div>
+    </div>
 </form>
 <input id="csrf" type="hidden" th:value="${_csrf.token}"/>
 <div id="searchResult"></div>
