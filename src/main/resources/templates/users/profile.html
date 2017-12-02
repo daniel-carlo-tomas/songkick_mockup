@@ -5,6 +5,10 @@
 <head th:replace="fragments/header :: main-header"></head>
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
+
+
+<a th:href="@{/response/{id}  (id=${user.id})}">respond</a>
+
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -24,6 +28,13 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
+            <div>
+                <h4>My Reviews: </h4>
+                <div th:each="review : ${user.reviews}">
+                    <p th:text="${review.title}"></p>
+                    <p th:text="${review.body}"></p>
+                    <p th:text="${review.rating}"></p>
+                </div>
             </div>
         </div>
         <div class="col s12 m8">
@@ -31,18 +42,10 @@
         </div>
     </div>
 </div>
-
-<!--<h5>Friends</h5>-->
-<!--<div th:each="user : ${users}">-->
-<!--<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>-->
-<!--</div>-->
-
-
-<!--<h1>WELCOME ! <span th:text="${user.username}"/></h1>-->
-<!--<h3><span th:text="${user.city}"/> , <span th:text="${user.state}"/></h3>-->
-<!--<h5><span th:text="${user.email}"/></h5>-->
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 <script src="js/showsNearMe.js"></script>
+
 </body>
 </html>

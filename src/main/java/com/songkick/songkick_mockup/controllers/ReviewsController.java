@@ -52,7 +52,7 @@ public class ReviewsController {
         review.setUser(user);
 
         reviewsRepository.save(review);
-        return "redirect:/review/show";
+        return "redirect:/profile";
     }
 
     @GetMapping("review/show")
@@ -72,6 +72,6 @@ public class ReviewsController {
         }
         reviewsRepository.delete(id);
 
-        return "redirect:/reviews/show";
+        return "redirect:/profile";
     }
 }

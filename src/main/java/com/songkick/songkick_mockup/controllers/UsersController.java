@@ -1,19 +1,22 @@
 package com.songkick.songkick_mockup.controllers;
 
+import com.songkick.songkick_mockup.models.Band;
+import com.songkick.songkick_mockup.models.Show;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
-import com.songkick.songkick_mockup.repositories.UsersRepository;
+import com.songkick.songkick_mockup.repositories.FriendsRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.songkick.songkick_mockup.repositories.UsersRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -22,12 +25,14 @@ public class UsersController {
     @Autowired
     private UsersRepository userRepository;
     private BandsRepository bandsRepository;
+    private FriendsRepository friendsRepository;
     private PasswordEncoder passwordEncoder;
 
-    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder) {
+    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder, FriendsRepository friendsRepository) {
         this.userRepository = userRepository;
         this.bandsRepository = bandsRepository;
         this.passwordEncoder = passwordEncoder;
+        this.friendsRepository = friendsRepository;
     }
 
 
@@ -56,22 +61,12 @@ public class UsersController {
     }
 
 
-    @GetMapping("/users/showUsers")
-    public String showAllUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
-        return "users/showUsers";
-    }
+
+
 
     @GetMapping("users/bands")
-    public String showUsersBands() {
+    public String showUsersBands () {
         return "users/bands";
-    }
-
-    @GetMapping("/users/showIndividualUser/{id}")
-    public String showIndividualUser(@PathVariable long id, Model model) {
-        model.addAttribute("user", userRepository.findOne(id));
-        model.addAttribute("users", userRepository.findAll());
-        return "users/showIndividualUser";
     }
 
     @GetMapping("/profile")
@@ -83,4 +78,27 @@ public class UsersController {
 
         return "users/profile";
     }
+
+    @GetMapping("/searchUser")
+    public String searchUser(@RequestParam String term, Model model) {
+        model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%"));
+        return "users/showUsers";
+    }
+    @GetMapping("/search")
+    public String search() {
+        return "search/searchUser";
+    }
+    @GetMapping("/users/showUsers")
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "users/showUsers";
+    }
+
+    @GetMapping("/users/showIndividualUser/{id}")
+    public String showIndividualUser(@PathVariable long id, Model model) {
+        model.addAttribute("user", userRepository.findOne(id));
+        return "users/showIndividualUser";
+    }
+
 }
+

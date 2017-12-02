@@ -5,7 +5,17 @@
 <head th:replace="fragments/header :: main-header">
 </head>
 <body>
-<a th:href="@{/request/{id}  (id=${user.id})}"><span th:text="${user.username}"/></a>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+
+
+
+<h3 th:text="${user.username}"></h3>
+<a th:href="@{/request/{id} (id=${user.id})}">request</a>
+
+<p> Zipcode:<span th:text="${user.zipcode}"/></p>
+<p th:text="${user.email}"></p>
+
+<div th:replace="fragments/footer :: footer"></div>
 
 </body>
 </html>
