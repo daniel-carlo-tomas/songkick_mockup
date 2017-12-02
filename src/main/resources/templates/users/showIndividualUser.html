@@ -8,7 +8,6 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 
 
-
 <h3 th:text="${user.username}"></h3>
 <a th:href="@{/request/{id} (id=${user.id})}">request</a>
 

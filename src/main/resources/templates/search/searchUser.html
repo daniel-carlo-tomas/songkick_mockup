@@ -6,11 +6,15 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 
-<div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
     <form th:action="@{/searchUser}" method="GET">
         <input th:type="text" id="search" name="term"/>
         <input type="submit" value="search"/>
     </form>
+        </div>
+    </div>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 
