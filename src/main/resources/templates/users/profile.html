@@ -28,22 +28,6 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
-                <div>
-                    <h5>Friends</h5>
-                    <div th:each="friend : ${myFriendsList}">
-                        <span th:text="${friend.username}"/>
-                    </div>
-                </div>
-                <div>
-                    <h5>Pending Friends</h5>
-                    <div th:each="friend : ${myPendingFriendsList}">
-                        <span th:text="${friend.username}"/>
-                    </div>
-                </div>
-
-
-            </div>
-
             <div>
                 <h4>My Reviews: </h4>
                 <div th:each="review : ${user.reviews}">
@@ -58,7 +42,6 @@
         </div>
     </div>
 </div>
-
 
 <div th:replace="fragments/footer :: footer"></div>
 <script src="js/showsNearMe.js"></script>
