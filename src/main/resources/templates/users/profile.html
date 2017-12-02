@@ -28,14 +28,14 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
-            <div>
-                <h4>My Reviews: </h4>
-                <div th:each="review : ${user.reviews}">
-                    <p th:text="${review.title}"></p>
-                    <p th:text="${review.body}"></p>
-                    <p th:text="${review.rating}"></p>
+                <div>
+                    <h4>My Reviews: </h4>
+                    <div th:each="review : ${user.reviews}">
+                        <p th:text="${review.title}"></p>
+                        <p th:text="${review.body}"></p>
+                        <p th:text="${review.rating}"></p>
+                    </div>
                 </div>
-            </div>
         </div>
         <div class="col s12 m8">
             <div id="showsnearme"></div>

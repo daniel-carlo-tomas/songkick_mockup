@@ -19,11 +19,11 @@ import java.util.List;
     List<FriendRequest> findBySender(User sender);
 
     @Query(nativeQuery = true,
-            value = "select u.id, f.receiver_id, f.sender_id from users as u join friendrequests as f on u.id = f.sender_id where f.approval = true")
+            value = "SELECT u.id, f.receiver_id, f.sender_id FROM users AS u JOIN friendrequests AS f ON u.id = f.sender_id WHERE f.approval = TRUE")
     List<FriendRequest> showFriendsList(User friend);
 
     @Query(nativeQuery = true,
-            value = "select u.username, f.sender_id ,f.receiver_id from users as u join friendrequests as f on u.id = f.sender_id where u.id like ?1")
+            value = "SELECT u.username, f.sender_id ,f.receiver_id FROM users AS u JOIN friendrequests AS f ON u.id = f.sender_id WHERE u.id LIKE ?1")
     List<FriendRequest> showPendingRequests(User friend);
 
 //    List<FriendRequest> findByApproval(boolean value);
