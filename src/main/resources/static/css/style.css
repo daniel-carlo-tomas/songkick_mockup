@@ -1,6 +1,13 @@
 a {
     color: white;
 }
+#requests{
+    color: blue;
+}
+
+#requests:hover{
+    color: red;
+}
 
 .loginTitle {
     margin: 2.1rem 0px 2.1rem 390px;

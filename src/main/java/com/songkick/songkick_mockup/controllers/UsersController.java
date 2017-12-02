@@ -1,6 +1,7 @@
 package com.songkick.songkick_mockup.controllers;
 
 import com.songkick.songkick_mockup.models.Band;
+import com.songkick.songkick_mockup.models.FriendRequest;
 import com.songkick.songkick_mockup.models.Show;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
@@ -71,8 +72,16 @@ public class UsersController {
 
     @GetMapping("/profile")
     public String profile(Model model) {
+
+
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user = userRepository.findOne(user.getId());
+//        List<FriendRequest> approvedFriends = friendsRepository.showFriendsList(user);
+//        List<FriendRequest> showFriendsList = friendsRepository.showPendingRequests(user);
+
+
+//        model.addAttribute("approved", approvedFriends);
+//        model.addAttribute("friends", showFriendsList);
 
         model.addAttribute("user", user);
 
@@ -99,6 +108,41 @@ public class UsersController {
         model.addAttribute("user", userRepository.findOne(id));
         return "users/showIndividualUser";
     }
+
+
+//    @RequestMapping(value="/friend/add", method= RequestMethod.GET)
+//    public String saveFriend(@RequestParam("username") String username, @RequestParam("sender_id") long senderId, @RequestParam("receiver_id") String receiver, Model model) {
+//        System.out.println(username);
+//        System.out.println(senderId);
+//        System.out.println(receiverID);
+//
+//     // method for friends in progress -carlo-work
+//
+//        Show show = showsRepository.findOne(showId);
+//        if (show == null) {
+//
+//            // ADD TO SHOWS TABLE
+//
+//            show = new Show();
+//            show.setId(showId);
+//            show.setArtists(artists);
+//            show.setVenue(venue);
+//            showsRepository.save(show);
+//        }
+//
+//        // SAVE TO USER SHOWS
+//
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        user = usersRepository.findOne(user.getId());
+//        List<Show> shows = user.getShows();
+//        shows.add(show);
+//        user.setShows(shows);
+//        usersRepository.save(user);
+////        model.addAttribute("user", user);
+//
+//        return "redirect:/profile";
+//    }
+
 
 }
 
