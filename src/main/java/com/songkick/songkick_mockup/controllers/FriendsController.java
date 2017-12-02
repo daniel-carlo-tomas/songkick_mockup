@@ -68,7 +68,7 @@ public class FriendsController {
     public String postResponse (@PathVariable long id, Model model){
         User sender = usersRepository.findOne(id);
         model.addAttribute("user", sender);
-        return "redirect:/";
+        return "redirect:/profile";
 
     }
 
@@ -83,7 +83,7 @@ public class FriendsController {
         // save the request in the database
         friendsRepository.save(request);
 
-        return "redirect:/";
+        return "redirect:/profile";
 
 
     }
@@ -98,7 +98,7 @@ public class FriendsController {
         // save the request in the database
         friendsRepository.save(request);
 
-        return "redirect:/";
+        return "redirect:/profile";
 
 
     }

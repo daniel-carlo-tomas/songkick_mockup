@@ -12,23 +12,23 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-    public interface FriendsRepository extends CrudRepository<FriendRequest, Long> {
-        //FriendRequests findOne(Long id);
-        List<FriendRequest> findByReceiver(User receiver);
+public interface FriendsRepository extends CrudRepository<FriendRequest, Long> {
+//    List<FriendRequest> findOne(User id);
+
+    List<FriendRequest> findByReceiver(User receiver);
 
     List<FriendRequest> findBySender(User sender);
 
-    @Query(nativeQuery = true,
-            value = "SELECT u.id, f.receiver_id, f.sender_id FROM users AS u JOIN friendrequests AS f ON u.id = f.sender_id WHERE f.approval = TRUE")
-    List<FriendRequest> showFriendsList(User friend);
+//    @Query(nativeQuery = true,
+//            value = "select u.id, f.receiver_id, f.sender_id from users as u join friendrequests as f on u.id = f.sender_id where f.approval = true")
+//    List<FriendRequest> showFriendsList(User friend);
 
-    @Query(nativeQuery = true,
-            value = "SELECT u.username, f.sender_id ,f.receiver_id FROM users AS u JOIN friendrequests AS f ON u.id = f.sender_id WHERE u.id LIKE ?1")
-    List<FriendRequest> showPendingRequests(User friend);
+//    @Query(nativeQuery = true,
+//            value = "select u.username, f.sender_id ,f.receiver_id from users as u join friendrequests as f on u.id = f.sender_id where u.id like ?1;")
+//    List<FriendRequest> showPendingRequests(User friend);
 
 //    List<FriendRequest> findByApproval(boolean value);
 
 
-
-    }
+}
 

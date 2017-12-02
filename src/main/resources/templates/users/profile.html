@@ -7,7 +7,6 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 
 
-<a th:href="@{/response/{id}  (id=${user.id})}">respond</a>
 
 <div class="container">
     <div class="row">
@@ -17,6 +16,9 @@
             </h1>
         </div>
         <div class="col s12 m4">
+            <button><a id="requests" th:href="@{/response/{id}  (id=${user.id})} ">Friend Requests</a>
+            </button>
+
             <div>
                 <h4>My Bands: </h4>
                 <div th:each="band : ${user.bands}">
@@ -28,13 +30,23 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
+            <div>
+                <h4>My Reviews: </h4>
+                <div th:each="review : ${user.reviews}">
+                    <p th:text="${review.title}"></p>
+                    <p th:text="${review.body}"></p>
+                    <p th:text="${review.rating}"></p>
+                </div>
+
+
+            </div>
                 <div>
-                    <h4>My Reviews: </h4>
-                    <div th:each="review : ${user.reviews}">
-                        <p th:text="${review.title}"></p>
-                        <p th:text="${review.body}"></p>
-                        <p th:text="${review.rating}"></p>
-                    </div>
+                    <h4>My Friends: </h4>
+                    <!--<div th:each="friend : ${friends}">-->
+                        <!--<p th:text="${friend.username}"></p>-->
+                    <!--</div>-->
+
+
                 </div>
         </div>
         <div class="col s12 m8">
