@@ -8,23 +8,31 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h1>Create a Review</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
             <form th:action="@{/review/create}" method="post" th:object="${review}">
+
+                <h1>Create a Review</h1>
+
                 <div class="form-group">
+
+                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+
                     <label for="title">Title: </label>
                     <input class="form-control" id="title" name="title" type="text" th:field="*{title}"/>
+
                 </div>
                 <div class="form-group">
+
+                    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
+
                     <label for="body">Body: </label>
                     <input class="form-control" id="body" name="body" type="text" th:field="*{body}"/>
+
                 </div>
                 <div class="form-group">
+
                     <label for="rating">Rating: </label>
-                    <input class="form-control" id="rating" name="rating" type="text" th:field="*{rating}"/>
+                    <input class="form-control" id="rating" name="rating" placeholder="1-5" th:field="*{rating}"/>
+
                 </div>
                 <input class="submit btn" type="submit" value="Submit"/>
             </form>
