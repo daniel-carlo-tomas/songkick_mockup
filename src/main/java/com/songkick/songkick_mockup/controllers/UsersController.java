@@ -4,6 +4,7 @@ import com.songkick.songkick_mockup.models.Band;
 import com.songkick.songkick_mockup.models.Show;
 import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.BandsRepository;
+import com.songkick.songkick_mockup.repositories.FriendsRepository;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
@@ -24,12 +25,14 @@ public class UsersController {
     @Autowired
     private UsersRepository userRepository;
     private BandsRepository bandsRepository;
+    private FriendsRepository friendsRepository;
     private PasswordEncoder passwordEncoder;
 
-    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder) {
+    public UsersController(UsersRepository userRepository, BandsRepository bandsRepository, PasswordEncoder passwordEncoder, FriendsRepository friendsRepository) {
         this.userRepository = userRepository;
         this.bandsRepository = bandsRepository;
         this.passwordEncoder = passwordEncoder;
+        this.friendsRepository = friendsRepository;
     }
 
 
@@ -73,7 +76,6 @@ public class UsersController {
     @GetMapping("/users/showIndividualUser/{id}")
     public String showIndividualUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userRepository.findOne(id));
-        model.addAttribute("users", userRepository.findAll());
         return "users/showIndividualUser";
     }
 
@@ -85,5 +87,11 @@ public class UsersController {
         model.addAttribute("user", user);
 
         return "users/profile";
+    }
+
+    @GetMapping("/users/searchUser")
+    public String searchUser(@RequestParam String term, Model model) {
+        model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%"));
+        return "users/showUsers";
     }
 }
