@@ -1,3 +1,7 @@
+a {
+    color: white;
+}
+
 .loginTitle {
     margin: 2.1rem 0px 2.1rem 390px;
 }
@@ -9,7 +13,9 @@
     margin-right: 40px;
 }
 
-
+#moveThisFuckingDivOver {
+    margin: 0 auto;
+}
 .topTitle{
     margin-right: 344px;
 }
@@ -28,7 +34,7 @@
 }
 nav ul a,
 nav .brand-logo {
-    color: #444;
+    color: white;
 }
 
 p {
