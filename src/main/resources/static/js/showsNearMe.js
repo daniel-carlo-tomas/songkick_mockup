@@ -29,7 +29,7 @@
                 // console.log(json.Events[i].Artists.map(artist => artist.Name).join(", "));
                 // console.log(json.Events[i].Venue.Name);
             }
-                document.getElementById("showsnearme").innerHTML = html;
+            document.getElementById("showsnearme").innerHTML = html;
 
         },
 
