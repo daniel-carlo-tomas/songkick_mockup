@@ -42,10 +42,12 @@ public class ReviewsController {
     @PostMapping("review/create")
     public String submitReviewForm(@Valid Review review, Errors validation, Model model) {
 
+//        if (review.getRating() > 0 || review.getRating() < 4)
+
         if (validation.hasErrors()) {
             model.addAttribute(validation);
             model.addAttribute(review);
-            return "review/create";
+            return "reviews/create";
         }
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

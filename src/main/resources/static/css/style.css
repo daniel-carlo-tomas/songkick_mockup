@@ -1,3 +1,15 @@
+#termsOfService {
+    color: black;
+}
+
+#otherTerm {
+    color: black;
+}
+
+#profileName {
+    margin: 2.1rem 0 1.68rem 232px;
+}
+
 a {
     color: white;
 }

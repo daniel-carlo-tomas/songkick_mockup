@@ -62,11 +62,8 @@ public class UsersController {
     }
 
 
-
-
-
     @GetMapping("users/bands")
-    public String showUsersBands () {
+    public String showUsersBands() {
         return "users/bands";
     }
 
@@ -93,10 +90,12 @@ public class UsersController {
         model.addAttribute("searchedContent", userRepository.searchUser("%" + term + "%"));
         return "users/showUsers";
     }
-    @GetMapping("/search")
+
+    @GetMapping("user/search")
     public String search() {
         return "search/searchUser";
     }
+
     @GetMapping("/users/showUsers")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());

@@ -11,16 +11,16 @@
             <form id="form">
                 <h1>Search for shows by Area</h1>
                 <label for="zipcode">Zipcode</label>
-                <input id="zipcode" />
+                <input id="zipcode"/>
                 <label for="radius">Radius (miles)</label>
-                <input id="radius" />
-                <input id="submit" type="submit" />
+                <input id="radius"/>
+                <input id="submit" type="submit"/>
             </form>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
-            <input id="csrf" type="hidden" th:value="${_csrf.token}" />
+            <input id="csrf" type="hidden" th:value="${_csrf.token}"/>
             <div id="searchResult"></div>
         </div>
     </div>
