@@ -24,69 +24,6 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
-
-        <nav>
-            <ul>
-                <!-- More links here... -->
-                <li>
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-                    </form>
-                </li>
-                <li>
-                    <div>
-                        <a th:href="@{/response/{id} (id=${loggedInUser.id})}">requests</a>
-                    </div>
-
-                </li>
-                <li>
-                    <div>
-                        <a th:href="@{/show/search (id=${loggedInUser.id})}">shows</a>
-                    </div>
-
-                </li>
-                <li>
-                    <div>
-                        <a th:href="@{/band/search (id=${loggedInUser.id})}">bands</a>
-                    </div>
-
-                </li>
-                <li>
-                    <div>
-                        <a th:href="@{/users/showUsers (id=${loggedInUser.id})}">Users</a>
-                    </div>
-
-                </li>
-            </ul>
-        </nav>
-        <div>
-            <form th:action="@{/users/searchUser}" method="GET">
-                <input th:type="text" id="search" name="term"/>
-                <input type="submit" value="search"/>
-            </form>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <div>
-                <h1>Welcome,
-                    <span th:text="${loggedInUser.username}"/>!</h1>
-                <span th:text="${loggedInUser.email}"/>
-            </div>
-            <div>
-                <span th:text="${loggedInUser.city}"/>, <span th:text="${loggedInUser.state}"/>
-            </div>
-            <h5>my bands</h5>
-            <div th:each="band : ${userBandList}">
-                <h6 th:text="${band.bandname}"/>
-            </div>
-
-            <h5>Friends</h5>
-            <div th:each="friend : ${myFriendsList}">
-                <span th:text="${friend.username}"/>
-            </div>
-
-            <h5>Pending Friends</h5>
-            <div th:each="friend : ${myPendingFriendsList}">
-                <span th:text="${friend.username}"/>
             </div>
             <div>
                 <h4>My Reviews: </h4>
@@ -102,7 +39,6 @@
         </div>
     </div>
 </div>
-
 
 <div th:replace="fragments/footer :: footer"></div>
 <script src="js/showsNearMe.js"></script>
