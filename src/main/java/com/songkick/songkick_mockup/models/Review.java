@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "reviews")
@@ -13,16 +15,16 @@ public class Review {
     @GeneratedValue
     private long id;
 
-    @NotBlank(message = "Please enter a Title")
+    @NotBlank(message = "Reviews must have a Title")
     @Column(nullable = false)
     private String title;
 
-    @NotBlank(message = "Please enter a Body")
+    @NotBlank(message = "Reviews must have a Body")
     @Column(nullable = false)
     private String body;
 
     @Column(nullable = false)
-    private int rating;
+    private Long rating;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -63,11 +65,11 @@ public class Review {
         this.body = body;
     }
 
-    public int getRating() {
+    public long getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(long rating) {
         this.rating = rating;
     }
 
