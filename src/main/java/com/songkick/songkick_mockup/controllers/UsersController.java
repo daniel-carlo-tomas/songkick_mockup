@@ -82,7 +82,7 @@ public class UsersController {
         return "users/showUsers";
     }
 
-    @GetMapping("/search")
+    @GetMapping("user/search")
     public String search() {
         return "search/searchUser";
     }
