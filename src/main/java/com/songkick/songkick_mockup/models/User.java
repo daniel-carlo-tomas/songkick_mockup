@@ -37,7 +37,6 @@ public class User {
     @JsonIgnore
     private String password;
 
-
     @Column(nullable = false)
     private Long zipcode;
 
