@@ -4,68 +4,82 @@
 <head th:replace="fragments/header :: main-header">
 
 </head>
-<body>
+<body class="grey lighten-4">
 <nav th:replace="fragments/navbar :: mainNav">
 </nav>
-<div id="index-banner" class="parallax-container">
+<div id="index-banner" class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
         <div class="container">
-            <br/><br/>
-            <h1 class="header center white-text text-lighten-2">Live Music Is My Life</h1>
+            <!--<br/><br/>-->
             <div class="row center">
-                <h5 class="header col s12 light white-text text-lighten-2">Let us show you what live music is happening
-                    in your area.</h5>
+
+                <a href="/register" id="get-started" class="btn-large waves-effect waves-light orange darken-1">Sign
+                    Up</a>
+                <a href="/login" class="btn-large waves-effect waves-light orange darken-1">Sign In</a>
+
+                <!--<br/><br/>-->
             </div>
-            <!-- <div class="row center">
-                <a th:href="${'signUp'}" id="get-started" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-            </div> -->
-            <br/><br/>
         </div>
     </div>
     <div class="parallax">
         <img src="https://source.unsplash.com/3000x600/?musician" rel="stylesheet"/>
     </div>
 </div>
-<div class="container">
+<div class="container white">
     <div class="section">
         <!--   Icon Section   -->
         <div class="row">
+            <div class="col s12">
+                <h1 class="header center text-lighten-2">Live Music Is My Life</h1>
+            </div>
+        </div>
+
+        <div class="row center">
             <div class="col s12 m4">
-                <div class="icon-audiotrack">
-                    <h2 class="center black-text"><i class="material-icons">audiotrack</i></h2>
-                    <h3 class="center">Search Bands</h3>
-                    <p class="light">Provides users to find bands they want to see.</p>
+                <div>
+                   <i class="large material-icons">search</i>
+                    <h4 class="center">Search</h4>
+                    <p class="light">Find your favorite Bands, Shows, and People!</p>
                 </div>
             </div>
             <div class="col s12 m4">
-                <div class="icon-beenhere">
-                    <h2 class="center black-text"><i class="material-icons">beenhere</i></h2>
-                    <h3 class="center">Check In</h3>
-                    <p class="light">Allows the user to mark shows that they are attending.</p>
-                </div>
+                    <i class="large material-icons">event</i>
+                    <h4 class="center">Track</h4>
+                    <p class="light">Track your favorite Artists and Shows that you're going to!</p>
             </div>
             <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center black-text"><i class="material-icons">event</i></h2>
-                    <h3 class="center">Event</h3>
-                    <p class="light">Search live music events around you and provide the shows location</p>
-                </div>
+                    <i class="large material-icons">audiotrack</i>
+                    <h4 class="center">Share</h4>
+                    <p class="light">Make friends, create reviews, and see whats rockin!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+
+            </div>
+        </div>
+        <div class="row center">
+            <div class="col s12">
+                <h4>Like what you see? Join Us!</h4>
+                <a href="/register" id="get-started" class="btn-large waves-effect waves-light orange darken-1">Sign
+                    Up</a>
+                <a href="/login" class="btn-large waves-effect waves-light orange darken-1">Sign In</a>
             </div>
         </div>
     </div>
 </div>
 <!--<div class="parallax-container valign-wrapper">-->
-    <!--<div id="moveThisFuckingDivOver" class="section no-pad-bot">-->
-        <!--<div class="container">-->
-            <!--<div class="row center">-->
-                <!--<h5 class="header center light white-text center-aligned">Let us help you with your live music-->
-                    <!--experience</h5>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="parallax">-->
-        <!--<img src="https://source.unsplash.com/3000x600/?music,artist" rel="stylesheet"/>-->
-    <!--</div>-->
+<!--<div id="moveThisFuckingDivOver" class="section no-pad-bot">-->
+<!--<div class="container">-->
+<!--<div class="row center">-->
+<!--<h5 class="header center light white-text center-aligned">Let us help you with your live music-->
+<!--experience</h5>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="parallax">-->
+<!--<img src="https://source.unsplash.com/3000x600/?music,artist" rel="stylesheet"/>-->
+<!--</div>-->
 <!--</div>-->
 
 <footer>
