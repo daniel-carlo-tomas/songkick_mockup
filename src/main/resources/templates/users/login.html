@@ -6,20 +6,20 @@
 <!--<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>-->
 <body>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<div class="container">
+<div class="container purple lighten-5">
     <div class="row">
-        <div class="col s12">
+        <div class="col s12 center">
             <h1>Login To Your Profile</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
+        <div class="form-div white col s12 m6 offset-m3">
 
             <div th:if="${param.logout}">
                 You have been logged out.
             </div>
 
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/login}" method="post" class="user-form">
 
                 <div th:if="${param.error}">
                     Invalid Username and Password.
@@ -31,7 +31,7 @@
                 <label for="password">Password</label>
                 <input class="form-control" id="password" name="password" type="password"/>
 
-                <input class="submit-btn" type="submit" value="Log In"/>
+                <input class="form-btn" type="submit" value="Log In"/>
 
             </form>
         </div>

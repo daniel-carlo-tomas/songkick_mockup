@@ -10,9 +10,9 @@
     margin: 2.1rem 0 1.68rem 232px;
 }
 
-a {
-    color: white;
-}
+/*a {*/
+    /*color: white;*/
+/*}*/
 #requests{
     color: blue;
 }
@@ -99,4 +99,18 @@ p {
 
 footer.page-footer {
     margin: 0;
+}
+
+.form-div {
+    margin-bottom: 3em;
+    border: 2px solid #4a148c;
+}
+
+.form-btn {
+    background-color: #fb8c00;
+    border: 1px solid #4a148c;
+}
+
+.user-form {
+    padding: 2em;
 }
