@@ -7,12 +7,12 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 
 
-
 <div class="container">
     <div class="row">
         <div id="profileName" class="col s12">
             <h1>Welcome,
                 <span th:text="${user.username}"></span>!
+                <input id="zipcode" type="hidden" th:value="${user.zipcode}"/>
             </h1>
         </div>
         <div class="col s12 m4">
@@ -30,30 +30,30 @@
                 <div th:each="show : ${user.shows}">
                     <p th:text="${show.artists + ' at ' + show.venue}"></p>
                 </div>
-            <div>
-                <h4>My Reviews: </h4>
-                <div th:each="review : ${user.reviews}">
-                    <p th:text="${review.title}"></p>
-                    <p th:text="${review.body}"></p>
-                    <p th:text="${review.rating}"></p>
+                <div>
+                    <h4>My Reviews: </h4>
+                    <div th:each="review : ${user.reviews}">
+                        <p th:text="${review.title}"></p>
+                        <p th:text="${review.body}"></p>
+                        <p th:text="${review.rating}"></p>
+                    </div>
+
+
                 </div>
-
-
-            </div>
                 <div>
                     <h4>My Friends: </h4>
                     <!--<div th:each="friend : ${friends}">-->
-                        <!--<p th:text="${friend.username}"></p>-->
+                    <!--<p th:text="${friend.username}"></p>-->
                     <!--</div>-->
 
 
                 </div>
+            </div>
         </div>
         <div class="col s12 m8">
             <div id="showsnearme"></div>
         </div>
     </div>
-</div>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>

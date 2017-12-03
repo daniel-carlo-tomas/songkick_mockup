@@ -24,7 +24,7 @@ public class Review {
     private String body;
 
     @Column(nullable = false)
-    private Long rating;
+    private long rating;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
