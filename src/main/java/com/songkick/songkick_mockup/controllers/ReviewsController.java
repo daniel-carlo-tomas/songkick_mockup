@@ -110,7 +110,7 @@ public class ReviewsController {
         }
         List<Review> reviews = user.getReviews();
         reviews.remove(review);
-//        reviewsRepository.delete(review);
+        reviewsRepository.delete(review);
         user.setReviews(reviews);
         usersRepository.save(user);
         return "redirect:/profile";
