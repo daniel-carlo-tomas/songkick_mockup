@@ -22,9 +22,9 @@
                     </div>
                     <div class="row">
                         <form method="post" th:action="@{'/review/' + ${review.id} + '/delete'}" id="form">
-                            <input class="btn btn-block btn-danger" type="submit" value="Delete"/>
+                            <input class="btn orange darken-1" type="submit" value="Delete"/>
                         </form>
-                        <a th:href="@{'/review/' + ${review.id} + '/edit'}">Edit</a>
+                        <a class="btn orange darken-1" th:href="@{'/review/' + ${review.id} + '/edit'}">Edit</a>
                     </div>
                 </div>
             </div>
