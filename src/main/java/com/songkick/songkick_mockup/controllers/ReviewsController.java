@@ -5,6 +5,7 @@ import com.songkick.songkick_mockup.models.User;
 import com.songkick.songkick_mockup.repositories.ReviewsRepository;
 import com.songkick.songkick_mockup.repositories.UsersRepository;
 import com.songkick.songkick_mockup.services.ReviewSvc;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,7 @@ public class ReviewsController {
     }
 
     @GetMapping("/review/create")
-    public String showReviewForm (Model model) {
+    public String showReviewForm(Model model) {
         model.addAttribute("review", new Review());
         return "reviews/create";
     }
@@ -76,14 +77,14 @@ public class ReviewsController {
     }
 
     @GetMapping("/review/{id}/edit")
-    public String editReviewForm (@PathVariable long id, Model model) {
+    public String editReviewForm(@PathVariable long id, Model model) {
         Review review = reviewsRepository.findOne(id);
         model.addAttribute("review", review);
         return "reviews/edit";
     }
 
     @PostMapping("/review/{id}/edit")
-    public String editReviewSubmit (@Valid Review review, Errors validation, @PathVariable long id, Model model) {
+    public String editReviewSubmit(@Valid Review review, Errors validation, @PathVariable long id, Model model) {
         Review reviewEdit = reviewsRepository.findOne(id);
         User reviewCreator = reviewEdit.getUser();
 
@@ -105,10 +106,13 @@ public class ReviewsController {
         Review review = reviewsRepository.findOne(id);
         User user = review.getUser();
         if (!reviewSvc.userMatch(user)) {
-            return "redirect:/reviews/show";
+            return "redirect:/reviews/{id}/show";
         }
-        reviewsRepository.delete(id);
-
+        List<Review> reviews = user.getReviews();
+        reviews.remove(review);
+//        reviewsRepository.delete(review);
+        user.setReviews(reviews);
+        usersRepository.save(user);
         return "redirect:/profile";
     }
 }
