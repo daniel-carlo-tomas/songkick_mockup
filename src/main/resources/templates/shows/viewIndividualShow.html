@@ -4,21 +4,23 @@
 </head>
 <body>
 <header>
-<nav th:replace="fragments/navbar :: mainNav"></nav>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
 </header>
 <main>
-    <div class="container ">
-    <div class="col-xs-12">
-        <span id="show_id" th:value="${showId}"></span>
-        <div id="moreInfo"></div>
-        <div id="map-canvas" style="height: 200px"></div>
-        <div id="form"></div>
+    <div class="container purple lighten-5">
+        <div class="row">
+            <div class="col s12">
+                <span id="show_id" th:value="${showId}"></span>
+                <div id="moreInfo"></div>
+                <div id="map-canvas" style="height: 200px"></div>
+                <div id="form"></div>
+            </div>
+        </div>
     </div>
-</div>
-<input id="csrf" type="hidden" th:value="${_csrf.token}"/>
+    <input id="csrf" type="hidden" th:value="${_csrf.token}"/>
 </main>
 <footer>
-<div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/footer :: footer"></div>
 </footer>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7tl1sBnzAmPXpAgFF1yf-2-aUG8Lndr4"></script>
 <script src="/js/moreShowInformation.js"></script>
