@@ -36,7 +36,8 @@
                 }
 
                 for (let i = 0; i < arrayMax; i++) {
-                for (let events of json.Events) {
+                    let events = json.Events[i];
+                //for (let events of json.Events) {
                     html += "<div class='col s12 m6'><div class='card white center'><div class='card-content'>";
                     let artists = events.Artists.map(artist => artist.Name).join(', ');
                     html += "<i class='medium material-icons'>event</i>";
@@ -59,7 +60,8 @@
                     html += "<a class='btn form-btn' href='/show/" + events.Id + "/moreInfo'>See More</a>";
 
                     html += "</div></div></div>";
-                }}
+                //}
+                }
                 html += "</div>";
 
                 console.log(html);
