@@ -9,8 +9,7 @@
     $.ajax({
         type: "GET",
         url: "http://api.jambase.com/events",
-        data: {"zipcode": zipcode, "api_key": "suakw9fxjerxgssx95s993rd"},
-        // IS HARD CODED...NEED TO SWITCH TO ZIPCODE AFTER VERIFYING THAT ZIPCODE IS CORRECT IN MODEL
+        data: {"zipcode": zipcode, "api_key": "h3fxhwz2qkyc5u8dtd4dbw9c"},
         async: true,
         dataType: "json",
         success: function (json) {
@@ -24,7 +23,7 @@
                 html += "<div>" +
                     "<h5>" + json.Events[i].Artists.map(artist => artist.Name).join(", ") + " At " + json.Events[i].Venue.Name + "</h5>";
 
-                html += "<a href='/show/" + json.Events[i].Id + "/moreInfo'>See More</a>";
+                html += "<a class='btn form-btn' href='/show/" + json.Events[i].Id + "/moreInfo'>See More</a>";
                 html += "</div>";
                 // console.log(json.Events[i].Artists.map(artist => artist.Name).join(", "));
                 // console.log(json.Events[i].Venue.Name);
