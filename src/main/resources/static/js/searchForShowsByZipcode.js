@@ -14,7 +14,7 @@
         $.ajax({
             type: "GET",
             url: "http://api.jambase.com/events",
-            data: {"zipcode": searchZip, "radius": searchRadius, "api_key": "h3fxhwz2qkyc5u8dtd4dbw9c"},
+            data: {"zipcode": searchZip, "radius": searchRadius, "api_key": "j6g84upymucqbgr42fqze97b"},
             async: true,
             dataType: "json",
             success: function (json) {
@@ -25,17 +25,18 @@
 
                 html += "<h3>Shows within " + searchRadius + " miles of " + searchZip + ":</h3>";
 
-                html += "</div></div><div class='row'>";
+                html += "</div></div>";
 
                 let arrayMax = 0;
 
-                if (json.length >= 10) {
+                if (json.Events.length >= 10) {
                     arrayMax = (10);
                 } else {
                     arrayMax = json.length;
                 }
 
                 for (let i = 0; i < arrayMax; i++) {
+                    html += i % 2 === 0 ?  "<div class='row'>" : '';
                     let events = json.Events[i];
                 //for (let events of json.Events) {
                     html += "<div class='col s12 m6'><div class='card white center'><div class='card-content'>";
@@ -60,6 +61,7 @@
                     html += "<a class='btn form-btn' href='/show/" + events.Id + "/moreInfo'>See More</a>";
 
                     html += "</div></div></div>";
+                    html += i % 2 === 1 ? '</div>' : '';
                 //}
                 }
                 html += "</div>";
