@@ -9,7 +9,7 @@
     $.ajax({
         type: "GET",
         url: "http://api.jambase.com/events",
-        data: {"id": show_id, "api_key": "h3fxhwz2qkyc5u8dtd4dbw9c"},
+        data: {"id": show_id, "api_key" : "h3fxhwz2qkyc5u8dtd4dbw9c"},
         async: true,
         dataType: "json",
         success: function (json) {
@@ -40,7 +40,6 @@
                 json.Venue.StateCode +
                 json.Venue.ZipCode +
                 "</h4>";
-            html += "<a class='btn form-btn' href='" + json.Venue.Url + "'>See Venue</a>";
 
             console.log(html);
 
@@ -49,7 +48,7 @@
 
             let form = "";
             form += "<form method='post' action='/show/add'>";
-            form += "<input type='submit' value='Add to My Shows' />" +
+            form += "<input class='btn form-btn' type='submit' value='Add to My Shows' />" +
                 "<input name='id' type='hidden' value='" + json.Id + "' />" +
                 "<input name='artists' type='hidden' value='" + artistsList + "' />" +
                 "<input name='venue' type='hidden' value='" + json.Venue.Name + "' />" +
