@@ -15,7 +15,7 @@
             <form id="form">
                 <h1>Search for shows by Area</h1>
                 <label for="zipcode">Zipcode</label>
-                <input id="zipcode"/>
+                <input id="zipcode" th:value="${user.zipcode}" />
                 <label for="radius">Radius (miles)</label>
                 <input id="radius"/>
                 <input id="submit" type="submit"/>

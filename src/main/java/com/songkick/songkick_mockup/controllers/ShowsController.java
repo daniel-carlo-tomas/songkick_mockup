@@ -26,7 +26,9 @@ public class ShowsController {
     }
 
     @GetMapping("/show/search")
-    public String showJSON () {
+    public String showJSON (Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
         return "/search/showSearchByZipcode";
     }
 
