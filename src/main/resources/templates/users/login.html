@@ -27,12 +27,14 @@
                 <div th:if="${param.error}">
                     Invalid Username and Password.
                 </div>
-
+                <i class="material-icons">face</i>
                 <label for="username">Username</label>
                 <input class="form-control" id="username" name="username" type="text"/>
 
+                <i class="material-icons">fingerprint</i>
                 <label for="password">Password</label>
                 <input class="form-control" id="password" name="password" type="password"/>
+                <div></div>
 
                 <input class="form-btn" type="submit" value="Log In"/>
 
