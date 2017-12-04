@@ -5,46 +5,60 @@
 </head>
 <body>
 <header>
-<nav th:replace="fragments/navbar :: mainNav"></nav>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
 </header>
 <main>
     <div class="container purple lighten-5">
-    <div class="row">
-        <div class="col s12 center">
-            <h1>Create a Review</h1>
+        <div class="row">
+            <div class="col s12 center">
+                <h1>Create a Review</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-div white col s12 m6 offset-m3">
+                <form th:action="@{/review/create}" method="post" th:object="${review}" class="user-form">
+
+                    <div class="form-group">
+
+                        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+
+                        <label for="title">Title: </label>
+                        <input class="form-control" id="title" name="title" type="text" th:field="*{title}"/>
+
+                    </div>
+                    <div class="form-group">
+
+                        <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
+
+
+                        <label for="body">Body: </label>
+                        <input id="body" name="body" type="text" th:field="*{body}"/>
+                    </div>
+                    <div class="form-group">
+
+                        <div>
+                            <label for="one">1
+                            <input th:field="*{rating}" id="one" type="radio" name="rating" th:value="1"/></label>
+
+                            <label for="two">2
+                            <input th:field="*{rating}" id="two" type="radio" name="rating" th:value="2"/></label>
+
+                            <label for="three">3
+                            <input th:field="*{rating}" id="three" type="radio" name="rating" th:value="3"/></label>
+
+                            <label for="four">4
+                            <input th:field="*{rating}" id="four" type="radio" name="rating" th:value="4"/></label>
+
+                            <label for="five">5
+                            <input th:field="*{rating}" id="five" type="radio" name="rating" th:value="5"/></label>
+                        </div>
+
+                    </div>
+                    <input class="form-btn" type="submit" value="Submit"/>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="form-div white col s12 m6 offset-m3">
-            <form th:action="@{/review/create}" method="post" th:object="${review}" class="user-form">
-
-                <div class="form-group">
-
-                    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
-
-                    <label for="title">Title: </label>
-                    <input class="form-control" id="title" name="title" type="text" th:field="*{title}"/>
-
-                </div>
-                <div class="form-group">
-
-                    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
-
-
-                    <label for="body">Body: </label>
-                    <input class="form-control" id="body" name="body" type="text" th:field="*{body}"/>
-                </div>
-                <div class="form-group">
-
-                    <label for="rating">Rating: </label>
-                    <input class="form-control" id="rating" name="rating" placeholder="1-5" th:field="*{rating}"/>
-
-                </div>
-                <input class="form-btn" type="submit" value="Submit"/>
-            </form>
-        </div>
-    </div>
-</div>
 </main>
 <footer>
     <div th:replace="fragments/footer :: footer"></div>
