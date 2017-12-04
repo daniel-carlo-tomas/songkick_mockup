@@ -3,7 +3,7 @@
 (function () {
 
     let zipcode = document.getElementById("zipcode");
-    // zipcode = zipcode.getAttribute('value');
+    zipcode = zipcode.getAttribute('value');
     console.log(zipcode);
 
     $.ajax({

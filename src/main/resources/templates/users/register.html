@@ -7,50 +7,52 @@
 <nav th:replace="fragments/navbar :: mainNav"></nav>
 
 
-<div class="container">
+<div class="container purple lighten-5">
     <div class="row">
+        <div class="col s12 center">
+            <h1>Register an Account With Us!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-div white col s12 m6 offset-m3">
+            <form th:action="@{/register}" method="POST" th:object="${user}" class="user-form">
 
-        <form th:action="@{/register}" method="POST" th:object="${user}" class="form col s12 m4 offset-m4">
-
-            <div class="info col s12">
-                <h1>Register an Account With Us!</h1>
-            </div>
-
-            <div class="input-field">
-                <input id="username" type="text" th:field="*{username}"/>
-                <label for="username">Username: </label>
-            </div>
-
-
-            <div class="input-field">
-                <input id="first_name" type="text" class="validate" th:field="*{firstName}" placeholder="optional"/>
-                <label for="first_name">First Name:</label>
-            </div>
-
-            <div class="input-field">
-                <input id="last_name" type="text" class="validate" th:field="*{lastName}" placeholder="optional"/>
-                <label for="last_name">Last Name:</label>
-            </div>
+                <div class="input-field">
+                    <input id="username" type="text" th:field="*{username}"/>
+                    <label for="username">Username: </label>
+                </div>
 
 
-            <div id="email" class="input-field">
-                <input type="text" class="validate" th:field="*{email}"/>
-                <label for="email">Email:</label>
-            </div>
+                <div class="input-field">
+                    <input id="first_name" type="text" class="validate" th:field="*{firstName}" placeholder="optional"/>
+                    <label for="first_name">First Name:</label>
+                </div>
 
-            <div class="input-field">
-                <input id="password" type="password" class="validate" th:field="*{password}"/>
-                <label for="password">Password:</label>
-            </div>
+                <div class="input-field">
+                    <input id="last_name" type="text" class="validate" th:field="*{lastName}" placeholder="optional"/>
+                    <label for="last_name">Last Name:</label>
+                </div>
 
-            <div class="input-field">
-                <input id="zipcode" type="text" class="validate" th:field="*{zipcode}"/>
-                <label for="zipcode">Zipcode</label>
-            </div>
 
-            <input type="submit" class="submit btn" value="Sign Me Up!"/>
+                <div id="email" class="input-field">
+                    <input type="text" class="validate" th:field="*{email}"/>
+                    <label for="email">Email:</label>
+                </div>
 
-        </form>
+                <div class="input-field">
+                    <input id="password" type="password" class="validate" th:field="*{password}"/>
+                    <label for="password">Password:</label>
+                </div>
+
+                <div class="input-field">
+                    <input id="zipcode" type="text" class="validate" th:field="*{zipcode}"/>
+                    <label for="zipcode">Zipcode</label>
+                </div>
+
+                <input type="submit" class="form-btn" value="Sign Me Up!"/>
+
+            </form>
+        </div>
     </div>
 </div>
 

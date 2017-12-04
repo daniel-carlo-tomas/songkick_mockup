@@ -72,7 +72,7 @@ public class ShowsController {
         return "redirect:/profile";
     }
 
-    @PostMapping("show/{id}/delete")
+    @PostMapping("/show/{id}/delete")
     public String deleteShow(@PathVariable long id, Model model) {
         Show show = showsRepository.findOne(id);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

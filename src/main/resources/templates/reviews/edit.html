@@ -8,12 +8,13 @@
 <div class="container purple lighten-5">
     <div class="row">
         <div class="col s12 center">
-            <h1>Create a Review</h1>
+            <h1>Edit your Review</h1>
+            <p>Opinions change, reflect those changes here!</p>
         </div>
     </div>
     <div class="row">
         <div class="form-div white col s12 m6 offset-m3">
-            <form th:action="@{/review/create}" method="post" th:object="${review}" class="user-form">
+            <form th:action="@{'/review/' + ${review.id} + '/edit'}" method="post" th:object="${review}" class="user-form">
 
                 <div class="form-group">
 
