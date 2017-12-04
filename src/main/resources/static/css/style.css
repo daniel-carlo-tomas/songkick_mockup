@@ -143,6 +143,10 @@ footer.page-footer {
     padding-bottom: 2em;
 }
 
-/*.container {*/
-    /*width: 85%;*/
-/*}*/
+.container {
+    width: 85%;
+}
+
+.uniform {
+    width: 60%;
+}
