@@ -21,15 +21,15 @@
 
             <form th:action="@{/login}" method="post" class="user-form">
 
-                <div th:if="${param.error}">
-                    Invalid Username and Password.
-                </div>
+                    <div th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
 
-                <label for="username">Username</label>
-                <input class="form-control" id="username" name="username" type="text"/>
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" name="username" type="text"/>
 
-                <label for="password">Password</label>
-                <input class="form-control" id="password" name="password" type="password"/>
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password"/>
 
                 <input class="form-btn" type="submit" value="Log In"/>
 
