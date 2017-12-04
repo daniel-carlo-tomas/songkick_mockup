@@ -76,14 +76,14 @@ public class ReviewsController {
     }
 
     @GetMapping("/review/{id}/edit")
-    public String editReviewForm (@PathVariable long id, Model model) {
+    public String editReviewForm(@PathVariable long id, Model model) {
         Review review = reviewsRepository.findOne(id);
         model.addAttribute("review", review);
         return "reviews/edit";
     }
 
     @PostMapping("/review/{id}/edit")
-    public String editReviewSubmit (@Valid Review review, Errors validation, @PathVariable long id, Model model) {
+    public String editReviewSubmit(@Valid Review review, Errors validation, @PathVariable long id, Model model) {
         Review reviewEdit = reviewsRepository.findOne(id);
         User reviewCreator = reviewEdit.getUser();
 

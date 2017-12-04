@@ -4,10 +4,16 @@
 
 </head>
 <body>
+<header>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<form method="post" th:action="${'/bands/' + band.id + '/delete'}"id="form">
-    <input class="btn btn-block btn-danger"type="submit"value="Delete"/>
+</header>
+<main>
+<form method="post" th:action="${'/bands/' + band.id + '/delete'}" id="form">
+    <input class="btn btn-block btn-danger" type="submit" value="Delete"/>
 </form>
-
+</main>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

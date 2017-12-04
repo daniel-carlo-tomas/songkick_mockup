@@ -4,7 +4,10 @@
 
 </head>
 <body>
+<header>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
+</header>
+<main>
 <h1>Welcome <span th:text="${user.username}"></span></h1>
 <h2>Here are your shows:</h2>
 <ul th:each="show : ${user.shows}">
@@ -13,6 +16,9 @@
         <input class="btn btn-block btn-danger" type="submit" value="Delete"/>
     </form>
 </ul>
-</body>
+</main>
+<footer>
 <div th:replace="fragments/footer :: footer"></div>
+</footer>
+</body>
 </html>

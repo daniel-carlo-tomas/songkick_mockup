@@ -5,9 +5,11 @@
 
 </head>
 <body>
-
+<header>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
+</header>
+<main>
 <th:block th:each="request : ${requests}">
-
     <h1><span th:text="${request.sender.username}"></span></h1>
     <h1>Would like to be you friend</h1>
 
@@ -26,6 +28,9 @@
 
     </form>
 </th:block>
-
+</main>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

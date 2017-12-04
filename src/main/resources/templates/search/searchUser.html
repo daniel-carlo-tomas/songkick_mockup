@@ -4,8 +4,11 @@
 
 </head>
 <body>
+<header>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-<div class="container">
+</header>
+<main>
+    <div class="container">
     <div class="row">
         <div class="col s12">
             <form th:action="@{/searchUser}" method="GET">
@@ -16,8 +19,9 @@
         </div>
     </div>
 </div>
-
+</main>
+<footer>
 <div th:replace="fragments/footer :: footer"></div>
-
+</footer>
 </body>
 </html>

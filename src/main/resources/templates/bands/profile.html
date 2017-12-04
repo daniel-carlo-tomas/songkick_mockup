@@ -6,8 +6,10 @@
     <!--<link href="common.css" rel="stylesheet" type="text/css">-->
 </head>
 <body>
+<header>
 <nav th:replace="fragments/navbar :: mainNav"></nav>
-
+</header>
+<main>
     <div class="row">
         <div class="col 12">
             <div class="container-fluid2">Band Name</div>
@@ -19,7 +21,10 @@
     <div class="container-fluid2">Top Tracks</div>
     </div>
 
+</main>
 <div class="container-fluid3">Band info/bio</div>
-
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+</footer>
 </body>
 </html>

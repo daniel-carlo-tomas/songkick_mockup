@@ -38,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/register", "/login").permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/band/add", "/band/search", "/bands/{id}/delete", "/show/search", "/show/add", "/show/{id}/moreInfo", "/show/{id}/delete", "review/{id}/edit",  "/review/all/show", "review/{id}/show", "review/{id}/delete", "/review/create", "/profile").authenticated()
+                .antMatchers("/band/add", "/band/search", "/bands/{id}/delete", "/show/search", "/show/add", "/show/{id}/moreInfo", "/show/{id}/delete", "review/{id}/edit", "/review/all/show", "review/{id}/show", "review/{id}/delete", "/review/create", "/profile").authenticated()
 //                ADD ALL THE PATHS HERE
 
                 .and()
