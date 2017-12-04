@@ -32,14 +32,39 @@
 
                     <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
 
-
+¬
                     <label for="body">Body: </label>
                     <input class="form-control" id="body" name="body" type="text" th:field="*{body}"/>
                 </div>
                 <div class="form-group">
+                    <label>Rating</label>
+                    <div>
+                        <p>
 
-                    <label for="rating">Rating: </label>
-                    <input class="form-control" id="rating" name="rating" placeholder="1-5" th:field="*{rating}"/>
+                            <input th:field="*{rating}" id="one" type="radio" name="rating" th:value="1"/><label
+                                for="one">1</label>
+
+                        </p>
+                        <p>
+                            <input th:field="*{rating}" id="two" type="radio" name="rating" th:value="2"/> <label
+                                for="two">2</label>
+
+                        </p>
+                        <p>
+                            <input th:field="*{rating}" id="three" type="radio" name="rating" th:value="3"/><label
+                                for="three">3</label>
+                        </p>
+                        <p>
+                            <input th:field="*{rating}" id="four" type="radio" name="rating" th:value="4"/><label
+                                for="four">4</label>
+                        </p>
+                        <p>
+
+                            <input th:field="*{rating}" id="five" type="radio" name="rating" th:value="5"/> <label
+                                for="five">5</label>
+                        </p>
+                        <br/>
+                    </div>
 
                 </div>
                 <input class="form-btn" type="submit" value="Submit"/>
