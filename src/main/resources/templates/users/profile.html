@@ -16,38 +16,46 @@
             </h1>
         </div>
         <div class="col s12 m4">
-            <button><a id="requests" th:href="@{/response/{id}  (id=${user.id})} ">Friend Requests</a>
-            </button>
-
+            <!--<button><a id="requests" th:href="@{/response/{id}  (id=${user.id})} ">Friend Requests</a>-->
+            <!--</button>-->
             <div>
-                <h4>My Bands: </h4>
+                <h5>My Bands: </h5>
                 <div th:each="band : ${user.bands}">
-                    <p th:text="${band.bandname}"></p>
+                    <ul>
+                        <li th:text="${band.bandname}"></li>
+                    </ul>
                 </div>
             </div>
             <div>
-                <h4>My Shows: </h4>
+                <h5>My Shows: </h5>
                 <div th:each="show : ${user.shows}">
-                    <p th:text="${show.artists + ' at ' + show.venue}"></p>
+                    <ul>
+                        <li th:text="${show.artists + ' at ' + show.venue}"></li>
+                    </ul>
                 </div>
                 <div>
-                    <h4>My Reviews: </h4>
+                    <h5>My Reviews: </h5>
                     <div th:each="review : ${user.reviews}">
-                        <p th:text="${review.title}"></p>
-                        <p th:text="${review.body}"></p>
-                        <p th:text="${review.rating}"></p>
+                        <ul>
+                            <li>
+                                <a th:text="${review.title}" th:href="@{'/review/' + ${review.id} + '/show'}"></a>
+                            </li>
+                        </ul>
+                        <!--<p th:text="${review.body}"></p>-->
+                        <!--<p th:text="${review.rating}"></p>-->
                     </div>
+                    <a th:href="${'/review/all/show'}">See All Reviews</a>
 
 
                 </div>
-                <div>
-                    <h4>My Friends: </h4>
+                <!--<div>-->
+                    <!--<h4>My Friends: </h4>-->
                     <!--<div th:each="friend : ${friends}">-->
                     <!--<p th:text="${friend.username}"></p>-->
                     <!--</div>-->
 
 
-                </div>
+                <!--</div>-->
             </div>
         </div>
         <div class="col s12 m8">

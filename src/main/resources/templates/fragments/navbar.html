@@ -20,6 +20,8 @@
                 <li><a href="/show/search">Find Shows Near Me</a></li>
                 <li class="divider"></li>
                 <li><a href="/user/search">Find A User</a></li>
+                <li class="divider"></li>
+                <li><a href="/review/create">Create A Review</a></li>
             </ul>
             <a href="/" class="brand-logo center text-white right hide-on-med-and-down">
                 LMIML
@@ -29,7 +31,7 @@
                 <!--<li><a href="/band/search">Find A Band</a></li>-->
 
                 <!--<li><a href="/show/search">Find Shows Near Me</a></li>-->
-                <li><a class="dropdown-button" href="#" data-activates="dropdown1">Search!<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button" href="#" data-activates="dropdown1">Get Started!<i class="material-icons right">arrow_drop_down</i></a></li>
 
                 <li><a href="/profile">My Profile</a></li>
 
@@ -47,7 +49,7 @@
 
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn">Logout</button>
+                        <button class="btn-link btn orange darken-1">Logout</button>
                     </form>
                 </li>
 
