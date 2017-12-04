@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<link rel="stylesheet" href="/css/style.css"/>-->
 <head th:replace="fragments/header :: main-header">
+
 
 </head>
 <!--<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>-->
-<body>
-<nav th:replace="fragments/navbar :: mainNav"></nav>
-<div class="container">
-    <div class="row">
-        <div class="col s12">
-            <h1>Login To Your Profile</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
 
-            <div th:if="${param.logout}">
-                You have been logged out.
+<body class="body" id="main">
+<header>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1>Login To Your Profile</h1>
             </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
 
-            <form th:action="@{/login}" method="post">
-
-                <div th:if="${param.error}">
-                    Invalid Username and Password.
+                <div th:if="${param.logout}">
+                    You have been logged out.
                 </div>
 
-                <label for="username">Username</label>
-                <input class="form-control" id="username" name="username" type="text"/>
+                <form th:action="@{/login}" method="post">
 
-                <label for="password">Password</label>
-                <input class="form-control" id="password" name="password" type="password"/>
+                    <div th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
 
-                <input class="submit-btn" type="submit" value="Log In"/>
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" name="username" type="text"/>
 
-            </form>
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password"/>
+
+                    <input class="submit-btn" type="submit" value="Log In"/>
+
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<div th:replace="fragments/footer :: footer"></div>
+
+</main>
+<footer>
+    <div th:replace="fragments/footer :: footer"></div>
+
+</footer>
 </body>
 </html>
