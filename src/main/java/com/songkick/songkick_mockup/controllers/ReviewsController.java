@@ -33,13 +33,13 @@ public class ReviewsController {
         this.reviewSvc = reviewSvc;
     }
 
-    @GetMapping("review/create")
+    @GetMapping("/review/create")
     public String showReviewForm (Model model) {
         model.addAttribute("review", new Review());
         return "reviews/create";
     }
 
-    @PostMapping("review/create")
+    @PostMapping("/review/create")
     public String submitReviewForm(@Valid Review review, Errors validation, Model model) {
 
 //        if (review.getRating() > 0 || review.getRating() < 4)
@@ -57,15 +57,50 @@ public class ReviewsController {
         return "redirect:/profile";
     }
 
-    @GetMapping("review/show")
+    @GetMapping("/review/all/show")
     public String showUserReviews(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         List<Review> reviews = reviewsRepository.findAllByUser(user);
         model.addAttribute("reviews", reviews);
-        return "/reviews/showReviews";
+        model.addAttribute("user", user);
+        return "/reviews/showAllReviews";
     }
 
-    @PostMapping("review/{id}/delete")
+    @GetMapping("/review/{id}/show")
+    public String showOneReview(@PathVariable long id, Model model) {
+        Review review = reviewsRepository.findOne(id);
+        User user = review.getUser();
+        model.addAttribute("reviews", review);
+        model.addAttribute("user", user);
+        return "/reviews/showOneReview";
+    }
+
+    @GetMapping("/review/{id}/edit")
+    public String editReviewForm (@PathVariable long id, Model model) {
+        Review review = reviewsRepository.findOne(id);
+        model.addAttribute("review", review);
+        return "reviews/edit";
+    }
+
+    @PostMapping("/review/{id}/edit")
+    public String editReviewSubmit (@Valid Review review, Errors validation, @PathVariable long id, Model model) {
+        Review reviewEdit = reviewsRepository.findOne(id);
+        User reviewCreator = reviewEdit.getUser();
+
+        if (!reviewSvc.userMatch(reviewCreator)) {
+            return "/reviews/showAllReviews";
+        }
+        if (validation.hasErrors()) {
+            model.addAttribute(validation);
+            model.addAttribute(review);
+            return "reviews/create";
+        }
+        review.setUser(reviewCreator);
+        reviewsRepository.save(review);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/review/{id}/delete")
     public String deleteReview(@PathVariable long id) {
         Review review = reviewsRepository.findOne(id);
         User user = review.getUser();

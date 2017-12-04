@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header"></head>
+
+<body>
+<nav th:replace="fragments/navbar :: mainNav"></nav>
+<div class="container purple lighten-5">
+    <div class="row">
+        <div class="col s12 m8 offset-m2 center">
+            <ul th:each="review : ${reviews}">
+                <li>
+                    <h3 th:text="${review.title}"></h3>
+                    <p th:text="${review.body}"></p>
+                    <p th:text="${review.rating}"></p>
+                </li>
+                <form method="post" th:action="@{'/review/' + ${review.id} + '/delete'}" id="form">
+                    <input class="btn orange darken-1" type="submit" value="Delete"/>
+                </form>
+                <a class="btn orange darken-1" th:href="@{'/review/' + ${review.id} + '/edit'}">Edit</a>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
