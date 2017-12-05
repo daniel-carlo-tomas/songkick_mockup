@@ -46,7 +46,7 @@
 
             let form = "";
             form += "<form method='post' action='/show/add'>";
-            form += "<input class='btn form-btn' type='submit' value='Add to My Shows' />" +
+            form += "<input class=\"btn-large waves-effect waves-light orange darken-1\" type='submit' value='Add to My Shows' />" +
                 "<input name='id' type='hidden' value='" + json.Id + "' />" +
                 "<input name='artists' type='hidden' value='" + artistsList + "' />" +
                 "<input name='venue' type='hidden' value='" + json.Venue.Name + "' />" +
