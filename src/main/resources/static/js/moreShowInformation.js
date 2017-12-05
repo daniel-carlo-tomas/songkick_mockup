@@ -4,7 +4,6 @@
 
     let show_id = document.getElementById("show_id");
     show_id = show_id.getAttribute('value');
-    console.log(show_id);
 
     $.ajax({
         type: "GET",
@@ -15,10 +14,9 @@
         success: function (json) {
             // Parse the response.
             // Do other things.
-            console.log(json);
 
             let html = "";
-            html += "<h1>";
+            html += "<h2>";
             // for (let artist of json.Artists) {
             //     html += artist.Name + ", "
             // }
@@ -31,7 +29,7 @@
 
             html += " at "
                 + json.Venue.Name
-                + "</h1>";
+                + "</h2>";
 
             html += "<h3>Date: " + json.Date + "</h3>";
 
