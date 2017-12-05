@@ -50,7 +50,7 @@
 
                     html += "<div class='card-action'><form method='post' action='/show/add'>" +
 
-                        "<input class='btn form-btn' type='submit' value='Add to My Shows' />" +
+                        "<input class=\"btn-large waves-effect waves-light orange darken-1\" type='submit' value='Add to My Shows' />" +
                         "<input name='id' type='hidden' value=" + events.Id + " />" +
                         "<input name='artists' type='hidden' value='" + artists + "' />" +
                         "<input name='venue' type='hidden' value='" + events.Venue.Name + "' />" +
@@ -58,13 +58,13 @@
 
                         "</form>";
 
-                    html += "<a class='btn form-btn' href='/show/" + events.Id + "/moreInfo'>See More</a>";
+                    html += "<a class=\"btn-large waves-effect waves-light orange darken-1\" href='/show/" + events.Id + "/moreInfo'>See More</a>";
 
                     html += "</div></div></div>";
                     html += i % 2 === 1 ? '</div>' : '';
                 //}
                 }
-                html += "</div>";
+                // html += "</div>";
 
                 console.log(html);
                 document.getElementById("searchResult").innerHTML = html;
