@@ -5,85 +5,87 @@
 <head th:replace="fragments/header :: main-header"></head>
 <body>
 <header>
-<nav th:replace="fragments/navbar :: mainNav"></nav>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
 </header>
-<main>
-
-<div class="container purple lighten-5">
-    <div class="row">
-        <div class="col s12 center">
-            <h2>Welcome,
-                <span th:text="${user.username}"></span>!</h2>
-            <input id="zipcode" type="hidden" th:value="${user.zipcode}"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <div class="col s12 m4 center">
-                <!--<button><a id="requests" th:href="@{/response/{id}  (id=${user.id})} ">Friend Requests</a>-->
-                <!--</button>-->
-
-                <ul>
-                    <li class="modal-btn">
-                        <a class="waves-effect waves-light btn modal-trigger orange darken-1" href="#modal1"><i class="material-icons left">audiotrack</i>My Bands</a>
-                    </li>
-                    <li class="modal-btn">
-                        <a class="waves-effect waves-light btn modal-trigger orange darken-1" href="#modal2"><i class="material-icons left">grade</i>My Shows</a>
-                    </li>
-                    <li class="modal-btn">
-                        <a class="waves-effect waves-light btn modal-trigger orange darken-1" href="#modal3"><i class="material-icons left">create</i>My Reviews</a>
-                    </li>
-                </ul>
-
-
-                <div id="modal1" class="modal">
-                    <div class="modal-content center">
-                        <h1>My Bands</h1>
-                        <div th:each="band : ${user.bands}">
-                            <h4 th:text="${band.bandname}"></h4>
-                            <hr/>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="modal2" class="modal">
-                    <div class="modal-content center">
-                        <h1>My Shows</h1>
-                        <div th:each="show : ${user.shows}">
-                            <h4 th:text="${show.artists + ' at ' + show.venue}"></h4>
-                            <hr/>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="modal3" class="modal">
-                    <div class="modal-content center">
-                        <h1>My Reviews</h1>
-                        <div th:each="review : ${user.reviews}">
-                            <h4>
-                                <a th:text="${review.title}"
-                                   th:href="@{'/review/' + ${review.id} + '/show'}"></a>
-                            </h4>
-                            <hr/>
-                        </div>
-                        <a th:href="${'/review/all/show'}">See All Reviews</a>
-                    </div>
-                </div>
-
-
-                <!--<div>-->
-
-
-                <!--</div>-->
-            </div>
-            <div class="col s12 m8">
-                <div id="showsnearme"></div>
+<main class="purple lighten-4">
+    <div class="container purple lighten-5">
+        <div class="row">
+            <div class="col s12 center">
+                <h2>Welcome,
+                    <span th:text="${user.username}"></span>!</h2>
+                <input id="zipcode" type="hidden" th:value="${user.zipcode}"/>
             </div>
         </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12 m4 center">
+                    <!--<button><a id="requests" th:href="@{/response/{id}  (id=${user.id})} ">Friend Requests</a>-->
+                    <!--</button>-->
+
+                    <ul>
+                        <li class="modal-btn">
+                            <a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"
+                               href="#modal1"><i class="material-icons left">audiotrack</i>My Bands</a>
+                        </li>
+                        <li class="modal-btn">
+                            <a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"
+                               href="#modal2"><i class="material-icons left">grade</i>My Shows</a>
+                        </li>
+                        <li class="modal-btn">
+                            <a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"
+                               href="#modal3"><i class="material-icons left">create</i>My Reviews</a>
+                        </li>
+                    </ul>
+
+
+                    <div id="modal1" class="modal">
+                        <div class="modal-content center">
+                            <h1>My Bands</h1>
+                            <div th:each="band : ${user.bands}">
+                                <h4 th:text="${band.bandname}"></h4>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="modal2" class="modal">
+                        <div class="modal-content center">
+                            <h1>My Shows</h1>
+                            <div th:each="show : ${user.shows}">
+                                <h4 th:text="${show.artists + ' at ' + show.venue}"></h4>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="modal3" class="modal">
+                        <div class="modal-content center">
+                            <h1>My Reviews</h1>
+                            <div th:each="review : ${user.reviews}">
+                                <h4>
+                                    <a th:text="${review.title}"
+                                       th:href="@{'/review/' + ${review.id} + '/show'}"></a>
+                                </h4>
+                                <hr/>
+                            </div>
+                            <a th:href="${'/review/all/show'}">See All Reviews</a>
+                        </div>
+                    </div>
+
+
+                    <!--<div>-->
+
+
+                    <!--</div>-->
+                </div>
+                <div class="col s12 m8">
+                    <div id="showsnearme"></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </main>
 <footer>
     <div th:replace="fragments/footer :: footer"></div>

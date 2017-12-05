@@ -7,7 +7,7 @@
 <header>
     <nav th:replace="fragments/navbar :: mainNav"></nav>
 </header>
-<main>
+<main class="purple lighten-4">
     <div class="container purple lighten-5">
         <div class="row">
             <div class="col s12 center">
@@ -21,7 +21,7 @@
                     <input id="zipcode" th:value="${user.zipcode}"/>
                     <label for="radius">Radius (miles)</label>
                     <input id="radius"/>
-                    <input class="btn form-btn" id="submit" type="submit"/>
+                    <input class="btn-large waves-effect waves-light orange darken-1" id="submit" type="submit"/>
                 </form>
             </div>
         </div>

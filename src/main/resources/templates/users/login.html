@@ -6,45 +6,45 @@
 <!--<link href="loginStyle.css" rel="Stylesheet" type="text/css"/>-->
 <body>
 <header>
-<nav th:replace="fragments/navbar :: mainNav"></nav>
+    <nav th:replace="fragments/navbar :: mainNav"></nav>
 </header>
-<main>
-<div class="container purple lighten-5">
-    <div class="row">
-        <div class="col s12 center">
-            <h1>Login To Your Profile</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-div white col s12 m6 offset-m3">
-
-            <div th:if="${param.logout}">
-                You have been logged out.
+<main class="purple lighten-4">
+    <div class="container purple lighten-5">
+        <div class="row">
+            <div class="col s12 center">
+                <h1>Login To Your Profile</h1>
             </div>
+        </div>
+        <div class="row">
+            <div class="form-div white col s12 m6 offset-m3">
 
-            <form th:action="@{/login}" method="post" class="user-form">
-
-                <div th:if="${param.error}">
-                    Invalid Username and Password.
+                <div th:if="${param.logout}">
+                    You have been logged out.
                 </div>
-                <i class="material-icons">face</i>
-                <label for="username">Username</label>
-                <input class="form-control" id="username" name="username" type="text"/>
 
-                <i class="material-icons">fingerprint</i>
-                <label for="password">Password</label>
-                <input class="form-control" id="password" name="password" type="password"/>
-                <div></div>
+                <form th:action="@{/login}" method="post" class="user-form">
 
-                <input class="form-btn" type="submit" value="Log In"/>
+                    <div th:if="${param.error}">
+                        Invalid Username and Password.
+                    </div>
+                    <i class="material-icons">face</i>
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" name="username" type="text"/>
 
-            </form>
+                    <i class="material-icons">fingerprint</i>
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password"/>
+                    <div></div>
+
+                    <input class="btn-large waves-effect waves-light orange darken-1" type="submit" value="Log In"/>
+
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </main>
 <footer>
-<div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/footer :: footer"></div>
 </footer>
 
 </body>
