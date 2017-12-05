@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 
-<head th:replace="fragments/header :: main-header"></head>
+<head th:replace="fragments/header :: main-header('Your Profile')"></head>
 <body>
 <header>
     <nav th:replace="fragments/navbar :: mainNav"></nav>
@@ -24,8 +24,8 @@
 
                     <ul>
                         <!--<li class="modal-btn">-->
-                            <!--<a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"-->
-                               <!--href="#modal1"><i class="material-icons left">audiotrack</i>My Bands</a>-->
+                        <!--<a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"-->
+                        <!--href="#modal1"><i class="material-icons left">audiotrack</i>My Bands</a>-->
                         <!--</li>-->
                         <li class="modal-btn">
                             <a class="uniform waves-effect waves-light btn modal-trigger orange darken-1"
@@ -53,7 +53,11 @@
                         <div class="modal-content center">
                             <h1>My Shows</h1>
                             <div th:each="show : ${user.shows}">
-                                <h4 th:text="${show.artists + ' at ' + show.venue}"></h4>
+                                <a th:href="'/show/' + ${show.id} + '/moreInfo'">
+                                    <h4 th:text="${show.artists + ' at ' + show.venue}"></h4>
+                                </a>
+                                <!--MAKE SHOWS CLICKABLE LEADING TO MORE INFO-->
+
                                 <hr/>
                             </div>
                         </div>
@@ -86,11 +90,13 @@
                             <div class="spinner-layer spinner-red-only">
                                 <div class="circle-clipper left">
                                     <div class="circle"></div>
-                                </div><div class="gap-patch">
-                                <div class="circle"></div>
-                            </div><div class="circle-clipper right">
-                                <div class="circle"></div>
-                            </div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

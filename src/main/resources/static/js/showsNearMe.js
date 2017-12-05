@@ -15,8 +15,8 @@
         success: function (json) {
             console.log(json);
             let html = "";
-            // html += "<div class='row'><div class='col s12'>";
-            // html += "<h4>Shows Near You!</h4></div></div>";
+            html += "<div class='row'><div class='col s12'>";
+            html += "<h4>Shows Near You!</h4></div></div>";
 
             for (let i = 0; i <= 3; i++) {
                 html += i % 2 === 0 ?  "<div class='row'>" : '';
