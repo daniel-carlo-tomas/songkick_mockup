@@ -14,7 +14,7 @@
         $.ajax({
             type: "GET",
             url: "http://api.jambase.com/events",
-            data: {"zipcode": searchZip, "radius": searchRadius, "api_key": "j6g84upymucqbgr42fqze97b"},
+            data: {"zipcode": searchZip, "radius": searchRadius, "api_key": "suakw9fxjerxgssx95s993rd"},
             async: true,
             dataType: "json",
             success: function (json) {

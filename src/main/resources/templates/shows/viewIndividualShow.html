@@ -11,7 +11,19 @@
         <div class="row">
             <div class="col s12">
                 <span id="show_id" th:value="${showId}"></span>
-                <div id="moreInfo"></div>
+                <div id="moreInfo" class="center">
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div><div class="gap-patch">
+                            <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="map-canvas" style="height: 400px"></div>
                 <div id="form"></div>
             </div>
