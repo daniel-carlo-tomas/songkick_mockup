@@ -133,12 +133,6 @@ footer.page-footer {
     border: 2px solid #4a148c;
 }
 
-.form-btn {
-    background-color: #fb8c00;
-    border: 1px solid #4a148c;
-
-}
-
 .user-form {
     padding: 2em;
 }
@@ -149,7 +143,9 @@ footer.page-footer {
 
 .container {
     width: 85%;
+    position: relative;
 }
+
 
 .uniform {
     width: 60%;

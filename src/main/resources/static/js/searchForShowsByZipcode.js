@@ -48,7 +48,7 @@
 
                     html += "<p>Date: " + events.Date + "</p></div>";
 
-                    html += "<div class='card-action'><form method='post' action='/show/add'>" +
+                    html += "<div class='card-action'><form method='post' style='padding: 2em' action='/show/add'>" +
 
                         "<input class=\"btn-large waves-effect waves-light orange darken-1\" type='submit' value='Add to My Shows' />" +
                         "<input name='id' type='hidden' value=" + events.Id + " />" +

@@ -18,7 +18,7 @@
             // html += "<div class='row'><div class='col s12'>";
             // html += "<h4>Shows Near You!</h4></div></div>";
 
-            for (let i = 0; i <= 5; i++) {
+            for (let i = 0; i <= 3; i++) {
                 html += i % 2 === 0 ?  "<div class='row'>" : '';
                 // html += "<i class='medium material-icons'>event</i>"
 
