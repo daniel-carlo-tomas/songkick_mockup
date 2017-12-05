@@ -8,7 +8,7 @@
     $.ajax({
         type: "GET",
         url: "http://api.jambase.com/events",
-        data: {"id": show_id, "api_key" : "j6g84upymucqbgr42fqze97b"},
+        data: {"id": show_id, "api_key" : "suakw9fxjerxgssx95s993rd"},
         async: true,
         dataType: "json",
         success: function (json) {
@@ -31,7 +31,9 @@
                 + json.Venue.Name
                 + "</h2>";
 
-            html += "<h3>Date: " + json.Date + "</h3>";
+            var newdate = moment(json.Date, moment.ISO_8601);
+
+            html += "<h3>Date: " + newdate.format("YYYY-MM-DD h:mm") + "</h3>";
 
             html += "<h4>Address: " + json.Venue.Address + ", " +
                 json.Venue.City + ", " +
