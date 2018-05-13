@@ -12,12 +12,14 @@ import java.util.List;
 public interface UsersRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
-    User findByEmail(String email);
-
     @Query(nativeQuery = true,
             value = "SELECT * FROM users WHERE username LIKE ?")
     List<User> searchUser(String term);
 
 
+    @Query("select s from FriendRequest f join f.receiver r join f.sender s where r.id = ?1 and f.approval = true")
+    List<User> friendsOf(Long userId);
 }
+
+
 
