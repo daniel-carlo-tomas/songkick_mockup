@@ -2,6 +2,8 @@
 
 An application built to notify users about music shows happening in their area. Allows user to search other areas as well within a set radius, as well as being able to see more deatiled information about shows(more info on venue and date as well as loading a map). Lastly, users may write reviews for shows.
 
+Currently Deployed at: livemusicismy.life
+
 Technologies Used:
 
     - Backend: Java, Spring MVC, Hibernate
